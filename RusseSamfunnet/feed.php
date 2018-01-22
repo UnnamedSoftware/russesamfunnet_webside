@@ -16,8 +16,10 @@ and open the template in the editor.
             <?php include 'Templates/navigation.php';?>
         </nav>
         <div id="main">
-        <p>test</p>
         
+        <div id="feed">
+            <p>test</p>
+        </div>
         </div>
         <footer>
             <?php include 'Templates/footer.php';?>
