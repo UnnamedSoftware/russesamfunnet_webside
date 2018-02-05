@@ -18,7 +18,9 @@ and open the template in the editor.
         <div id="main">
         
         <div id="feed">
-            <p>test</p>
+            <div class="update">
+                
+            </div>
         </div>
         </div>
         <footer>
