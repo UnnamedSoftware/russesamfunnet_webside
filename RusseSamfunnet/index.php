@@ -17,6 +17,31 @@ and open the template in the editor.
         
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+           
+            function auth(){
+                
+            var url = 'http://158.38.101.146:8080/login?email=' + document.getElementById('email').value + "&password=" + document.getElementById('password').value
+            var client = new HttpClient();
+                client.get(url, function(response) {
+                    document.write(response);
+                    
+            });
+        }
+        
+            var HttpClient = function() {
+                this.get = function(aUrl, aCallback) {
+                var anHttpRequest = new XMLHttpRequest();
+                anHttpRequest.onreadystatechange = function() { 
+                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+                    }
+
+            anHttpRequest.open( "GET", aUrl, true );            
+            anHttpRequest.send( null );
+                }
+            }
+        </script>
     </head>
     <body>
         <h3 class="text-center">Authentication</h3>
@@ -24,7 +49,7 @@ and open the template in the editor.
             <form>
                 <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username" >
+                <input type="text" class="form-control" id="email" placeholder="E-mail" >
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -36,12 +61,7 @@ and open the template in the editor.
             </div>
         </div>
        
-        <script type="text/javascript">
-            
-            document.getElementById('username').value
-            document.getElementById('password').value
-            
-        </script>
+        
             
     </body>
 </html>
