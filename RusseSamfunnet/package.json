@@ -1,0 +1,19 @@
+{
+  "name": "russesamfunnet",
+  "version": "1.0.0",
+  "description": "r",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "unnamed",
+  "license": "ISC"
+}
