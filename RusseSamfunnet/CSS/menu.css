@@ -67,13 +67,12 @@ a:hover
 #menu
 {
   position: absolute;
-  margin: -90px 0 0 -30px;
+  margin: -100px 0 0 -30px;
   padding-top: 120px;
   background: #ba0c2f;
   list-style-type: none;
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
-  height: 1000px;
 }
 
 #menu li

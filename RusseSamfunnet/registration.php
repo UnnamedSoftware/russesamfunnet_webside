@@ -48,15 +48,6 @@ and open the template in the editor.
 
     </head>
     <body>
-        <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/nn_NO/sdk.js#xfbml=1&version=v2.12';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
         <h3 class="text-center">Login eller registrer deg</h3>
         <div class="container">
             <form>
@@ -68,38 +59,16 @@ and open the template in the editor.
                     <label for="password">Passord</label>
                     <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="auth()">Login</button>
-                <text>eller</text>
-                <button type="button" class="btn btn-primary" onclick="location.href='registration.php';">Registrer konto</button>
-                <div class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
-                     data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
-                     data-use-continue-as="false">
+                <div class="form-group">
+                    <label for="password">Bekreft passord</label>
+                    <input type="password" class="form-control" id="confirmpassword" placeholder="Password">
                 </div>
-                
-                <div id="my-signin2"></div>
-                <script>
-                  function onSuccess(googleUser) {
-                    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                  }
-                  function onFailure(error) {
-                    console.log(error);
-                  }
-                  function renderButton() {
-                    gapi.signin2.render('my-signin2', {
-                      'scope': 'profile email',
-                      'width': 100,
-                      'height': 35,
-                      'longtitle': false,
-                      'theme': 'light',
-                      'onsuccess': onSuccess,
-                      'onfailure': onFailure
-                    });
-                  }
-                </script>
-                <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
-                
-                
+                <div class="form-group">
+                    <label for="school">Velg skole</label>
+                    <input type="text" class="form-control" id="school" placeholder="Begynn å skriv for valg">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="location.href='index.php';">Registrer konto</button>
+    
             </form>
             <div id="token-display">
             </div>
