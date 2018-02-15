@@ -3,4 +3,4 @@
 <a href="scoreboard.php">Scoreboard</a>
 <a href="community.php">Samfunn</a>
 <a href="userprofile.php">Brukerprofil</a>
-<a href="#">Log ut</a>
+<a href="#" onclick="logout()">Log ut</a>
