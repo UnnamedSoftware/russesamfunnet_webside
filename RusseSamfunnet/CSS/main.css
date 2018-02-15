@@ -25,10 +25,43 @@
     .col-12 {width: 100%;}
 }
 
+<<<<<<< HEAD
 .row::after {
     content: "";
     clear: both;
     display: table;
+=======
+#topBanner{
+    width: 100%;
+    height: 50px;
+    background:#EF2729;
+
+}
+
+#topBannerContent{
+    width: 50%;
+    margin: auto;
+    padding-top: 10px;
+    background: #EF2729;
+
+}
+
+#main {
+    margin-left: 130px;
+    display: inline-block;
+    width: 100%;
+    background: lightgreen;
+}
+
+#logout{
+    margin: 25px;
+}
+
+.userInfo{
+    background: #EF7729;
+    margin: auto;
+    width: 75%;
+>>>>>>> bb38f64a93a287d0c997131ee1299416216cb53e
 }
 
 [class*="col-"] {
@@ -46,6 +79,7 @@ html {
     padding: 15px;
 }
 
+<<<<<<< HEAD
 .menu ul {
     list-style-type: none;
     margin: 0;
@@ -61,6 +95,11 @@ html {
 }
 .menu li:hover {
     background-color: #0099cc;
+=======
+
+.update {
+    
+>>>>>>> bb38f64a93a287d0c997131ee1299416216cb53e
 }
 
 img {

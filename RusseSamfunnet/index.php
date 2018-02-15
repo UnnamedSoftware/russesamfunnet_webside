@@ -11,13 +11,25 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
         <link rel="stylesheet" type="text/css" href="CSS/main.css">
+<<<<<<< HEAD
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+=======
         <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
         
         
+>>>>>>> f4a9f859002d83ad318b5518f9a4578be385ef8d
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<<<<<<< HEAD
+
+        <meta name="google-signin-client_id" content="906320627350-4b7lhkufslsljv9et2soi2i49ektmv6k.apps.googleusercontent.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="JavaScript/loginScript.js"></script>
+=======
     <script type="text/javascript">
            
             function auth(){
@@ -46,7 +58,18 @@ and open the template in the editor.
         
         
 
+>>>>>>> f4a9f859002d83ad318b5518f9a4578be385ef8d
     </head>
+
+
+
+
+
+
+
+
+
+
     <body>
         <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -101,12 +124,45 @@ and open the template in the editor.
                 
                 
             </form>
-            <div id="token-display">
-            </div>
+            <br><br>
+            Dersom du ikke har en bruker allerede kan du trykke <a href="register.php">HER</a> for å logge inn
+            <br><br>
+            <!-- <div id="status"></div><br>
+            <div id="status2"></div> --><br>
+            <!--<button onclick="getInfo()">Get Info</button>-->
+            <button onclick="login()">Login with facebook</button>
+            <!--<button onclick="logout()">logout</button>-->
+
+            <br><br>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <div class="data">
+            <!--<p>Profile Details</p>
+            <img id="pic" class="img-circle" width="100" height="100"/>
+            <p>Email address</p>
+            <p id="email" class="alert alert-danger"></p>
+            <button onclick="signOut()" class="btn btn-danger">Sign out</button>-->
+        </div>
+            <br>
+
+
+            <!--<div id="token-display">
+                <p id="authResult">No result</p>
+            </div>-->
         </div>
        
         
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+=======
         
             
+>>>>>>> f4a9f859002d83ad318b5518f9a4578be385ef8d
     </body>
 </html>
