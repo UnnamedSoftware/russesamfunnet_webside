@@ -32,6 +32,7 @@ and open the template in the editor.
             </div>
         </div>
         <div id="main">
+<<<<<<< HEAD
         <p>test</p>
 
 
@@ -46,6 +47,8 @@ and open the template in the editor.
         <div class="userInfo">hjk</div>
 
         <br>
+=======
+>>>>>>> f4a9f859002d83ad318b5518f9a4578be385ef8d
         
         </div>
         <footer>
