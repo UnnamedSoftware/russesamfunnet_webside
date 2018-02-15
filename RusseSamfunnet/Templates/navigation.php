@@ -1,19 +1,11 @@
-<link rel="stylesheet" type="text/css" href="CSS/menu.css">
-<nav role="navigation">
-  <div id="menuToggle">
-    <!--click reciever for hamburger-->
-    <input type="checkbox" />
-    
-    <!-- The hamburger -->
-    <span></span>
-    <span></span>
-    <span></span>
-    <ul id="menu">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="menu">
+    <ul>
       <a href="feed.php"><li>Feed</li></a>
       <a href="knots.php"><li>Knuter</li></a>
       <a href="scoreboard.php"><li>Scoreboard</li></a>
-      <a href="community.php"><li>Mitt samfunn</li></a>
+      <a href="usersettings.php"><li>Brukerinstillinger</li></a>
       <a href="userprofile.php"><li>Min profil</li></a>
-    </ul>
-  </div>
-</nav>
+      </ul>
+</div>
