@@ -23,7 +23,7 @@ and open the template in the editor.
         <script src="JavaScript/mainScript.js"></script>
     </head>
     <body>
-<<<<<<< HEAD
+
         <div class="row">
     <div class="col-2 col-m-2"><?php include 'Templates/navigation.php';?></div>
     <div class="col-7 col-m-9">...</div>
@@ -31,36 +31,15 @@ and open the template in the editor.
         </div>
         <div class="row">
             <div class="col-12 col-m-12"><p>footer</p></div>
-    
-=======
-        <nav>
-            <?php include 'Templates/navigation.php';?>
-        </nav>
-        <div id="topBanner">
-            <div id="topBannerContent">
-                Hello
-            </div>
-        </div>
-        <div id="main">
-<<<<<<< HEAD
-        <p>test</p>
+
 
 
         <button onclick="logoutUser()" class="btn btn-danger">Sign out</button>
 
-<!--
-        <button id="logout" onclick="logout()"> logout [Facebook]</button>
-
-
-        <button onclick="signOut()" class="btn btn-danger">Sign out [Google]</button>
--->
         <div class="userInfo">hjk</div>
 
         <br>
-=======
->>>>>>> f4a9f859002d83ad318b5518f9a4578be385ef8d
-        
->>>>>>> bb38f64a93a287d0c997131ee1299416216cb53e
+
         </div>
         
     </body>

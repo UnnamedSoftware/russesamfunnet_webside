@@ -131,10 +131,12 @@ function login(){
         //document.getElementById('authResult').innerHTML = access_token;
         //var email = response.email;
         //console.log(email);
-
+        
         if(response.status === 'connected'){
+            console.log("test");
             // Make facebook cookie!
-            setCookie("Russesamfunnet", "facebook", 1) 
+            setCookie("Russesamfunnet", "facebook", 1);
+            
             window.location.href = 'feed.php';
         } else if(response.status === 'not_authorized') {
             //console.log(response.status + " not log");
