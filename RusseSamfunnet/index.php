@@ -27,6 +27,7 @@ and open the template in the editor.
     <body>
 
         <h3 class="text-center">Login eller registrer deg</h3>
+        <div class="col-4">
         <div class="container">
             <form>
                 <div class="form-group">
@@ -71,6 +72,7 @@ and open the template in the editor.
             <!--<div id="token-display">
                 <p id="authResult">No result</p>
             </div>-->
+        </div>
         </div>
     </body>
 </html>
