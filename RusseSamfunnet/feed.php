@@ -25,7 +25,7 @@ and open the template in the editor.
             <div id="topBannerContent">
                 Hello
             </div>
-        </div>
+                </div>
             </div>
         </div>
         <div class="row">
