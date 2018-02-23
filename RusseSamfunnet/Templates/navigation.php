@@ -1,11 +1,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="menu">
     <ul>
-<a href="feed.php">Feed</a>
-<a href="knots.php">Knuter</a>
-<a href="scoreboard.php">Scoreboard</a>
-<a href="community.php">Samfunn</a>
-<a href="userprofile.php">Brukerprofil</a>
-<a href="#" onclick="logout()">Log ut</a>
+        <a href="feed.php"><li>Feed</li></a>
+<a href="knots.php"><li>Knuter</li></a>
+<a href="scoreboard.php"><li>Scoreboard</li></a>
+<a href="userprofile.php"><li>Brukerprofil</li></a>
+<a href="#" onclick="logout()"><li>Logout</li></a>
     </ul>
   </div>
