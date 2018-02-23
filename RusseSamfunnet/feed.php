@@ -22,15 +22,25 @@ and open the template in the editor.
 
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/feed.js"></script> 
+
+
+        <script>
+        /*
+            function getInfoForPage(){
+                console.log("is this code executed?");
+                // fetch data from the rest api and add the data to the page.
+            }
+            */
+        </script>
     </head>
     <body>
         <div class="row">
     <div class="col-2 col-m-2"><?php include 'Templates/navigation.php';?></div>
-    <div class="col-7 col-m-9">...</div>
+        <div id="schoolInfo">hjk</div></div>
     <div class="col-3 col-m-12">...</div>
         </div>
         <div class="row">
             <div class="col-12 col-m-12"><p>footer</p></div>
-        </div>
+        
     </body>
 </html>

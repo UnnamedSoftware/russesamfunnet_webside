@@ -29,7 +29,7 @@ function postNewMessageToFeed(){
 function getSchools(){
     var url = getURL();
     console.log(url);
-    var schoolURL = url + "schools";
+    var schoolURL = url + "getAllSchools";
     console.log(schoolURL);
     var client = new HttpClient();
     client.get(schoolURL, function(response) {
@@ -41,8 +41,7 @@ function getSchools(){
         var schoolLocation = school.schoolLocation;
         var schoolMunicipality = school.schoolMunicipality;
         let divToAddTo = document.getElementById("schoolInfo");
-        divToAddTo.innerHTML = 
-            "<ul>"
+        divToAddTo.innerHTML = "<ul>"
                 +"<li>"+schoolId+"</li>"
                 +"<li>"+schoolName+"</li>"
                 +"<li>"+schoolStatus+"</li>"
