@@ -12,15 +12,15 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="CSS/main.css">
     </head>
     <body>
-        <nav>
-            <?php include 'Templates/navigation.php';?>
-        </nav>
-        <div id="main">
-        <p>test</p>
-        
+        <div class="row">
+    <div class="col-2 col-m-2"><?php include 'Templates/navigation.php';?></div>
+    <div class="col-7 col-m-9">...</div>
+    <div class="col-3 col-m-12">...</div>
         </div>
-        <footer>
-            <?php include 'Templates/footer.php';?>
-        </footer>
+        <div class="row">
+            <div class="col-12 col-m-12"><p>footer</p></div>
+    
+        </div>
+        
     </body>
 </html>

@@ -34,33 +34,13 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <nav>
-            <?php include 'Templates/navigation.php';?>
-        </nav>
-        <div id="topBanner">
-            <div id="topBannerContent">
-                Hello
-            </div>
+        <div class="row">
+    <div class="col-2 col-m-2"><?php include 'Templates/navigation.php';?></div>
+        <div id="schoolInfo">hjk</div></div>
+    <div class="col-3 col-m-12">...</div>
         </div>
-        <div id="main">
-        <p>test</p>
-
-
-        <button onclick="logoutUser()" class="btn btn-danger">Sign out</button>
-
-<!--
-        <button id="logout" onclick="logout()"> logout [Facebook]</button>
-
-
-        <button onclick="signOut()" class="btn btn-danger">Sign out [Google]</button>
--->            
-        <div id="schoolInfo">hjk</div>
-
-        <br>
+        <div class="row">
+            <div class="col-12 col-m-12"><p>footer</p></div>
         
-        </div>
-        <footer>
-            <?php include 'Templates/footer.php';?>
-        </footer>
     </body>
 </html>

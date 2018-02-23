@@ -41,8 +41,7 @@ function getSchools(){
         var schoolLocation = school.schoolLocation;
         var schoolMunicipality = school.schoolMunicipality;
         let divToAddTo = document.getElementById("schoolInfo");
-        divToAddTo.innerHTML = 
-            "<ul>"
+        divToAddTo.innerHTML = "<ul>"
                 +"<li>"+schoolId+"</li>"
                 +"<li>"+schoolName+"</li>"
                 +"<li>"+schoolStatus+"</li>"
