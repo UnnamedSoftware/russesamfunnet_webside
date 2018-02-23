@@ -22,19 +22,8 @@ and open the template in the editor.
 
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/feed.js"></script> 
-
-
-        <script>
-        /*
-            function getInfoForPage(){
-                console.log("is this code executed?");
-                // fetch data from the rest api and add the data to the page.
-            }
-            */
-        </script>
     </head>
     <body>
-<<<<<<< HEAD
         <div class="row">
     <div class="col-2 col-m-2"><?php include 'Templates/navigation.php';?></div>
     <div class="col-7 col-m-9">...</div>
@@ -42,34 +31,6 @@ and open the template in the editor.
         </div>
         <div class="row">
             <div class="col-12 col-m-12"><p>footer</p></div>
-    
-=======
-        <nav>
-            <?php include 'Templates/navigation.php';?>
-        </nav>
-        <div id="topBanner">
-            <div id="topBannerContent">
-                Hello
-            </div>
         </div>
-        <div id="main">
-        <p>test</p>
-
-
-        <button onclick="logoutUser()" class="btn btn-danger">Sign out</button>
-
-<!--
-        <button id="logout" onclick="logout()"> logout [Facebook]</button>
-
-
-        <button onclick="signOut()" class="btn btn-danger">Sign out [Google]</button>
--->            
-        <div id="schoolInfo">hjk</div>
-
-        <br>
-        
->>>>>>> bb38f64a93a287d0c997131ee1299416216cb53e
-        </div>
-        
     </body>
 </html>
