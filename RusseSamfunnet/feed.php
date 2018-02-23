@@ -21,6 +21,17 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script src="JavaScript/mainScript.js"></script>
+        <script src="JavaScript/feed.js"></script> 
+
+
+        <script>
+        /*
+            function getInfoForPage(){
+                console.log("is this code executed?");
+                // fetch data from the rest api and add the data to the page.
+            }
+            */
+        </script>
     </head>
     <body>
 <<<<<<< HEAD
@@ -42,7 +53,6 @@ and open the template in the editor.
             </div>
         </div>
         <div id="main">
-<<<<<<< HEAD
         <p>test</p>
 
 
@@ -53,12 +63,10 @@ and open the template in the editor.
 
 
         <button onclick="signOut()" class="btn btn-danger">Sign out [Google]</button>
--->
-        <div class="userInfo">hjk</div>
+-->            
+        <div id="schoolInfo">hjk</div>
 
         <br>
-=======
->>>>>>> f4a9f859002d83ad318b5518f9a4578be385ef8d
         
 >>>>>>> bb38f64a93a287d0c997131ee1299416216cb53e
         </div>
