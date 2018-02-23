@@ -29,7 +29,7 @@ function postNewMessageToFeed(){
 function getSchools(){
     var url = getURL();
     console.log(url);
-    var schoolURL = url + "schools";
+    var schoolURL = url + "getAllSchools";
     console.log(schoolURL);
     var client = new HttpClient();
     client.get(schoolURL, function(response) {

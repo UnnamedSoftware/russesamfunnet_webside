@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<a href="feed.php">Feed</a>
-<a href="knots.php">Knuter</a>
-<a href="scoreboard.php">Scoreboard</a>
-<a href="community.php">Samfunn</a>
-<a href="userprofile.php">Brukerprofil</a>
-<a href="#" onclick="logout()">Log ut</a>
-=======
+
 <link rel="stylesheet" type="text/css" href="CSS/menu.css">
 <nav role="navigation">
   <div id="menuToggle">
@@ -25,4 +18,3 @@
     </ul>
   </div>
 </nav>
->>>>>>> f4a9f859002d83ad318b5518f9a4578be385ef8d
