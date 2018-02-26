@@ -22,11 +22,18 @@ function registerFacebookUser(){
     console.log("token id register " + token);
     let registerFacebookUserURL = url+"facebookRegister?accessToken="+token+"&birthdate="+birthdate+"&schoolId="+schoolId;
     console.log(registerFacebookUserURL);
-    /*let client = new HttpClient();
+    let client = new HttpClient();
     client.get(url, function(response){
         JSONresponse = JSON.parse(response);
         console.log(JSONresponse);
-    });*/
+        if(JSONresponse.loginStatus = 'User successfully registered'){
+            window.location.href = "feed.php";
+        }
+        if(JSONresponse.loginStatus = 'There is no school with that name'){
+            console.log("This school is not registered in the database");
+        }
+
+    });
 
 
     //facebookRegister?accessToken=token&birthdate=dob&schoolId=id
