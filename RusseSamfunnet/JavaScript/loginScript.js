@@ -1,3 +1,7 @@
+function getURL(){
+    return "http://158.38.101.146:8080/";
+}
+
 /*
 CHECK FOR COOKIES
 -> REDIRECT TO FRONT PAGE IF COOKIE EXISTS = USER ALREADY LOGGED IN
@@ -97,7 +101,7 @@ window.onload = function(){
 
 function facebookInit() {
     FB.init({
-        appId      : '406426833123738',
+        appId      : '291199641408779', //'406426833123738',
         cookie     : true, 
         xfbml      : true,
         version    : 'v2.12'
@@ -129,7 +133,35 @@ function login(){
         if(response.status === 'connected'){
             //console.log(response.status + " *** CONNECTED (LOGIN) ***");
             setCookie("Russesamfunnet", "facebook", 1);
-            window.location.href = 'feed.php';
+            console.log("Here we are! " + access_token);
+            alert("check console!");
+            
+            //Make a call to the server to check if user is registered already
+            let url = getURL();
+            let checkUserURL = url+"facebookLogin?accessToken="+access_token;
+            console.log(checkUserURL);
+            alert("check console plz!");
+            let client = new HttpClient();
+            client.get(checkUserURL, function(response){
+                let JSONresponse = JSON.parse(response);
+                console.log(JSONresponse);
+                alert("check console");
+                if(JSONresponse.loginStatus == 'User not in db'){
+                    window.location.href = 'requiredInfo.php';
+                } 
+                if(JSONresponse.loginStatus == 'Login success'){
+                    window.location.href = 'feed.php';
+                } 
+                if(JSONresponse.loginStatus == 'Wrong appToken'){
+                    console.log("Wrong appToken");
+                    alert("This is not a valid token for this app");
+                }    
+            });
+
+
+
+
+            //window.location.href = 'feed.php';
         } else if(response.status === 'not_authorized') {
             //console.log(response.status + " *** NOT_AUTHORIZED (LOGIN) ***");
         } else {

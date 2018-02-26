@@ -125,7 +125,7 @@ window.onload = function () {
 function facebookInit() {
     console.log("facebook Init");
     FB.init({
-        appId: '406426833123738',
+        appId: '291199641408779',
         cookie: true,
         xfbml: true,
         version: 'v2.12'

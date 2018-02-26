@@ -8,9 +8,10 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Standard Template</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
         <link rel="stylesheet" type="text/css" href="CSS/main.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -20,40 +21,26 @@ and open the template in the editor.
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <script src="JavaScript/mainScript.js"></script>
-        <script src="JavaScript/feed.js"></script> 
-
-
-        <script>
-        /*
-            function getInfoForPage(){
-                console.log("is this code executed?");
-                // fetch data from the rest api and add the data to the page.
-            }
-            */
-        </script>
+        <script src="JavaScript/registerFacebookInfo.js"></script>
     </head>
+
     <body>
-        <div class="row">
-            <div class="col-2 col-m-2">
-                <?php include 'Templates/navigation.php';?>
-            </div>
-            <div id="topBannerContent">   
-                hjk 
-            </div>
-            <div id="schoolInfo">   
-                hjk 
-            </div>
-        
-            <div class="col-3 col-m-12">
-                ...
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-m-12">
-                <p>footer</p>
+
+        <h3 class="text-center">Registrer ekstra informasjon om deg</h3>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="birthdate">Født</label>
+                    <input type="text" class="form-control" id="birthdate" placeholder="Født" >
+                </div>
+                <div class="form-group">
+                    <label for="skole">Din skole</label>
+                    <input type="text" class="form-control" id="schoolId" placeholder="Din skole">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="registerFacebookUser()">Fullfør registrering</button>
+                
+            </form>
             </div>
         </div>
-        
     </body>
 </html>
