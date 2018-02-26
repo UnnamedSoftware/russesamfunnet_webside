@@ -23,7 +23,7 @@ and open the template in the editor.
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/feed.js"></script> 
 
-
+          
         <script>
         /*
             function getInfoForPage(){
@@ -35,8 +35,13 @@ and open the template in the editor.
     </head>
     <body>
         <div class="row">
-            <div class="col-2 col-m-2">
+            <div class="col-12 col-m-12">
                 <?php include 'Templates/navigation.php';?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 col-m-2">
+                
             </div>
             <div id="topBannerContent">   
                 hjk 
