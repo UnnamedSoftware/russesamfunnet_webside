@@ -16,14 +16,14 @@ function getURL(){
 }
 
 function registerFacebookUser(){
-    let url = getURL();
-    let birthdate = document.getElementById('birthdate').value;
-    let schoolId = document.getElementById('schoolId').value;
+    var url = getURL();
+    var birthdate = document.getElementById('birthdate').value;
+    var schoolId = document.getElementById('schoolId').value;
     console.log("token id register " + token);
-    let registerFacebookUserURL = url+"facebookRegister?accessToken="+token+"&birthdate="+birthdate+"&schoolId="+schoolId;
+    var registerFacebookUserURL = url+"facebookRegister?accessToken="+token+"&birthdate="+birthdate+"&schoolId="+schoolId;
     console.log(registerFacebookUserURL);
-    let client = new HttpClient();
-    client.get(url, function(response){
+    var client = new HttpClient();
+    client.get(registerFacebookUserURL, function (response) {
         JSONresponse = JSON.parse(response);
         console.log(JSONresponse);
         if(JSONresponse.loginStatus = 'User successfully registered'){
@@ -32,12 +32,7 @@ function registerFacebookUser(){
         if(JSONresponse.loginStatus = 'There is no school with that name'){
             console.log("This school is not registered in the database");
         }
-
     });
-
-
-    //facebookRegister?accessToken=token&birthdate=dob&schoolId=id
-
 }
 
 var HttpClient = function () {
