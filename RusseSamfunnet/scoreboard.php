@@ -21,9 +21,10 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script src="JavaScript/mainScript.js"></script>
-        <script src="JavaScript/feed.js"></script> 
+        <script src="JavaScript/scoreboard.js"></script>
+        
     </head>
-    <body>
+    <body onload="getScoreboard()">
         <div class="row">
             <div class="col-12 col-m-12">
                 <?php include 'Templates/navigation.php';?>
@@ -33,47 +34,10 @@ and open the template in the editor.
     <div class="col-2 col-m-2"></div>
     <div class="col-7 col-m-9">
         <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Default</td>
-                  <td>Defaultson</td>
-                  <td>def@somemail.com</td>
-                </tr>      
-                <tr class="success">
-                  <td>Success</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr class="danger">
-                  <td>Danger</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr class="info">
-                  <td>Info</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-                <tr class="warning">
-                  <td>Warning</td>
-                  <td>Refs</td>
-                  <td>bo@example.com</td>
-                </tr>
-                <tr class="active">
-                  <td>Active</td>
-                  <td>Activeson</td>
-                  <td>act@example.com</td>
-                </tr>
-              </tbody>
-            </table>
+          
+                <table id="table"></table>
+                
+            
         </div>
     </div>
     <div class="col-3 col-m-12">...</div>

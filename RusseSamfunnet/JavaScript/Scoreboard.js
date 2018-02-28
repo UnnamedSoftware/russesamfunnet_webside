@@ -14,4 +14,18 @@ function getUserInfo(){
 
 function getScoreboard(){
     console.log("Getting the scoreboard for this user and adding it to the page");
+    $('#table').bootstrapTable({
+    url: 'data1.json',
+    columns: [{
+        field: 'id',
+        title: 'Item ID'
+    }, {
+        field: 'name',
+        title: 'Item Name'
+    }, {
+        field: 'price',
+        title: 'Item Price'
+    }, ]
+});
 }
+
