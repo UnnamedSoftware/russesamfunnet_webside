@@ -35,7 +35,7 @@ and open the template in the editor.
     <div class="col-2 col-m-2"></div>
     <div class="col-7 col-m-9">
 
-      <table class="table table-bordered">
+      <table id="table" class="table table-bordered">
           <thead>
                 <tr>
                   <th scope="col">Knute</th>
@@ -51,14 +51,12 @@ and open the template in the editor.
             <div class="col-12 col-m-12"><p>footer</p></div>
     
         </div>
-        
-        <button id="ajaxButton" type="button">Make a request</button>
 
 <script>
 (function() {
   var httpRequest;
-  document.getElementById("ajaxButton").addEventListener('click', makeRequest);
-
+  makeRequest();
+  
   function makeRequest() {
     httpRequest = new XMLHttpRequest();
 
@@ -97,7 +95,7 @@ and open the template in the editor.
         var td3="<td>"+obj[i]["knotDetails"]+"</td>";
         var td4="<td>"+obj[i]["knotPicture"]+"</td>\n\</tr>";
 
-       $(".table").append(tr+td2+td3+td4); 
+       $("#table").append(tr+td2+td3+td4); 
 
     }
     }
