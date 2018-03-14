@@ -23,6 +23,12 @@ and open the template in the editor.
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/knots.js"></script>
         
+        <script>
+            
+            
+            
+        </script>
+        
     </head>
     <body>
         <div class="row">
@@ -32,7 +38,29 @@ and open the template in the editor.
         </div>
         <div class="row">
     <div class="col-2 col-m-2"></div>
-    <div class="col-7 col-m-9">...</div>
+    <div class="col-7 col-m-9">
+        
+           First Name: <input type="text" name="fname" id="fname" /><br/><br/>
+        Last Name: <input type="text" name="lname" id="lname" /><br/><br/>
+        Age: <input type="text" name="age" id="age" /><br/><br/>
+        <button onclick="addRow();">Update button for testing</button><br/><br/>
+
+        <table border="1">
+            
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+            
+            <tr>
+                <td>AAAAAA</td>
+                <td>BBBBBB</td>
+                <td>10</td>
+            </tr>
+        </table>
+                
+        </div>
     <div class="col-3 col-m-12">...</div>
         </div>
         <div class="row">
@@ -40,5 +68,35 @@ and open the template in the editor.
     
         </div>
         
+        <button id="ajaxButton" type="button">Make a request</button>
+
+<script>
+(function() {
+  var httpRequest;
+  document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+
+  function makeRequest() {
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('GET', 'http://158.38.101.146:8080/knots?russId=1');
+    httpRequest.send();
+  }
+
+  function alertContents() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  }
+})();
+</script>
     </body>
 </html>
