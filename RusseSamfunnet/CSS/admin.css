@@ -1,0 +1,161 @@
+html, body {
+    height: 100%;
+}
+  
+#wrap {
+    min-height: 100%;
+}
+  
+#main {
+    overflow:auto;
+    padding-bottom:110px; /* this needs to be bigger than footer height*/
+}
+
+.menu-style{
+    border: 1px solid rgb(129, 129, 129);
+}
+
+
+
+.admin-menu{
+    height: 81%;
+    background: rgb(255, 255, 255);
+    margin-top: 3%;
+}
+
+
+
+
+
+.setHeight{
+    height: 100%;
+    border: 1px solid rgb(129, 129, 129);
+}
+
+.menuStyleExtra{
+    padding-top: 15px;
+}
+
+#knuteDiv{
+    display: none;
+}
+
+#knuter{
+    height: 90%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(129, 129, 129);
+}
+
+
+
+#nyKnute{
+    height: 10%;
+    background: rgb(255, 255, 255);
+}
+
+div#showKnotInfo{
+    height: 90%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(129, 129, 129);
+
+}
+
+div#showNewKnotInfo{
+    height: 90%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(129, 129, 129);
+
+}
+
+#knotButtons{
+    height: 10%;
+    background: rgb(255, 255, 255);
+}
+
+#newKnotButtons{
+    height: 10%;
+    background: rgb(255, 255, 255);
+}
+
+#brukerDiv{
+    display: none;
+}
+
+#meldingerDiv{
+    display: none;
+}
+
+#registrerAdminDiv{
+    display: none;
+}
+
+
+#rapporterDiv{
+    display: none;
+}
+
+
+#kontaktOssDiv{
+    display: none;
+}
+
+
+#landingDiv{
+    display: none;
+}
+
+
+.buttonDiv{
+    /*height: 10%;*/
+    padding: 0;
+    margin: 0;
+    background: rgb(255, 255, 255);
+    width: 100%; 
+    /*height: 8%;*/
+    border-bottom: 1px solid rgb(129, 129, 129);
+}
+/*
+.buttonDiv:hover{
+    background: red;
+    padding: 15px 0px 15px 20px;
+    margin: 0;
+    font-size: 140%;
+}
+*/
+.buttonDiv p{
+    padding: 15px 0px 15px 20px;
+    margin: 0;
+    background: rgb(255, 255, 255);
+    font-size: 140%;
+}
+
+.buttonDiv p:hover{
+    padding: 15px 0px 15px 20px;
+    margin: 0;
+    background: rgb(230, 230, 230);
+    font-size: 140%;
+}
+
+/*
+.buttonDiv p.framsideTest{
+    background: black;
+}
+
+.buttonDiv p.framsideTest{
+    background: rgb(255, 255, 255);
+}
+
+.buttonDiv p.framsideTest:hover{
+    background: rgb(121, 121, 121);
+}
+*/
+
+.footer {
+    position: relative;
+    margin-top: -80px; /* negative value of footer height */
+    height: 80px;
+    clear:both;
+    padding-top:20px;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(255, 255, 255);
+} 
