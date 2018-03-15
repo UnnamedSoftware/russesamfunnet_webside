@@ -35,11 +35,12 @@ and open the template in the editor.
     <div class="col-2 col-m-2"></div>
     <div class="col-7 col-m-9">
 
-      <table id="table" class="table table-bordered">
+      <table id="table" class="table table-striped">
           <thead>
                 <tr>
                   <th scope="col">Knute</th>
                   <th scope="col">Description</th>
+                  <th scope="col">Bilde</th>
                 </tr>
           </thead>
       </table>
@@ -48,8 +49,9 @@ and open the template in the editor.
     <div class="col-3 col-m-12">...</div>
         </div>
         <div class="row">
-            <div class="col-12 col-m-12"><p>footer</p></div>
-    
+            <div class="col-4"><p></p></div>
+            <div class="col-4 col-m-12"><?php include 'Templates/footer.php';?></div>
+            <div class="col-4"><p></p></div>
         </div>
 
 <script>

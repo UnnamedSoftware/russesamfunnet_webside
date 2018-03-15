@@ -36,6 +36,7 @@
       
   var tbl=$("<table/>").attr("id","table");
     $("#div1").append(tbl);
+    $("#table").append("<tbody>"); 
     for(var i=0;i<obj.length;i++)
     {
         var tr="<tr>";
@@ -46,6 +47,7 @@
        $("#table").append(tr+td2+td3+td4); 
 
     }
+    $("#table").append("</tbody>"); 
     }
     
     
