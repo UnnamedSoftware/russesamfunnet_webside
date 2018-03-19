@@ -34,7 +34,7 @@ function eraseCookie(name) {
 
 // DEFAULT LOGIN MED RUSSESAMFUNNET
 function auth() {
-    var url = 'http://158.38.101.146:8080/login?email=' + document.getElementById('email').value + "&password=" + document.getElementById('password').value;
+    var url = 'http://158.38.101.146:8080/loginToken?email=' + document.getElementById('email').value + "&password=" + document.getElementById('password').value;
     var client = new HttpClient();
     client.get(url, function (response) {
         console.log(response);
@@ -65,6 +65,28 @@ function russesamfunnetInit(){
 }
 
 function loginRussesamfunnet(status){
+    if(status != 'Incorrect password'){
+        var responseAsJSON = JSON.parse(status);
+        console.log(responseAsJSON);
+        var loginStatus = responseAsJSON.loginStatus;
+        console.log(loginStatus);
+        if(loginStatus == 'Login success'){
+            setCookie("Russesamfunnet", "russesamfunnet", 1)
+            setCookie("Russesamfunnet-token", responseAsJSON.accessToken, 1);
+            setTimeout(function () {
+                window.location.href = 'feed.php';
+            }, 4500);
+            /*if(status == "new"){
+                window.location.href = 'additionalInfo.php';
+            }
+            if(status == "true"){
+                window.location.href = 'feed.php';
+            }*/
+        }
+    }
+
+
+/*
     setCookie("Russesamfunnet", "russesamfunnet", 1)
     setCookie("Russesamfunnet-token", "FDSHJGKFHDSJK45W54233432FDSAXXZHJFKDWSW-FTDSJKFDSS", 1);
     if(status == "new"){
@@ -72,7 +94,7 @@ function loginRussesamfunnet(status){
     }
     if(status == "true"){
         window.location.href = 'feed.php';
-    }
+    }*/
 }
 
 
@@ -92,6 +114,8 @@ window.onload = function(){
             googleInit();
         }
         if(cookie == "russesamfunnet"){
+            console.log("logget inn!");
+            window.location.href = 'feed.php';
         }
     }
     else{
@@ -133,6 +157,7 @@ function login(){
         if(response.status === 'connected'){
             //console.log(response.status + " *** CONNECTED (LOGIN) ***");
             setCookie("Russesamfunnet", "facebook", 1);
+            console.log(response);
             console.log("Here we are! " + access_token);
             alert("check console!");
             
