@@ -4,7 +4,9 @@
   
   function makeRequest() {
       
-      
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    var url = "http://158.38.101.146:8080/completedKnots?accessToken="+accessToken+"&type="+type;
       
     httpRequest = new XMLHttpRequest();
 
@@ -14,7 +16,7 @@
     }
     
     httpRequest.onreadystatechange = alertContents;
-    httpRequest.open('GET', 'http://158.38.101.146:8080/knots?russId=1');
+    httpRequest.open('GET', url);
     httpRequest.send();
     
     }
@@ -34,15 +36,18 @@
       
       var obj = JSON.parse(x);
       
+      console.log("KNUTER have been clicked!");
+    
+      
   var tbl=$("<table/>").attr("id","table");
     $("#div1").append(tbl);
     $("#table").append("<tbody>"); 
     for(var i=0;i<obj.length;i++)
     {
         var tr="<tr>";
-        var td2="<td>"+obj[i]["knotName"]+"</td>";
-        var td3="<td>"+obj[i]["knotDetails"]+"</td>";
-        var td4="<td>"+obj[i]["knotPicture"]+"</td>\n\</tr>";
+        var td2="<td>"+obj[i]["knotId"]["knotName"]+"</td>";
+        var td3="<td>"+obj[i]["knotId"]["knotDetails"]+"</td>";
+        var td4="<td>"+obj[i]["witnessId1"]["firstName"]+ " " +obj[i]["witnessId1"]["lastName"]+ " og " +obj[i]["witnessId2"]["firstName"]+ " " +obj[i]["witnessId2"]["lastName"]+"</td>\n\</tr>";
 
        $("#table").append(tr+td2+td3+td4); 
 

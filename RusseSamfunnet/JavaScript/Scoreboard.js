@@ -13,8 +13,12 @@ if (!httpRequest) {
   return false;
 }
 
+var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    var url = "http://158.38.101.146:8080/scorebjard?accessToken="+accessToken+"&type="+type;
+
 httpRequest.onreadystatechange = alertContents;
-httpRequest.open('GET', 'http://158.38.101.146:8080//scoreboardTop10?theRussId=1');
+httpRequest.open('GET', url);
 httpRequest.send();
 
 }

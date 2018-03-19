@@ -40,7 +40,7 @@ and open the template in the editor.
                 <tr>
                   <th scope="col">Knute</th>
                   <th scope="col">Description</th>
-                  <th scope="col">Bilde</th>
+                  <th scope="col">Vitner</th>
                 </tr>
           </thead>
       </table>
