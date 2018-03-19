@@ -15,7 +15,7 @@ if (!httpRequest) {
 
 var accessToken = getCookie("Russesamfunnet-token");
     var type = "russesamfunnet";
-    var url = "http://158.38.101.146:8080/scorebjard?accessToken="+accessToken+"&type="+type;
+    var url = "http://158.38.101.146:8080/schoolScoreboard?accessToken="+accessToken+"&type="+type;
 
 httpRequest.onreadystatechange = alertContents;
 httpRequest.open('GET', url);
