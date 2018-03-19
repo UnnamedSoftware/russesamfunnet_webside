@@ -81,6 +81,11 @@
                                 <p>KONTAKT OSS</p>
                             </div>
                         </a>
+                        <a id="hjelpLink" href="admin.php?mode=hjelp" >
+                            <div class="buttonDiv" >    
+                                <p>HJELP</p>
+                            </div>
+                        </a>
                     </div>
                     <div id="landingDiv">
                         <div class="col-sm-9 setHeight">
@@ -107,16 +112,26 @@
                         <div id="knuteInfo">
                             <div class="col-sm-5 setHeight">
                                 <!--<p>COLUMN 3 - VIS KNUTE INFO</p>-->
+                                <div id="deleteKnot" style="overflow: none;">
+                                    <div style="width: 100%; margin: auto;">
+                                        <a id="deleteKnotButton" href="#" action="admin.php?mode=knute">
+                                            <div style="width: 75%; float: right;">
+                                                <div style="float: left; font-size: 150%; margin: 15px 25px 10px 0;">Slett knute </div><img src="icons/cancel.png" style="height: 85%; padding-top: 6px;"/>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                                 <div id="showKnotInfo">
                                     showInfo
                                 </div>
+                                
                                 <div id="knotButtons">
                                     <div style="width: 50%; margin: auto;">
-                                        <a href="#" action="admin.php?mode=knute" onclick="commitChanges(); return false;" style="float: left">
-                                            <img src="icons/confirm2.png" style="height: 85%; padding-top: 6px;"/>
+                                        <a href="#" action="admin.php?mode=knute" onclick="commitChanges(); return false;"style="width: 61px; float: left;">
+                                            <img src="icons/confirm2.png" style="height: 85%; padding-top: 11px;"/>
                                         </a>
-                                        <a href="#" action="admin.php?mode=knute" onclick="cancel(); return false;" style="float: right">
-                                            <img src="icons/cancel.png" style="height: 85%; padding-top: 6px;"/>
+                                        <a href="#" action="admin.php?mode=knute" onclick="cancel(); return false;" style="width: 60px; float: right;">
+                                            <img src="icons/cancel.png" style="height: 85%; padding-top: 11px;"/>
                                         </a>
                                     </div>
                                 </div>
@@ -124,24 +139,29 @@
                         </div>
                         <div id="nyKnuteInput">
                             <div class="col-sm-5 setHeight">
+                                <div id="addKnotHeading">
+                                        <p>Opprett en ny knute</p>
+                                </div>
+
                                 <div id="showNewKnotInfo">
-                                    <p>COLUMN 3 - INPUT NY KNUTE</p>
+                                    <br>
                                     <form name="nyRusseKnute" onSubmit="registrerKnute(); return false;">
-                                        Knutenavn: <br>
+                                        Navn på knuten: <br>
                                         <input type="text" id="knuteNavn" name="knuteNavn"/><br><br>
-                                        Knutebeskrivelse:<br>
-                                        <input type="text" id="knuteBeskrivelse" navn="knuteBeskrivelse"/><br><br>
+                                        Beskrivelse av knuten:<br>
+                                        <!--<input type="text" id="knuteBeskrivelse" navn="knuteBeskrivelse"/><br><br>-->
+                                        <textarea id="knuteBeskrivelse"></textarea>
                                         <!--<input type="submit" name="Submit" value="Register ny knute"/>-->
                                     </form>
                                 </div>
                                 
                                 <div id="newKnotButtons">
-                                    <div style="width: 50%; margin: auto;">
-                                        <a href="#" action="admin.php?mode=knute" onclick="registrerKnute(); return false;" style="float: left">
-                                            <img src="icons/confirm2.png" style="height: 85%; padding-top: 6px;"/>
+                                    <div style="width: 50%; margin: auto; background: black;">
+                                        <a href="#" action="admin.php?mode=knute" onclick="registrerKnute(); return false;" style="width: 61px; float: left;">
+                                            <img src="icons/confirm2.png" style="height: 85%; padding-top: 11px;"/>
                                         </a>
-                                        <a href="#" action="admin.php?mode=knute" onclick="cancelNyKnute(); return false;" style="float: right">
-                                            <img src="icons/cancel.png" style="height: 85%; padding-top: 6px;"/>
+                                        <a href="#" action="admin.php?mode=knute" onclick="cancelNyKnute(); return false;" style="width: 60px; float: right;">
+                                            <img src="icons/cancel.png"  style="height: 85%; padding-top: 11px;"/>
                                         </a>
                                     </div>
                                 </div>

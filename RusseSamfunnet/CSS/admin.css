@@ -1,5 +1,21 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, em, img, strong, sub, sup, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, footer, header, hgroup, 
+menu, nav, output, section, time {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
 html, body {
     height: 100%;
+    min-height: 750px;
+    min-width: 1000px;
 }
   
 #wrap {
@@ -8,17 +24,18 @@ html, body {
   
 #main {
     overflow:auto;
-    padding-bottom:110px; /* this needs to be bigger than footer height*/
+    padding-bottom: 40px; /* this needs to be bigger than footer height*/
 }
 
 .menu-style{
     border: 1px solid rgb(129, 129, 129);
+    background: white;
 }
 
 
 
 .admin-menu{
-    height: 81%;
+    height: 85%;
     background: rgb(255, 255, 255);
     margin-top: 3%;
 }
@@ -33,6 +50,7 @@ html, body {
 }
 
 .menuStyleExtra{
+    overflow: none;
     padding-top: 15px;
 }
 
@@ -48,24 +66,45 @@ html, body {
 
 
 
+
 #nyKnute{
     height: 10%;
     background: rgb(255, 255, 255);
 }
 
 div#showKnotInfo{
-    height: 90%;
+    height: 80%;
     background: rgb(255, 255, 255);
     border-bottom: 1px solid rgb(129, 129, 129);
 
+}
+
+div#deleteKnot{
+    height: 10%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(129, 129, 129);
+}
+
+div#addKnotHeading{
+    height: 10%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(129, 129, 129);
+    
+}
+
+#addKnotHeading p{
+    padding: 15px 0 0 10px;
+    font-size: 200%;
 }
 
 div#showNewKnotInfo{
-    height: 90%;
+    height: 80%;
     background: rgb(255, 255, 255);
     border-bottom: 1px solid rgb(129, 129, 129);
 
 }
+
+
 
 #knotButtons{
     height: 10%;
@@ -76,6 +115,55 @@ div#showNewKnotInfo{
     height: 10%;
     background: rgb(255, 255, 255);
 }
+
+#knuteNavn{
+    width: 90%;
+    margin-left: 5%;
+    padding: 12px 20px;
+    border: none;
+    border-bottom: 3px double red;
+}
+
+
+#knuteBeskrivelse{
+    width: 90%;
+    margin-left: 5%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 3px double red;
+    /*
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;*/
+    resize: none;
+}
+
+#knuteNavnInfo{
+    width: 90%;
+    margin-left: 5%;
+    padding: 12px 20px;
+    border: none;
+    border-bottom: 3px double red;
+}
+
+#knuteBeskrivelseInfo{
+    width: 90%;
+    margin-left: 5%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 3px double red;
+    /*
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;*/
+    resize: none;
+}
+
+
 
 #brukerDiv{
     display: none;
@@ -152,10 +240,10 @@ div#showNewKnotInfo{
 
 .footer {
     position: relative;
-    margin-top: -80px; /* negative value of footer height */
-    height: 80px;
+    margin-top: -40px; /* negative value of footer height */
+    height: 40px;
     clear:both;
-    padding-top:20px;
+    padding-top: 0;
     border: 1px solid rgb(129, 129, 129);
     background: rgb(255, 255, 255);
 } 
