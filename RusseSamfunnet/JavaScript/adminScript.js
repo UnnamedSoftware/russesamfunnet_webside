@@ -77,6 +77,7 @@ function setupSite(){
     var landing = document.getElementById('landingDiv');
     var knuter = document.getElementById('knuteDiv');
     var brukere = document.getElementById('brukerDiv');
+    var bekreftBrukere = document.getElementById('bekreftBrukerDiv');
     var meldinger = document.getElementById('meldingerDiv');
     var registrerAdmin = document.getElementById('registrerAdminDiv');
     var rapporter = document.getElementById('rapporterDiv');
@@ -91,6 +92,7 @@ function setupSite(){
         console.log("Normal mode");
         knuter.style.display = 'none';
         brukere.style.display = 'none';
+        bekreftBrukere.style.display = 'none';
         meldinger.style.display = 'none';
         registrerAdmin.style.display = 'none';
         rapporter.style.display = 'none';
@@ -110,6 +112,7 @@ function setupSite(){
 
             landing.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             meldinger.style.display = 'none';
             registrerAdmin.style.display = 'none';
             rapporter.style.display = 'none';
@@ -129,6 +132,7 @@ function setupSite(){
             */
             landing.style.display = 'none';
             knuter.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             meldinger.style.display = 'none';
             registrerAdmin.style.display = 'none';
             rapporter.style.display = 'none';
@@ -138,6 +142,22 @@ function setupSite(){
             hentBrukere();
         }
 
+        if(param == 'bekreftBruker'){
+            /*
+            Brukeren har trykket på 'BRUKERE'
+            */
+            landing.style.display = 'none';
+            knuter.style.display = 'none';
+            meldinger.style.display = 'none';
+            registrerAdmin.style.display = 'none';
+            rapporter.style.display = 'none';
+            kontakt.style.display = 'none';
+            brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'block';
+            console.log("bekreftBruker");
+            hentUbekreftedeBrukere();
+        }
+
         if(param == 'meldinger'){
             /*
             Brukeren har trykket på 'MELDINGER'
@@ -145,6 +165,7 @@ function setupSite(){
             landing.style.display = 'none';
             knuter.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             registrerAdmin.style.display = 'none';
             rapporter.style.display = 'none';
             kontakt.style.display = 'none';
@@ -161,6 +182,7 @@ function setupSite(){
             knuter.style.display = 'none';
             meldinger.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             rapporter.style.display = 'none';
             kontakt.style.display = 'none';
             registrerAdmin.style.display = 'block';
@@ -175,6 +197,7 @@ function setupSite(){
             knuter.style.display = 'none';
             meldinger.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             registrerAdmin.style.display = 'none';
             kontakt.style.display = 'none';
             rapporter.style.display = 'block';
@@ -189,6 +212,7 @@ function setupSite(){
             knuter.style.display = 'none';
             meldinger.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             rapporter.style.display = 'none';
             registrerAdmin.style.display = 'none';
             kontakt.style.display = 'block';
@@ -436,8 +460,92 @@ function registrerKnute(){
     });
 }
 
+function searchInput(){
+    var inputValue = document.getElementById("brukerSearchFormInput").value;
+    //console.log("input: " + inputValue);
+    if(inputValue == "null" || inputValue == "undefined" || inputValue == "" || inputValue == " "){
+        hentBrukere();
+    }else{
+        //console.log(inputValue);
+        var accessToken = getCookie("Russesamfunnet-token");
+        var type = "russesamfunnet";
+        var url = "http://158.38.101.146:8080/searchForRuss?accessToken="+accessToken+"&type="+type+"&parameter="+inputValue;
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            try{
+                var responseAsJSON = JSON.parse(response); 
+                console.log(responseAsJSON);
+                populateUserTable(responseAsJSON);
+            }catch(error){
+                console.log(error.message);
+            }
+        });
+    }
+}
+
 function hentBrukere(){
-    console.log("BRUKERE have been clicked");
+    //console.log("BRUKERE have been clicked");
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    var url = "http://158.38.101.146:8080/getAllRussAtSchool?accessToken="+accessToken+"&type="+type;
+    //console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        try{
+            var responseAsJSON = JSON.parse(response); 
+            //console.log(responseAsJSON);
+            populateUserTable(responseAsJSON);
+        }catch(error){
+            console.log(error.message);
+        }
+    });
+}
+
+function populateUserTable(responseAsJSON){
+    var table = document.getElementById("brukerTable");
+    var tableBody = document.getElementById("brukerTableBody");
+    tableBody.innerHTML = "";
+    if(responseAsJSON != 'null' && responseAsJSON != 'undefined'){
+        //console.log("not null: " + responseAsJSON);
+        for(i = 0; i < responseAsJSON.length; i++){
+            var row = tableBody.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            //var cell8 = row.insertCell(7);
+            cell1.innerHTML = responseAsJSON[i].russId;
+            cell2.innerHTML = responseAsJSON[i].firstName;
+            cell3.innerHTML = responseAsJSON[i].lastName;
+            cell4.innerHTML = responseAsJSON[i].email;
+            //cell5.innerHTML = responseAsJSON[i].schoolId.schoolName;
+            cell5.innerHTML = responseAsJSON[i].russRole;
+            cell6.innerHTML = responseAsJSON[i].russStatus;
+            cell7.innerHTML = "Confirm";
+        }
+        /*for(i = responseAsJSON.length; i < (responseAsJSON.length*3); i++){
+            var row = tableBody.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            cell1.innerHTML = i;
+            cell2.innerHTML = "Kristian";
+            cell3.innerHTML = "Hustad";
+            cell4.innerHTML = "krihus095";
+            cell5.innerHTML = "admin"
+            cell6.innerHTML = "confirmed"
+            cell7.innerHTML = "Confirm";
+        }*/
+    }else{
+        console.log("null or undefined");
+    }
 }
 
 function commitChanges(){
@@ -503,6 +611,112 @@ function cancelNyKnute(){
     nyKnuteInput.style.display = 'none';
     knuteTom.style.display = 'block';
     //nyKnute.style.display = 'block';
+}
+
+function hentUbekreftedeBrukere(){
+    console.log("Hent ubekreftede brukere!");
+
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    
+    var url = "http://158.38.101.146:8080/getAllRussAtSchoolStatusFalse?accessToken="+accessToken+"&type="+type;
+    console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        console.log(responseAsJSON);
+
+        try{
+            var responseAsJSON = JSON.parse(response); 
+            //console.log(responseAsJSON);
+            populateUnconfirmedUserTable(responseAsJSON);
+        }catch(error){
+            console.log(error.message);
+        }
+        /*
+        var table = document.getElementById("bekreftBrukerTable");
+        var tableBody = document.getElementById("bekreftBrukerTableBody");
+        tableBody.innerHTML = "";
+        //
+        //bekreftBrukerDivContent.innerHTML = "";
+        for(i = 0; i < responseAsJSON.length; i++){
+
+            var row = tableBody.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = responseAsJSON[i].firstName;
+            cell2.innerHTML = responseAsJSON[i].lastName;
+            cell3.innerHTML = responseAsJSON[i].email;
+            cell4.innerHTML = responseAsJSON[i].schoolId.schoolName;
+
+
+            //var brukerP = document.createElement('p');
+            //brukerP.innerText = responseAsJSON[i].russId + " - " + responseAsJSON[i].email + " - " + responseAsJSON[i].firstName + " " + responseAsJSON[i].lastName + " - " + responseAsJSON[i].russStatus + " - " + responseAsJSON[i].russRole;
+            //bekreftBrukerDivContent.appendChild(brukerP);
+        }*/
+        
+    });
+}
+
+function searchInputConfirm(){
+
+    
+    var inputValue = document.getElementById("bekreftBrukerSearchFormInput").value;
+    console.log(inputValue);
+    /*
+    //console.log("input: " + inputValue);
+    if(inputValue == "null" || inputValue == "undefined" || inputValue == "" || inputValue == " "){
+        hentBrukere();
+    }else{
+        //console.log(inputValue);
+        var accessToken = getCookie("Russesamfunnet-token");
+        var type = "russesamfunnet";
+        var url = "http://158.38.101.146:8080/searchForRuss?accessToken="+accessToken+"&type="+type+"&parameter="+inputValue;
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            try{
+                var responseAsJSON = JSON.parse(response); 
+                console.log(responseAsJSON);
+                populateUserTable(responseAsJSON);
+            }catch(error){
+                console.log(error.message);
+            }
+        });
+    }*/
+}
+
+
+function populateUnconfirmedUserTable(responseAsJSON){
+    console.log("Populatig the table");
+    var table = document.getElementById("bekreftBrukerTable");
+    var tableBody = document.getElementById("bekreftBrukerTableBody");
+    tableBody.innerHTML = "";
+    if(responseAsJSON != 'null' && responseAsJSON != 'undefined'){
+        //console.log("not null: " + responseAsJSON);
+        for(i = 0; i < responseAsJSON.length; i++){
+            var row = tableBody.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            //var cell8 = row.insertCell(7);
+            cell1.innerHTML = responseAsJSON[i].russId;
+            cell2.innerHTML = responseAsJSON[i].firstName;
+            cell3.innerHTML = responseAsJSON[i].lastName;
+            cell4.innerHTML = responseAsJSON[i].email;
+            //cell5.innerHTML = responseAsJSON[i].schoolId.schoolName;
+            cell5.innerHTML = responseAsJSON[i].russRole;
+            cell6.innerHTML = responseAsJSON[i].russStatus;
+            cell7.innerHTML = "Confirm setFalse";
+        }
+    }else{
+        console.log("null or undefined");
+    }
 }
 
 

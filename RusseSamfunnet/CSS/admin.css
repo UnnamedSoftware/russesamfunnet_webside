@@ -14,7 +14,7 @@ menu, nav, output, section, time {
 
 html, body {
     height: 100%;
-    min-height: 750px;
+    min-height: 900px;
     min-width: 1000px;
 }
   
@@ -164,11 +164,109 @@ div#showNewKnotInfo{
 }
 
 
-
+/********************************* brukerDiv *************************************/
 #brukerDiv{
     display: none;
 }
 
+#brukerSearch{
+    height: 5%;
+    background: #fa6666;
+    width: 100%;
+    margin: 16px 0;
+    background: rgb(255, 255, 255);
+}
+
+#brukerSearchForm{
+    width: 100%;
+}
+
+#brukerSearchFormInput{
+    width: 100%;
+    background: #ddff8c;
+    padding: 6px 10px;
+}
+
+#tableContainer{
+    background: #fa6666;
+    height: 81%;
+    overflow-y: scroll;
+}
+
+#brukerTable{
+    border-collapse: collapse;
+    width: 100%;
+    background: rgb(255, 255, 255);
+}
+
+#brukerTable thead{
+    padding-top: 10%;
+    background: rgb(212, 212, 212);
+
+}
+
+#brukerTable td, #brukerTable th{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px;
+}
+#brukerTable tr:nth-child(even){
+    background-color: #ddff8c;
+}
+
+#brukerTable thead tr{
+    /*margin: 50px 10px;*/
+    background: rgb(255, 88, 88);
+
+}
+
+/*
+tbody#brukerTableBody{
+    height: 262px;
+    overflow-y: scroll;
+    width: 100%
+}
+*/
+div#brukerIkonForklaring{
+    height: 5%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+    padding: 10px 10px 1px 10px;
+    border: 1px solid  black;
+    background: #ddff8c;
+    /*position: relative;
+    margin-top: -10px; 
+    height: 10px;
+    clear:both;
+    background: red;
+    padding-top: 0;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(255, 255, 255);*/
+}
+
+/********************************* bekreftBrukerDiv *************************************/
+#bekreftBrukerDiv{
+    display: none;
+}
+
+#bekreftBrukerSearch{
+    width: 100%;
+    margin: 16px 0;
+    background: blue;
+}
+
+#bekreftBrukerSearchForm{
+    width: 100%;
+}
+
+#bekreftBrukerSearchFormInput{
+    width: 100%;
+    background: rgb(216, 216, 216);
+    padding: 6px 10px;
+}
+
+
+/********************************* meldingerDiv *************************************/
 #meldingerDiv{
     display: none;
 }
