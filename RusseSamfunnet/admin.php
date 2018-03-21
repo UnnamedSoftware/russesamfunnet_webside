@@ -61,16 +61,21 @@
                                 <p>BRUKERE</p>
                             </div>      
                         </a>
+                        <!--<a id="bekreftBrukerLink" href="admin.php?mode=bekreftBruker" >
+                            <div class="buttonDiv" >
+                                <p>BEKREFT BRUKER</p>
+                            </div>      
+                        </a>-->
                         <a id="meldingerLink" href="admin.php?mode=meldinger" >
                             <div class="buttonDiv" >
                                 <p>MELDINGER</p>
                             </div>
                         </a>
-                        <a id="registrerAdminLink" href="admin.php?mode=registrerAdmin" >
+                        <!--<a id="registrerAdminLink" href="admin.php?mode=registrerAdmin" >
                             <div class="buttonDiv" >    
                                 <p>REGISTRER ADMIN</p>
                             </div>
-                        </a>
+                        </a>-->
                         <a id="rapporterLink" href="admin.php?mode=rapporterFeil" >
                             <div class="buttonDiv" >    
                                 <p>RAPPORTER PROBLEM</p>
@@ -89,7 +94,13 @@
                     </div>
                     <div id="landingDiv">
                         <div class="col-sm-9 setHeight">
-                            Framside
+                            <div id="landingLogo">
+                                <img src="logos/logo.png" />  
+                            </div>
+                            <div id="framsideTekst">
+                                <p>Velkommen til Russesamfunnets adminside</p>
+                            </div>
+                            
                         </div>
                     </div>
                     <div id="knuteDiv">
@@ -171,7 +182,79 @@
                     </div>
                     <div id="brukerDiv">
                         <div class="col-sm-9 setHeight">
-                            brukerDiv
+                            <div id="brukerSearch">
+                                <form id="brukerSearchForm">
+                                    <input type="search" id="brukerSearchFormInput" oninput="searchInput()"/>
+                                </form>  
+                            </div>
+                            <div id="tableContainer">
+                                <table id="brukerTable">
+                                    <thead class="fixedHeader">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>FORNAVN</th>
+                                            <th>ETTERNAVN</th>
+                                            <th>E-POST</th>
+                                            <!--<th>Skole</th>-->
+                                            <th>ROLLE</th>
+                                            <th>STATUS</th>
+                                            <th>HANDLING</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody id="brukerTableBody">
+                                        <!--<tr>
+                                            <td>10</td>
+                                            <td>Kristian</td>
+                                            <td>Flisnes Hustad</td>
+                                            <td>krihus05@gmail.com</td>-->
+                                            <!--<td>NTNU Ålesund</td>-->
+                                            <!--<td>admin</td>
+                                            <td>confirmed</td>
+                                            <td>confirm</td>
+                                        </tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                           <div id="brukerIkonForklaring">
+                                Forklaring på ikoner: 
+                                <img src="icons/confirm2.png"  style="height: 20px; padding-top: 0;"/> Bekreft bruker 
+                                <img src="icons/cancel.png"  style="height: 20px; padding-top: 0;"/> Ubekreft bruker 
+                                <img src="icons/uparrow.png"  style="height: 20px; padding-top: 0;"/> Gi adminrettingheter 
+                                <img src="icons/downarrow.png"  style="height: 20px; padding-top: 0;"/> Fjern adminrettigheter 
+                            </div> 
+                        </div>
+                        
+                    </div>
+                    <div id="bekreftBrukerDiv">
+                        <div class="col-sm-9 setHeight">
+                            <div id="bekreftBrukerSearch">
+                                <form id="bekreftBrukerSearchForm">
+                                    <input type="search" id="bekreftBrukerSearchFormInput" oninput="searchInputConfirm()"/>
+                                </form>  
+                            </div>
+                            <table id="bekreftBrukerTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Fornavn</th>
+                                        <th>Etternavn</th>
+                                        <th>E-post</th>
+                                        <!--<th>Skole</th>-->
+                                        <th>Rolle</th>
+                                        <th>Status</th>
+                                        <th>Endre Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bekreftBrukerTableBody">
+                                    <!--<tr>
+                                        <td>Kristian</td>
+                                        <td>Flisnes Hustad</td>
+                                        <td>krihus05@gmail.com</td>
+                                        <td>NTNU Ålesund</td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div id="meldingerDiv">

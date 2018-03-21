@@ -14,9 +14,10 @@ menu, nav, output, section, time {
 
 html, body {
     height: 100%;
-    min-height: 750px;
+    min-height: 900px;
     min-width: 1000px;
 }
+
   
 #wrap {
     min-height: 100%;
@@ -54,6 +55,11 @@ html, body {
     padding-top: 15px;
 }
 
+.menuStyleExtra a{
+    color: black;
+    text-decoration: none;
+}
+
 #knuteDiv{
     display: none;
 }
@@ -62,6 +68,13 @@ html, body {
     height: 90%;
     background: rgb(255, 255, 255);
     border-bottom: 1px solid rgb(129, 129, 129);
+}
+
+.knuterDiv{
+    padding-top: 8px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid black;
+    width: 95%;
 }
 
 
@@ -162,13 +175,146 @@ div#showNewKnotInfo{
     background-color: #f8f8f8;*/
     resize: none;
 }
+/******************************** landingDiv *************************************/
+div#landingDiv{
+    background: rgb(255, 65, 96);
+}
+div#landingLogo{
+    width: 40%;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 25px;
+}
+
+#landingDiv img{
+    margin: auto;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#framsideTekst{
+    width: 64%;
+    margin: auto;
+    background: blue;
+}
+
+#landingDiv #framsideTekst p{
+    font-size: 200%;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid black;
+}
 
 
 
+/********************************* brukerDiv *************************************/
 #brukerDiv{
     display: none;
 }
 
+#brukerSearch{
+    height: 5%;
+    background: #ffffff;
+    width: 100%;
+    margin: 16px 0;
+    background: rgb(255, 255, 255);
+}
+
+#brukerSearchForm{
+    width: 100%;
+}
+
+#brukerSearchFormInput{
+    width: 100%;
+    background: #e7e7e79a;
+    padding: 6px 10px;
+}
+
+#tableContainer{
+    background: #ffffff;
+    height: 81%;
+    overflow-y: scroll;
+}
+
+#brukerTable{
+    border-collapse: collapse;
+    width: 100%;
+    background: rgb(255, 255, 255);
+}
+
+#brukerTable thead{
+    padding-top: 10%;
+    background: rgb(255, 255, 255);
+
+}
+
+#brukerTable th{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px;
+}
+
+#brukerTable td{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 3px 8px 0 8px;
+}
+#brukerTable tr:nth-child(even){
+    background-color: #e7e7e79a;
+}
+
+#brukerTable thead tr{
+    /*margin: 50px 10px;*/
+    color: white;
+    background: rgb(0, 0, 0);
+
+}
+
+/*
+tbody#brukerTableBody{
+    height: 262px;
+    overflow-y: scroll;
+    width: 100%
+}
+*/
+div#brukerIkonForklaring{
+    height: 5%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+    padding: 10px 10px 1px 10px;
+    border: 1px solid  black;
+    background: #ffffff;
+    /*position: relative;
+    margin-top: -10px; 
+    height: 10px;
+    clear:both;
+    background: red;
+    padding-top: 0;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(255, 255, 255);*/
+}
+
+/********************************* bekreftBrukerDiv *************************************/
+#bekreftBrukerDiv{
+    display: none;
+}
+
+#bekreftBrukerSearch{
+    width: 100%;
+    margin: 16px 0;
+    background: blue;
+}
+
+#bekreftBrukerSearchForm{
+    width: 100%;
+}
+
+#bekreftBrukerSearchFormInput{
+    width: 100%;
+    background: rgb(216, 216, 216);
+    padding: 6px 10px;
+}
+
+
+/********************************* meldingerDiv *************************************/
 #meldingerDiv{
     display: none;
 }
@@ -222,6 +368,8 @@ div#showNewKnotInfo{
     margin: 0;
     background: rgb(230, 230, 230);
     font-size: 140%;
+    text-decoration: none;
+    color: black;
 }
 
 /*

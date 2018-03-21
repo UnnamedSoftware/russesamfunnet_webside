@@ -77,6 +77,7 @@ function setupSite(){
     var landing = document.getElementById('landingDiv');
     var knuter = document.getElementById('knuteDiv');
     var brukere = document.getElementById('brukerDiv');
+    var bekreftBrukere = document.getElementById('bekreftBrukerDiv');
     var meldinger = document.getElementById('meldingerDiv');
     var registrerAdmin = document.getElementById('registrerAdminDiv');
     var rapporter = document.getElementById('rapporterDiv');
@@ -91,6 +92,7 @@ function setupSite(){
         console.log("Normal mode");
         knuter.style.display = 'none';
         brukere.style.display = 'none';
+        bekreftBrukere.style.display = 'none';
         meldinger.style.display = 'none';
         registrerAdmin.style.display = 'none';
         rapporter.style.display = 'none';
@@ -110,6 +112,7 @@ function setupSite(){
 
             landing.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             meldinger.style.display = 'none';
             registrerAdmin.style.display = 'none';
             rapporter.style.display = 'none';
@@ -129,6 +132,7 @@ function setupSite(){
             */
             landing.style.display = 'none';
             knuter.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             meldinger.style.display = 'none';
             registrerAdmin.style.display = 'none';
             rapporter.style.display = 'none';
@@ -138,6 +142,22 @@ function setupSite(){
             hentBrukere();
         }
 
+        if(param == 'bekreftBruker'){
+            /*
+            Brukeren har trykket på 'BRUKERE'
+            */
+            landing.style.display = 'none';
+            knuter.style.display = 'none';
+            meldinger.style.display = 'none';
+            registrerAdmin.style.display = 'none';
+            rapporter.style.display = 'none';
+            kontakt.style.display = 'none';
+            brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'block';
+            console.log("bekreftBruker");
+            hentUbekreftedeBrukere();
+        }
+
         if(param == 'meldinger'){
             /*
             Brukeren har trykket på 'MELDINGER'
@@ -145,6 +165,7 @@ function setupSite(){
             landing.style.display = 'none';
             knuter.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             registrerAdmin.style.display = 'none';
             rapporter.style.display = 'none';
             kontakt.style.display = 'none';
@@ -161,6 +182,7 @@ function setupSite(){
             knuter.style.display = 'none';
             meldinger.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             rapporter.style.display = 'none';
             kontakt.style.display = 'none';
             registrerAdmin.style.display = 'block';
@@ -175,6 +197,7 @@ function setupSite(){
             knuter.style.display = 'none';
             meldinger.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             registrerAdmin.style.display = 'none';
             kontakt.style.display = 'none';
             rapporter.style.display = 'block';
@@ -189,6 +212,7 @@ function setupSite(){
             knuter.style.display = 'none';
             meldinger.style.display = 'none';
             brukere.style.display = 'none';
+            bekreftBrukere.style.display = 'none';
             rapporter.style.display = 'none';
             registrerAdmin.style.display = 'none';
             kontakt.style.display = 'block';
@@ -214,16 +238,21 @@ function hentKnuter(){
         document.getElementById('knuter').innerHTML = "";
         for(i = 0; i < responseAsJSON.length; i++){
             //må ha: knuteID og knuteNavn
+            var knuterDiv = document.createElement('div');
+            knuterDiv.setAttribute("class", "knuterDiv");
             var knuteId = responseAsJSON[i].knotId;
             var knuteNavn = responseAsJSON[i].knotName;
             var newKnuteLink = document.createElement('a');
+            //newKnuteLink.setAttribute("style", "background: black;");
             newKnuteLink.setAttribute("href", "#");
             newKnuteLink.setAttribute("onClick", "visKnute('"+knuteId+"'); return false;");  
             var newKnuteElement = document.createElement('p');
+            //newKnuteElement.setAttribute("style", "border-bottom: 1px solid black;");
             newKnuteElement.innerText = (i+1)+" - "+knuteNavn;
             //console.log(newKnuteElement);
             newKnuteLink.appendChild(newKnuteElement);
-            knuter.appendChild(newKnuteLink);
+            knuterDiv.appendChild(newKnuteLink);
+            knuter.appendChild(knuterDiv);
         }
     });
 }
@@ -417,6 +446,8 @@ function registrerKnute(){
         var knuter = document.getElementById('knuter');
         var antall = knuter.getElementsByTagName('a').length;
         console.log(antall);
+        var knuterDiv = document.createElement('div');
+        knuterDiv.setAttribute("class", "knuterDiv");
         var newKnuteLink = document.createElement('a');
         newKnuteLink.setAttribute("href", "#");
         newKnuteLink.setAttribute("onClick", "visKnute('"+responseAsJSON.knotId+"'); return false;");  
@@ -424,7 +455,11 @@ function registrerKnute(){
         newKnuteElement.innerText = (antall+1) + " - " + knuteNavn;
         console.log(newKnuteElement);
         newKnuteLink.appendChild(newKnuteElement);
-        knuter.appendChild(newKnuteLink);
+        knuterDiv.appendChild(newKnuteLink);
+        knuter.appendChild(knuterDiv);
+
+        //newKnuteLink.appendChild(newKnuteElement);
+        //knuter.appendChild(newKnuteLink);
     
     
         var knuteTom = document.getElementById('knuteInfoTom');
@@ -436,8 +471,204 @@ function registrerKnute(){
     });
 }
 
+function searchInput(){
+    var inputValue = document.getElementById("brukerSearchFormInput").value;
+    //console.log("input: " + inputValue);
+    if(inputValue == "null" || inputValue == "undefined" || inputValue == "" || inputValue == " "){
+        hentBrukere();
+    }else{
+        //console.log(inputValue);
+        var accessToken = getCookie("Russesamfunnet-token");
+        var type = "russesamfunnet";
+        var url = "http://158.38.101.146:8080/searchForRuss?accessToken="+accessToken+"&type="+type+"&parameter="+inputValue;
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            try{
+                var responseAsJSON = JSON.parse(response); 
+                console.log(responseAsJSON);
+                populateUserTable(responseAsJSON);
+            }catch(error){
+                console.log(error.message);
+            }
+        });
+    }
+}
+
 function hentBrukere(){
-    console.log("BRUKERE have been clicked");
+    //console.log("BRUKERE have been clicked");
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    var url = "http://158.38.101.146:8080/getAllRussAtSchool?accessToken="+accessToken+"&type="+type;
+    //console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        try{
+            var responseAsJSON = JSON.parse(response); 
+            //console.log(responseAsJSON);
+            populateUserTable(responseAsJSON);
+        }catch(error){
+            console.log(error.message);
+        }
+    });
+}
+
+function populateUserTable(responseAsJSON){
+    var table = document.getElementById("brukerTable");
+    var tableBody = document.getElementById("brukerTableBody");
+    tableBody.innerHTML = "";
+    if(responseAsJSON != 'null' && responseAsJSON != 'undefined'){
+        //console.log("not null: " + responseAsJSON);
+        var rowCounter = 0;
+        for(i = 0; i < responseAsJSON.length; i++){
+            var role = responseAsJSON[i].russRole;
+            if(role == 'admin' || role == 'russ'){
+                var row = tableBody.insertRow(rowCounter);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                //var cell8 = row.insertCell(7);
+                cell1.innerHTML = responseAsJSON[i].russId;
+                cell2.innerHTML = responseAsJSON[i].firstName;
+                cell3.innerHTML = responseAsJSON[i].lastName;
+                cell4.innerHTML = responseAsJSON[i].email;
+                //cell5.innerHTML = responseAsJSON[i].schoolId.schoolName;
+                cell5.innerHTML = responseAsJSON[i].russRole;
+                cell6.innerHTML = responseAsJSON[i].russStatus;
+                //cell7.innerHTML = "Confirm";
+                if(responseAsJSON[i].russStatus == 'false'){
+                    cell7.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setConfirmed('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
+                    <img src="icons/confirm2.png"  style="height: 30px;"/>
+                    </a>`;
+                }else if(responseAsJSON[i].russStatus == 'confirmed' && (responseAsJSON[i].russRole == 'russ' || responseAsJSON[i].russRole == 'Russ')){
+                    cell7.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: left;">
+                    <img src="icons/uparrow.png"  style="height: 30px;"/>
+                    </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
+                    <img src="icons/cancel.png"  style="height: 30px;"/>
+                    </a>`;
+                }else if(responseAsJSON[i].russStatus == 'confirmed' && (responseAsJSON[i].russRole == 'admin' || responseAsJSON[i].russRole == 'Admin')){
+                    cell7.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setRuss('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: left;">
+                    <img src="icons/downarrow.png"  style="height: 30px;"/>
+                    </a>`;
+                }else{
+                    cell7.innerHTML = "";
+                }
+                rowCounter++;
+            }
+
+            
+        }
+    }else{
+        console.log("null or undefined");
+    }
+}
+
+function setConfirmed(russId, i){
+    console.log("setConfirmed: " + russId);
+
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+
+    var url = "http://158.38.101.146:8080/toggleRussConfirmation?accessToken="+accessToken+"&type="+type+"&russToConfirm="+russId;
+    console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        console.log(responseAsJSON);
+        if(responseAsJSON == 1){
+            var x = document.getElementById("brukerTableBody").rows[i].cells;
+            x[5].innerHTML = "confirmed";
+
+            x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('`+russId+`','`+i+`'); return false;" style="width: 20px; float: left;">
+                <img src="icons/uparrow.png"  style="height: 30px;"/>
+                </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+russId+`','`+i+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
+                <img src="icons/cancel.png"  style="height: 30px;"/>
+                </a>`;
+        }
+     });   
+}
+
+function setFalse(russId, i){
+    console.log("setFalse: " + russId);
+
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+
+    var url = "http://158.38.101.146:8080/toggleRussConfirmation?accessToken="+accessToken+"&type="+type+"&russToConfirm="+russId;
+    console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        console.log(responseAsJSON);
+        if(responseAsJSON == 1){
+            //console.log("the response is 1!");
+            var x = document.getElementById("brukerTableBody").rows[i].cells;
+            x[5].innerHTML = "false";
+
+            x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setConfirmed('`+russId+`','`+i+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
+                <img src="icons/confirm2.png"  style="height: 30px;"/>
+                </a>`;
+        }
+    });
+
+
+}
+
+function setAdmin(russId, i){
+    console.log("setAdmin: " + russId);
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+
+    var url = "http://158.38.101.146:8080/toggleAdmin?accessToken="+accessToken+"&type="+type+"&russToMakeAdmin="+russId;
+    console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        console.log(responseAsJSON);
+        if(responseAsJSON.russRole == 'admin'){
+            console.log("User is now an admin");
+        }
+        var x = document.getElementById("brukerTableBody").rows[i].cells;
+        x[4].innerHTML = "admin";
+
+        x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setRuss('`+russId+`','`+i+`'); return false;" style="width: 20px; float: left;">
+                <img src="icons/downarrow.png"  style="height: 30px;"/>
+                </a>`;
+    });
+}
+
+function setRuss(russId, i){
+    console.log("setRuss: " + russId);
+
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+
+    var url = "http://158.38.101.146:8080/toggleAdmin?accessToken="+accessToken+"&type="+type+"&russToMakeAdmin="+russId;
+    console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        console.log(responseAsJSON);
+        if(responseAsJSON.russRole == 'russ'){
+            console.log("User is now a russ");
+        }
+
+        var x = document.getElementById("brukerTableBody").rows[i].cells;
+        x[4].innerHTML = "russ";
+
+
+        x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('`+russId+`','`+i+`'); return false;" style="width: 20px; float: left;">
+                <img src="icons/uparrow.png"  style="height: 30px; padding-top: 0;"/>
+                </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+russId+`','`+i+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
+                <img src="icons/cancel.png"  style="height: 30px; padding-top: 0;"/>
+                </a>`;
+
+    });
+
+    
 }
 
 function commitChanges(){
@@ -503,6 +734,112 @@ function cancelNyKnute(){
     nyKnuteInput.style.display = 'none';
     knuteTom.style.display = 'block';
     //nyKnute.style.display = 'block';
+}
+
+function hentUbekreftedeBrukere(){
+    console.log("Hent ubekreftede brukere!");
+
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    
+    var url = "http://158.38.101.146:8080/getAllRussAtSchoolStatusFalse?accessToken="+accessToken+"&type="+type;
+    console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        console.log(responseAsJSON);
+
+        try{
+            var responseAsJSON = JSON.parse(response); 
+            //console.log(responseAsJSON);
+            populateUnconfirmedUserTable(responseAsJSON);
+        }catch(error){
+            console.log(error.message);
+        }
+        /*
+        var table = document.getElementById("bekreftBrukerTable");
+        var tableBody = document.getElementById("bekreftBrukerTableBody");
+        tableBody.innerHTML = "";
+        //
+        //bekreftBrukerDivContent.innerHTML = "";
+        for(i = 0; i < responseAsJSON.length; i++){
+
+            var row = tableBody.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = responseAsJSON[i].firstName;
+            cell2.innerHTML = responseAsJSON[i].lastName;
+            cell3.innerHTML = responseAsJSON[i].email;
+            cell4.innerHTML = responseAsJSON[i].schoolId.schoolName;
+
+
+            //var brukerP = document.createElement('p');
+            //brukerP.innerText = responseAsJSON[i].russId + " - " + responseAsJSON[i].email + " - " + responseAsJSON[i].firstName + " " + responseAsJSON[i].lastName + " - " + responseAsJSON[i].russStatus + " - " + responseAsJSON[i].russRole;
+            //bekreftBrukerDivContent.appendChild(brukerP);
+        }*/
+        
+    });
+}
+
+function searchInputConfirm(){
+
+    
+    var inputValue = document.getElementById("bekreftBrukerSearchFormInput").value;
+    console.log(inputValue);
+    /*
+    //console.log("input: " + inputValue);
+    if(inputValue == "null" || inputValue == "undefined" || inputValue == "" || inputValue == " "){
+        hentBrukere();
+    }else{
+        //console.log(inputValue);
+        var accessToken = getCookie("Russesamfunnet-token");
+        var type = "russesamfunnet";
+        var url = "http://158.38.101.146:8080/searchForRuss?accessToken="+accessToken+"&type="+type+"&parameter="+inputValue;
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            try{
+                var responseAsJSON = JSON.parse(response); 
+                console.log(responseAsJSON);
+                populateUserTable(responseAsJSON);
+            }catch(error){
+                console.log(error.message);
+            }
+        });
+    }*/
+}
+
+
+function populateUnconfirmedUserTable(responseAsJSON){
+    console.log("Populatig the table");
+    var table = document.getElementById("bekreftBrukerTable");
+    var tableBody = document.getElementById("bekreftBrukerTableBody");
+    tableBody.innerHTML = "";
+    if(responseAsJSON != 'null' && responseAsJSON != 'undefined'){
+        //console.log("not null: " + responseAsJSON);
+        for(i = 0; i < responseAsJSON.length; i++){
+            var row = tableBody.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            //var cell8 = row.insertCell(7);
+            cell1.innerHTML = responseAsJSON[i].russId;
+            cell2.innerHTML = responseAsJSON[i].firstName;
+            cell3.innerHTML = responseAsJSON[i].lastName;
+            cell4.innerHTML = responseAsJSON[i].email;
+            //cell5.innerHTML = responseAsJSON[i].schoolId.schoolName;
+            cell5.innerHTML = responseAsJSON[i].russRole;
+            cell6.innerHTML = responseAsJSON[i].russStatus;
+            cell7.innerHTML = "Confirm setFalse";
+        }
+    }else{
+        console.log("null or undefined");
+    }
 }
 
 
