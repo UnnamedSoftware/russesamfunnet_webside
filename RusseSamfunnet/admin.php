@@ -54,21 +54,21 @@
                                 <p>BRUKERE</p>
                             </div>      
                         </a>
-                        <a id="bekreftBrukerLink" href="admin.php?mode=bekreftBruker" >
+                        <!--<a id="bekreftBrukerLink" href="admin.php?mode=bekreftBruker" >
                             <div class="buttonDiv" >
                                 <p>BEKREFT BRUKER</p>
                             </div>      
-                        </a>
+                        </a>-->
                         <a id="meldingerLink" href="admin.php?mode=meldinger" >
                             <div class="buttonDiv" >
                                 <p>MELDINGER</p>
                             </div>
                         </a>
-                        <a id="registrerAdminLink" href="admin.php?mode=registrerAdmin" >
+                        <!--<a id="registrerAdminLink" href="admin.php?mode=registrerAdmin" >
                             <div class="buttonDiv" >    
                                 <p>REGISTRER ADMIN</p>
                             </div>
-                        </a>
+                        </a>-->
                         <a id="rapporterLink" href="admin.php?mode=rapporterFeil" >
                             <div class="buttonDiv" >    
                                 <p>RAPPORTER PROBLEM</p>
@@ -87,7 +87,13 @@
                     </div>
                     <div id="landingDiv">
                         <div class="col-sm-9 setHeight">
-                            Framside
+                            <div id="landingLogo">
+                                <img src="logos/logo.png" />  
+                            </div>
+                            <div id="framsideTekst">
+                                <p>Velkommen til Russesamfunnets adminside</p>
+                            </div>
+                            
                         </div>
                     </div>
                     <div id="knuteDiv">
@@ -204,7 +210,11 @@
                                 </table>
                             </div>
                            <div id="brukerIkonForklaring">
-                                Forklaring på ikoner:
+                                Forklaring på ikoner: 
+                                <img src="icons/confirm2.png"  style="height: 20px; padding-top: 0;"/> Bekreft bruker 
+                                <img src="icons/cancel.png"  style="height: 20px; padding-top: 0;"/> Ubekreft bruker 
+                                <img src="icons/uparrow.png"  style="height: 20px; padding-top: 0;"/> Gi adminrettingheter 
+                                <img src="icons/downarrow.png"  style="height: 20px; padding-top: 0;"/> Fjern adminrettigheter 
                             </div> 
                         </div>
                         
