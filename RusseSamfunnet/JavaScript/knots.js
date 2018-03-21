@@ -1,6 +1,7 @@
 /*   JAVASCRIPT CODE SPECIFIC TO THE KNOTS.PHP WEB PAGE    */
 
   var httpRequest;
+  var httpRequest2;
   
   function makeRequest() {
       
@@ -14,11 +15,26 @@
       alert('Giving up :( Cannot create an XMLHTTP instance');
       return false;
     }
-    
     httpRequest.onreadystatechange = alertContents;
     httpRequest.open('GET', url);
     httpRequest.send();
+    }
     
+    function makeSecondRequest() {
+      
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    var url = "http://158.38.101.146:8080/getKnotsList?accessToken="+accessToken+"&type="+type;
+      
+    httpRequest2 = new XMLHttpRequest();
+
+    if (!httpRequest2) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest2.onreadystatechange = alertSecondContents;
+    httpRequest2.open('GET', url);
+    httpRequest2.send();
     }
 
   function alertContents() {
@@ -26,6 +42,19 @@
       if (httpRequest.status === 200) {
           
           makeTable(httpRequest.responseText);
+          
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  }
+  
+  function alertSecondContents() {
+    if (httpRequest2.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest2.status === 200) {
+          
+          
+          makeSecondTable(httpRequest2.responseText);
       } else {
         alert('There was a problem with the request.');
       }
@@ -41,18 +70,45 @@
       
   var tbl=$("<table/>").attr("id","table");
     $("#div1").append(tbl);
-    $("#table").append("<tbody>"); 
+    $("#table").append("<tbody>");
     for(var i=0;i<obj.length;i++)
     {
+        var currentId = obj[i]["knotId"]["knotId"];
         var tr="<tr>";
         var td2="<td>"+obj[i]["knotId"]["knotName"]+"</td>";
         var td3="<td>"+obj[i]["knotId"]["knotDetails"]+"</td>";
-        var td4="<td>"+obj[i]["witnessId1"]["firstName"]+ " " +obj[i]["witnessId1"]["lastName"]+ " og " +obj[i]["witnessId2"]["firstName"]+ " " +obj[i]["witnessId2"]["lastName"]+"</td>\n\</tr>";
+        var td4="<td>"+obj[i]["witnessId1"]["firstName"]+ " " +obj[i]["witnessId1"]["lastName"]+ " og " +obj[i]["witnessId2"]["firstName"]+ " " +obj[i]["witnessId2"]["lastName"]+"</td>";
+        var td5="<td>"+ '<button type="button"' + "onclick='makeOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
 
-       $("#table").append(tr+td2+td3+td4); 
+       $("#table").append(tr+td2+td3+td4+td5);
 
     }
-    $("#table").append("</tbody>"); 
+    $("#table").append("</tbody>");
+    }
+    
+    function makeSecondTable(x){
+        var obj = JSON.parse(x);
+      
+      console.log("KNUTER have been clicked!");
+    
+      
+  var tbl=$("<table/>").attr("id","table");
+    $("#div1").append(tbl);
+    $("#table2").append("<tbody>");
+    for(var i=0;i<obj.length;i++)
+    {
+        var currentId = obj[i]["knotId"];
+        var tr="<tr id=" + currentId + ">";
+        var td="<td>"+obj[i]["knotName"]+"</td>";
+        var td2="<td>"+obj[i]["knotDetails"]+"</td>";
+        var td3="<td>"+ '<button type="button"' + "onclick='makeOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
+        if (obj[i]["completed"] == false)    {
+            $("#table2").append(tr+td+td2+td3);
+        }
+        
+    }
+    $("#table2").append("</tbody>");
+    
     }
     
     
@@ -74,7 +130,10 @@ function getUserInfo(){
 function getKnots(){
     console.log("Getting the knots for this user and adding it to the page");
     console.log("TEST");
+    
+    makeSecondRequest();
    makeRequest();
+   
     
 }
 
@@ -84,6 +143,10 @@ function getKnot(){
 }
 
 function loadInfo(){
+    
+}
+
+function makeOrder(){
     
 }
             

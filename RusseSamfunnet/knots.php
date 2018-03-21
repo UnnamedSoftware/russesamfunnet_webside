@@ -41,6 +41,17 @@ and open the template in the editor.
                   <th scope="col">Knute</th>
                   <th scope="col">Description</th>
                   <th scope="col">Vitner</th>
+                  <th scope="col">TRØKK HER</th>
+                </tr>
+          </thead>
+      </table>
+        <h1>Velg her</h1>
+        <table id="table2" class="table table-striped">
+          <thead>
+                <tr>
+                  <th scope="col">Knute</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">TRØKK HER</th>
                 </tr>
           </thead>
       </table>
