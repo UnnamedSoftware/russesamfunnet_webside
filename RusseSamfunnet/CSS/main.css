@@ -25,6 +25,15 @@
     .col-12 {width: 100%;}
 }
 
+body{
+    background-image: url("images\bakgrunn.jpg");
+    /*background-image: url("https://imbo.vgc.no/users/vgno/images/48ba36c8641bfddf70a54076a8dcafff?t[0]=sharpen:preset=light&t[1]=crop:width=3831,height=2274,x=105,y=0&t[2]=maxSize:width=990&t[3]=resize:width=990&accessToken=7c201289bfbe4472b756e121f1342528aadc0cbb549bda8e82a41fa89df6e6b0");
+    */
+    background-image: url("http://drp-images.nettavisen.no/images/article/2017/03/06/3423319959/1/w1024/3524363.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background-color: #ff5151;*/
+}
 
 
 #topBanner{
@@ -85,7 +94,103 @@ html {
     text-decoration: none;
 }
 
-img {
-    width: 100%;
+img:hover {
+    width: 298px;
+    min-width: 298px;
+    max-width: 298px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: auto;
+    border: 10px inset rgb(255, 34, 34);
+    border-radius: 50%;
 }
+img{
+    width: 298px;
+    min-width: 298px;
+    max-width: 298px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    border: 20px outset rgb(255, 34, 34);
+    border-radius: 50%;
+}
+
+h3{
+
+}   
+
+div.extraInfoMargin{
+    background: #ffffff00;
+    min-height: 3vh;
+}
+
+#registerForm{
+    vertical-align: middle;
+    background: rgb(255, 63, 66);
+    height: 90vh;
+    max-height: 90vh;
+    min-height: 810px;
+    margin: auto;
+    padding: 25px 25px 75px 25px;
+    /*width: 40%;*/
+    min-width: 390px; /*350px;*/
+    max-width: 600px;
+    border: 20px outset rgb(255, 63, 66); /*rgb(255, 34, 34);*/
+    border-radius: 1%;
+}
+
+#loginForm{
+    vertical-align: middle;
+    background: rgb(255, 63, 66);
+    height: 90vh;
+    max-height: 90vh;
+    min-height: 810px;
+    margin: auto;
+    padding: 25px 25px 75px 25px;
+    /*width: 40%;*/
+    min-width: 390px; /*350px;*/
+    max-width: 600px;
+    border: 20px outset rgb(255, 63, 66);
+    border-radius: 1%;
+}
+
+#registerForm form{
+    margin-top: 25px;
+}
+
+.leftButton{
+    float: left; 
+    margin-top: 10px; 
+    width: 45%; 
+    padding: 10px; 
+    border: 5px outset rgb(40, 96, 144);
+}
+
+.leftButton:hover{
+    float: left; 
+    margin-top: 10px; 
+    width: 45%; 
+    padding: 10px; 
+    border: 3px inset rgb(40, 96, 144);
+}
+
+.rightButton{
+    float: right; 
+    margin-top: 10px; 
+    width: 45%; 
+    padding: 10px;
+    border: 5px outset rgb(40, 96, 144);
+    border-radius: 1px;
+}
+.rightButton:hover{
+    float: right; 
+    margin-top: 10px; 
+    width: 45%; 
+    padding: 10px;
+    border: 3px inset rgb(40, 96, 144);
+    border-radius: 1px;
+}
+
+

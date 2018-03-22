@@ -67,6 +67,7 @@ function russesamfunnetInit() {
 }
 
 function logoutRussesamfunnet(){
+    //alert("loging out of russesamfunnet!");
     setCookie("Russesamfunnet", "", -10)
     setCookie("Russesamfunnet-token", "", -10);
     setTimeout(function(){
@@ -84,34 +85,37 @@ function logoutRussesamfunnet(){
 
 // <FACEBOOK LOGIN> *****************
 window.onload = function () {
+    //alert("mainScript onload()");
     console.log("web page: " + window.location.href.includes("feed"));
     var cookie = getCookie("Russesamfunnet");
     if (cookie == null) {
+        //alert("Cookie == null");
         facebookInit();
         try {
             logoutNoRedirect();
         } catch (error) {
             console.log("FacebookError: " + error);
         }
-        googleInit();
+        /*googleInit();
         try {
             signOutNoRedirect();
         } catch (error) {
             console.log("GoogleError: " + error);
-        }
+        }*/
         redirectUser();
         /*USER MUST BE REDIRECTED TO LOGIN AND SESSION WITH
           GOOGLE/FACEBOOK/RUSSESAMFUNNET MUST BE ENDED*/
     }
     else if (cookie != null) {
+        //alert("cookie != null");
         console.log("HELLO THIS IS THE ONLOAD IN MAINSCRIPT.JS");
         if (cookie == "facebook") {
             facebookInit();
             
-        }
+        }/*
         if (cookie == "google") {
             googleInit();
-        }
+        }*/
         if (cookie == "russesamfunnet") {
 
         }
@@ -133,7 +137,8 @@ function facebookInit() {
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
             console.log(response.status);
-            getInfo();
+            //getInfo();
+            //alert("connected!");
         } else if (response.status === 'not_authorized') {
             console.log(response.status);
         } else {
@@ -167,13 +172,13 @@ function login() {
     });
 }
 */
-
+/*
 function getInfo() {
     FB.api('/me', 'GET', { fields: 'last_name,name, email, first_name, id' }, function (response) {
         document.getElementById("topBannerContent").innerHTML = "Velkommen til Russesamfunnet, " + response.name + ", " + response.id;
     });
 }
-
+*/
 function logout() {
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
@@ -190,12 +195,14 @@ function logout() {
         */
         setCookie("Russesamfunnet", "", -10)
         setTimeout(function () {
+            //alert("logging out of FB");
             window.location.href = 'index.php';
         }, 1500);
     });
 }
 
 function logoutNoRedirect() {
+    //alert("logout no redirect!");
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
             console.log(response.status);
@@ -218,11 +225,13 @@ function logoutNoRedirect() {
 
 
 
+
 // <GOOGLE LOGIN> *****************
+/*
 function googleInit() {
     /* 
     INITIALIZE GOOGLE LOGIN
-    */
+    *//*
     onLoadGoogle();
 }
 
@@ -230,7 +239,7 @@ function onLoadGoogle() {
     gapi.load('auth2', function () {
         gapi.auth2.init();
     });
-}
+}*/
 
 /*
 function onSignIn(googleUser) {
@@ -244,7 +253,7 @@ function onSignIn(googleUser) {
     window.location.href = 'feed.php';
 }
 */
-
+/*
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
@@ -259,7 +268,7 @@ function signOutNoRedirect() {
     setTimeout(function () {
         document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/dashboard/projects/russesamfunnet_webside/RusseSamfunnet/index.php";
     }, 1500);
-}
+}*/
 // </GOOGLE LOGIN> 
 
 
@@ -284,9 +293,10 @@ function logoutUser() {
         if (cookie == "facebook") {
             logout();
         }
+        /*
         if (cookie == "google") {
             signOut();
-        }
+        }*/
         if (cookie == "russesamfunnet") {
             logoutRussesamfunnet();
         }
@@ -297,6 +307,9 @@ function logoutUser() {
 }
 
 function redirectUser() {
-    window.location.href = 'index.php';
+    setTimeout(function () {
+        window.location.href = 'index.php';
+    }, 1000);
+    
 }
 // </LOGOUT>

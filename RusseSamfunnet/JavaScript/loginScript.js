@@ -16,6 +16,17 @@ function setCookie(name,value,days) {
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
+
+function setCookieFB(name,value,seconds) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (seconds*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -103,6 +114,7 @@ function loginRussesamfunnet(status){
 
 // <FACEBOOK LOGIN> *****************
 window.onload = function(){
+    facebookInit();
     var cookie = getCookie("Russesamfunnet");
     if(cookie == null){
     } 
@@ -132,10 +144,33 @@ function facebookInit() {
     });
     FB.getLoginStatus(function(response){
         if(response.status === 'connected'){
-            //console.log(response.status + " *** CONNECTED (INIT) ***");     
+            console.log(response.status + " *** CONNECTED (INIT) *****");
+            var access_token =   response.authResponse.accessToken;
+            let url = getURL();
+            let checkUserURL = url+"facebookLogin?accessToken="+access_token;
+            console.log(checkUserURL);
+            //alert("check console plz!");
+            let client = new HttpClient();
+            client.get(checkUserURL, function(response){
+                let JSONresponse = JSON.parse(response);
+                console.log(JSONresponse);
+                //alert("check console");
+                if(JSONresponse.loginStatus == 'User not in db'){
+                    window.location.href = 'requiredInfo.php';
+                } 
+                if(JSONresponse.loginStatus == 'Login success'){
+                    window.location.href = 'feed.php';
+                } 
+                if(JSONresponse.loginStatus == 'Wrong appToken'){
+                    console.log("Wrong appToken");
+                    //alert("This is not a valid token for this app");
+                }    
+            });
+            
+
             //getInfo();
         } else if(response.status === 'not_authorized') {
-            //console.log(response.status + " *** NOT_AUTHORIZED (INIT) ***");   
+            console.log(response.status + " *** NOT_AUTHORIZED (INIT) ***");   
         } else {
             //console.log(response.status  + " *** ELSE (INIT) ***");
         }
@@ -150,6 +185,47 @@ function facebookInit() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+function completeFBLogin(){
+    //alert("CompleteFBLogin");
+    FB.getLoginStatus(function(response){
+        console.log(response);
+        //console.log("accessToken: " + response.authResponse.accessToken);
+        if(response.status === 'connected'){
+            //console.log(response.status + " *** CONNECTED (INIT) ***");     
+            var access_token =   response.authResponse.accessToken;
+            var expiresIn = response.authResponse.expiresIn;
+            let url = getURL();
+            let checkUserURL = url+"facebookLogin?accessToken="+access_token;
+            console.log(checkUserURL);
+            //alert("check console plz!");
+            let client = new HttpClient();
+            client.get(checkUserURL, function(response){
+                let JSONresponse = JSON.parse(response);
+                console.log(JSONresponse);
+                //alert("check console");
+                if(JSONresponse.loginStatus == 'User not in db'){
+                    setCookie("Russesamfunnet", "facebook", expiresIn);
+                    window.location.href = 'requiredInfo.php';
+                } 
+                if(JSONresponse.loginStatus == 'Login success'){
+                    setCookie("Russesamfunnet", "facebook", expiresIn);
+                    setTimeout(function () {
+                        window.location.href = 'feed.php';
+                    }, 500);
+                } 
+                if(JSONresponse.loginStatus == 'Wrong appToken'){
+                    console.log("Wrong appToken");
+                    //alert("This is not a valid token for this app");
+                }    
+            });
+        } else if(response.status === 'not_authorized') {
+            //console.log(response.status + " *** NOT_AUTHORIZED (INIT) ***");   
+        } else {
+            //console.log(response.status  + " *** ELSE (INIT) ***");
+        }
+    });
+}
+
 function login(){
     facebookInit();
     FB.login(function(response){
@@ -159,18 +235,18 @@ function login(){
             setCookie("Russesamfunnet", "facebook", 1);
             console.log(response);
             console.log("Here we are! " + access_token);
-            alert("check console!");
+            //alert("check console!");
             
             //Make a call to the server to check if user is registered already
             let url = getURL();
             let checkUserURL = url+"facebookLogin?accessToken="+access_token;
             console.log(checkUserURL);
-            alert("check console plz!");
+            //alert("check console plz!");
             let client = new HttpClient();
             client.get(checkUserURL, function(response){
                 let JSONresponse = JSON.parse(response);
                 console.log(JSONresponse);
-                alert("check console");
+                //alert("check console");
                 if(JSONresponse.loginStatus == 'User not in db'){
                     window.location.href = 'requiredInfo.php';
                 } 
@@ -179,7 +255,7 @@ function login(){
                 } 
                 if(JSONresponse.loginStatus == 'Wrong appToken'){
                     console.log("Wrong appToken");
-                    alert("This is not a valid token for this app");
+                    //alert("This is not a valid token for this app");
                 }    
             });
 

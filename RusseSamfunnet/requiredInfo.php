@@ -25,22 +25,42 @@ and open the template in the editor.
     </head>
 
     <body>
-
-        <h3 class="text-center">Registrer ekstra informasjon om deg</h3>
         <div class="container">
-            <form>
-                <div class="form-group">
-                    <label for="birthdate">Født</label>
-                    <input type="text" class="form-control" id="birthdate" placeholder="Født" >
-                </div>
-                <div class="form-group">
-                    <label for="skole">Din skole</label>
-                    <input type="text" class="form-control" id="schoolId" placeholder="Din skole">
-                </div>
-                <button type="button" class="btn btn-primary" onclick="registerFacebookUser()">Fullfør registrering</button>
-                
-            </form>
+            <div class="extraInfoMargin"></div>
+            <div id="registerForm">
+                <img src="logos/logo.png"/>
+                <h3 class="text-center">Ekstra informasjon om deg</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="email">E-post</label>
+                        <input type="text" class="form-control" id="email" placeholder="E-post">
+                    </div>
+                    <div class="form-group">
+                        <label for="skole">Din skole</label>
+                        <!--<input type="text" class="form-control" id="schoolId" placeholder="Din skole">
+-->
+                        <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Din skole">
+                        <datalist id="schools">
+                            <option value="Skole nr 1">
+                            <option value="Borgund vgs">
+                            <option value="Skole nr 3">
+                            <option value="Skole nr 4">
+                            <option value="Skole nr 5">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="russYear">Russeår (eks. 2018)</label>
+                        <input type="text" class="form-control" id="russYear" placeholder="Russeår" >
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Født (dd-mm-åååå)</label>
+                        <input type="text" class="form-control" id="birthdate" placeholder="Født" >
+                    </div>
+                    <button type="button" class="btn btn-primary leftButton" onclick="registerFacebookUser()">Avbryt</button>
+                    <button type="button" class="btn btn-primary rightButton" onclick="registerFacebookUser()">Fullfør registrering</button>
+                </form>
             </div>
+            <div class="extraInfoMargin"></div>
         </div>
     </body>
 </html>

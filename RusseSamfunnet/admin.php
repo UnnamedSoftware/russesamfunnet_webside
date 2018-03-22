@@ -210,7 +210,6 @@
                                 </table>
                             </div>
                            <div id="brukerIkonForklaring">
-                                Forklaring på ikoner: 
                                 <img src="icons/confirm2.png"  style="height: 20px; padding-top: 0;"/> Bekreft bruker 
                                 <img src="icons/cancel.png"  style="height: 20px; padding-top: 0;"/> Ubekreft bruker 
                                 <img src="icons/uparrow.png"  style="height: 20px; padding-top: 0;"/> Gi adminrettingheter 
