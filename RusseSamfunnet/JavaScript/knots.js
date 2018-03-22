@@ -102,7 +102,7 @@
         var td="<td>"+obj[i]["knotName"]+"</td>";
         var td2="<td>"+obj[i]["knotDetails"]+"</td>";
         var td3="<td>"+ '<button type="button"' + "onclick='makeOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
-        if (obj[i]["completed"] == false)    {
+        if (obj[i]["completed"] === false)    {
             $("#table2").append(tr+td+td2+td3);
         }
         
@@ -146,7 +146,34 @@ function loadInfo(){
     
 }
 
-function makeOrder(){
+function makeOrder(id){
+    
+    
+    
+    var accessToken = getCookie("Russesamfunnet-token");
+    var type = "russesamfunnet";
+    var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+id+"&witness1="+1+"&witness2="+1;
+      
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+   
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+          
+          makeTable(httpRequest.responseText);
+          
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+   
+    httpRequest.open('GET', url);
+    httpRequest.send();
+    location.reload();
     
 }
             
