@@ -18,62 +18,66 @@ and open the template in the editor.
         
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-           
-            function auth(){
-                
-            var url = 'http://158.38.101.146:8080/login?email=' + document.getElementById('email').value + "&password=" + document.getElementById('password').value
-            var client = new HttpClient();
-                client.get(url, function(response) {
-                    document.write(function(response).getOwnPropertyNames());
+        <script type="text/javascript">
+            /*
+                function auth(){
                     
-            });
-        }
-        
-            var HttpClient = function() {
-                this.get = function(aUrl, aCallback) {
-                var anHttpRequest = new XMLHttpRequest();
-                anHttpRequest.onreadystatechange = function() { 
-                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-                    }
-
-            anHttpRequest.open( "GET", aUrl, true );            
-            anHttpRequest.send( null );
-                }
+                var url = 'http://158.38.101.146:8080/login?email=' + document.getElementById('email').value + "&password=" + document.getElementById('password').value
+                var client = new HttpClient();
+                    client.get(url, function(response) {
+                        document.write(function(response).getOwnPropertyNames());
+                        
+                });
             }
-        </script>
-        
-        
+            
+                var HttpClient = function() {
+                    this.get = function(aUrl, aCallback) {
+                    var anHttpRequest = new XMLHttpRequest();
+                    anHttpRequest.onreadystatechange = function() { 
+                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+                        }
 
+                anHttpRequest.open( "GET", aUrl, true );            
+                anHttpRequest.send( null );
+                    }
+                }*/
+        </script>
     </head>
     <body>
-        <h3 class="text-center">Login eller registrer deg</h3>
+        
         <div class="container">
-            <form>
-                <div class="form-group">
-                <label for="username">E-post</label>
-                <input type="text" class="form-control" id="email" placeholder="E-mail" >
-                </div>
-                <div class="form-group">
-                    <label for="password">Passord</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="password">Bekreft passord</label>
-                    <input type="password" class="form-control" id="confirmpassword" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="school">Velg skole</label>
-                    <input type="text" class="form-control" id="school" placeholder="Begynn å skriv for valg">
-                </div>
-                <button type="button" class="btn btn-primary" onclick="location.href='index.php';">Registrer konto</button>
-    
-            </form>
-            <div id="token-display">
+            <div class="extraInfoMargin"></div>
+            <div id="loginForm">
+                <img src="logos/logo.png"/>
+                <h3 class="text-center">Registrer deg</h3>
+                <form>
+                    <div class="form-group">
+                    <label for="username">E-post</label>
+                    <input type="text" class="form-control" id="email" placeholder="E-mail" >
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Passord</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Bekreft passord</label>
+                        <input type="password" class="form-control" id="confirmpassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="school">Velg skole</label>
+                        <input type="text" class="form-control" id="school" placeholder="Begynn å skriv for valg">
+                    </div>
+                    <div style="height: 4px;"></div>
+                    <button type="button" class="btn btn-primary leftButton" onclick="location.href='index.php';">Avbryt</button>
+                    <button type="button" class="btn btn-primary rightButton" onclick="location.href='index.php';">Registrer konto</button>
+        
+                </form>
+                <!--<div id="token-display"></div>-->
             </div>
+            <div class="extraInfoMargin"></div>
         </div>
-       
+        
         
         
             

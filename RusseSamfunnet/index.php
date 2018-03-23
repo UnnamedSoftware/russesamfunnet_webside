@@ -29,26 +29,31 @@ and open the template in the editor.
             <div class="extraInfoMargin"></div>
             <div id="loginForm">
                 <img src="logos/logo.png"/>
-                <h3 class="text-center">Login eller registrer deg</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="username">E-post</label>
-                        <input type="text" class="form-control" id="email" placeholder="E-mail" >
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Passord</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                    </div>
-                    <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
-                    <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer konto</button>
-                </form>
-                <br><br> <br><br>
-                <p>Alternativer:</p>
-                <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
-                        data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
-                        data-use-continue-as="false">
-                    Logg inn med facebook
-                </div>
+                <!--<div id="testingSomething">-->
+                    <h3 class="text-center">Login eller registrer deg</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="username">E-post</label>
+                            <input type="text" class="form-control" id="email" placeholder="E-mail" >
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Passord</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <div style="height: 4px;"></div>
+                        <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
+                        <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer konto</button>
+                    </form> 
+                    
+                    <div style="width: 240px; margin: auto;";>
+                        <!--<p>Alternativer:</p>-->
+                        <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
+                                data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
+                                data-use-continue-as="false">
+                            Logg inn med Facebook
+                        </div>
+                    <div> 
+               <!-- </div>-->
             </div>
             <div class="extraInfoMargin"></div>
         </div>

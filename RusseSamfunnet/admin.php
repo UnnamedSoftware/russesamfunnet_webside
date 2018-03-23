@@ -30,12 +30,15 @@
     </head>
     <body>
     <div id="wrap">
-        <div id="main" class="container clear-top">
+        <div id="main" >
+        <div class="container clear-top">
             <div class="row">
                 <div class="col-2 col-m-2 menu-style">
                     THIS IS THE MENU
                 </div>
             </div>
+        </div>
+        <div class="container">
             <div class="admin-menu">
                 <div class ="row">
                     <div class="col-sm-3 setHeight menuStyleExtra">
@@ -271,6 +274,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
     <div class="footer container">

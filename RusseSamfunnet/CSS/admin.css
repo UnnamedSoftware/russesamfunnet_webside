@@ -18,6 +18,12 @@ html, body {
     min-width: 1000px;
 }
 
+body{
+    background-image: url("http://drp-images.nettavisen.no/images/article/2017/03/06/3423319959/1/w1024/3524363.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
   
 #wrap {
     min-height: 100%;
@@ -30,8 +36,9 @@ html, body {
 
 .menu-style{
     border: 1px solid rgb(129, 129, 129);
-    background: white;
+    background: rgb(255, 34, 34);
 }
+
 
 
 
@@ -41,13 +48,34 @@ html, body {
     margin-top: 3%;
 }
 
-
+.customContainer{
+    margin: auto;
+    width: 75%;
+}
 
 
 
 .setHeight{
     height: 100%;
     border: 1px solid rgb(129, 129, 129);
+    padding: 0;
+    margin: 0;
+}
+
+.col-sm-3{
+    background: rgb(255, 255, 255);
+}
+
+.col-sm-9{
+    background: rgb(255, 255, 255);
+}
+
+.col-sm-5{
+    background: rgb(255, 255, 255);
+}
+
+.col-sm-4{
+    background: rgb(255, 255, 255);
 }
 
 .menuStyleExtra{
@@ -393,5 +421,5 @@ div#brukerIkonForklaring{
     clear:both;
     padding-top: 0;
     border: 1px solid rgb(129, 129, 129);
-    background: rgb(255, 255, 255);
+    background: rgb(255, 34, 34);
 } 
