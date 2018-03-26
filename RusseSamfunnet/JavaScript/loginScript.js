@@ -85,7 +85,7 @@ function loginRussesamfunnet(status){
             setCookie("Russesamfunnet", "russesamfunnet", 1)
             setCookie("Russesamfunnet-token", responseAsJSON.accessToken, 1);
             setTimeout(function () {
-                window.location.href = 'feed.php';
+                window.location.href = 'admin.php';
             }, 500);
             /*if(status == "new"){
                 window.location.href = 'additionalInfo.php';

@@ -24,6 +24,9 @@ body{
     background-size: cover;
 }
 
+.blurEffect{
+    background: rgba(0, 0, 0, 0.76);
+}
   
 #wrap {
     min-height: 100%;
@@ -43,7 +46,7 @@ body{
 
 
 .admin-menu{
-    height: 85%;
+    height: 88%;
     background: rgb(255, 255, 255);
     margin-top: 3%;
 }
@@ -413,11 +416,19 @@ div#brukerIkonForklaring{
     background: rgb(121, 121, 121);
 }
 */
-
+/*
 .footer {
     position: relative;
     margin-top: -40px; /* negative value of footer height */
-    height: 40px;
+    /*height: 40px;
+    clear:both;
+    padding-top: 0;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(255, 34, 34);
+} */
+
+.footer {
+    height: 30px;
     clear:both;
     padding-top: 0;
     border: 1px solid rgb(129, 129, 129);

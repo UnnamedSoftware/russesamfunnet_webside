@@ -25,37 +25,45 @@ and open the template in the editor.
     </head>
 
     <body>
-        <div class="container">
-            <div class="extraInfoMargin"></div>
-            <div id="loginForm">
-                <img src="logos/logo.png"/>
-                <!--<div id="testingSomething">-->
-                    <h3 class="text-center">Login eller registrer deg</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="username">E-post</label>
-                            <input type="text" class="form-control" id="email" placeholder="E-mail" >
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Passord</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                        </div>
-                        <div style="height: 4px;"></div>
-                        <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
-                        <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer konto</button>
-                    </form> 
-                    
-                    <div style="width: 240px; margin: auto;";>
-                        <!--<p>Alternativer:</p>-->
-                        <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
-                                data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
-                                data-use-continue-as="false">
-                            Logg inn med Facebook
-                        </div>
-                    <div> 
-               <!-- </div>-->
+        <div id="blurEffect">
+            <div class="container">
+                <div class="extraInfoMargin"></div>
+
+                <div id="loginForm">
+                    <img src="logos/logo.png"/>
+                    <!--<div id="imgDiv">
+                        
+                    </div> --> 
+                    <!--<div id="testingSomething">-->
+                        <h3 class="text-center">Logg inn</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="username">E-post</label>
+                                <input type="text" class="form-control" id="email" placeholder="E-mail" >
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Passord</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <div style="height: 40px;"></div>
+                            <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
+                            <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer konto</button>
+                            <div style="height: 140px;"></div>
+                            <div style= "width: 240px; margin: auto; ">
+                                <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
+                                        data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
+                                        data-use-continue-as="false">
+                                    Logg inn med Facebook
+                                </div>
+                            </div>
+                        </form> 
+                        <!--<div style="height: 80px;"></div>-->
+                        
+                        
+                        
+                </div>
+                <div class="extraInfoMargin"></div>
             </div>
-            <div class="extraInfoMargin"></div>
         </div>
     </body>
 </html>

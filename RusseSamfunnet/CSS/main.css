@@ -29,13 +29,18 @@ body{
     /*background-image: url("images\bakgrunn.jpg");*/
     /*background-image: url("https://imbo.vgc.no/users/vgno/images/48ba36c8641bfddf70a54076a8dcafff?t[0]=sharpen:preset=light&t[1]=crop:width=3831,height=2274,x=105,y=0&t[2]=maxSize:width=990&t[3]=resize:width=990&accessToken=7c201289bfbe4472b756e121f1342528aadc0cbb549bda8e82a41fa89df6e6b0");
     */
-
     background-image: url("http://drp-images.nettavisen.no/images/article/2017/03/06/3423319959/1/w1024/3524363.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-
-    /*background-color: #ff5151;*/
+/*background: #ff515100;*/
+    
 }
+
+#blurEffect{
+    background: rgba(0, 0, 0, 0.76);
+}
+
+
 
 
 #topBanner{
@@ -108,6 +113,22 @@ img:hover {
     border: 10px solid rgb(255, 34, 34);
     border-radius: 50%;
 }*/
+
+div#imgDiv{
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 30px solid rgb(255, 34, 34);*/
+    box-shadow: 0 4px 8px 0 rgba(255, 34, 34, 0.2), 0 6px 20px 0 rgba(255, 34, 34, 0.19);
+    border: 30px solid rgb(0,0,0);
+    border-radius: 50%;
+}
+
 img{
     width: 298px;
     min-width: 298px;
@@ -116,8 +137,9 @@ img{
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border: 20px solid rgb(255, 34, 34);
+    box-shadow: 0px 0px 25px 0 rgba(0,0,0, 0.8), 0 6px 20px 0 rgba(0,0,0, 0.6);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */border: 20px solid rgb(177, 1, 1);/*rgb(255, 34, 34);*/
     border-radius: 50%;
 }
 /*
@@ -137,7 +159,8 @@ h3{
 
 div.extraInfoMargin{
     background: #ffffff00;
-    min-height: 3vh;
+    min-height: 5vh;
+    max-height: 5vh;
 }
 
 div#testingSomething{
@@ -171,30 +194,41 @@ div#testingSomething{
 
 #loginForm{
     vertical-align: middle;
-    background: rgb(255, 34, 34); /*rgb(203, 25, 46);*/ /*rgb(255, 63, 66);*/ /* #FF4136 */
+    background: rgb(177, 1, 1); /*rgb(203, 25, 46);*/ /*rgb(255, 63, 66);*/ /* #FF4136 202, 27, 27 */
+    /*background: rgb(0, 0, 0);*/
     height: 90vh;
     max-height: 90vh;
-    min-height: 810px;
+    min-height: 820px;
     margin: auto;
     padding: 25px 25px 75px 25px;
     /*width: 40%;*/
     min-width: 450px; /*350px;*/
     max-width: 600px;
-
-    box-shadow: 0px 0px 80px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
-/*
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    */
-    /*border: 3px solid rgb(255, 34, 34);
-    border-radius: 1%;*/
-    /*border: 20px solid rgb(255, 63, 66);*/
+    /*box-shadow: 0px 0px 20px 0 rgb(202, 27, 27), 0 6px 20px 0 rgb(202, 27, 27);*/
+    box-shadow: 0px 0px 20px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
 }
 
 #loginForm form{
     margin-top: 25px;
-    margin-bottom: 100px;
+    margin-bottom: 25px;
     color: white;
     font-size: 150%;
+}
+
+#loginForm form input{
+    background: rgb(255, 255, 255);
+    border-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 10px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+
+}
+
+#loginForm form input:focus{
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+
 }
 
 
@@ -206,40 +240,149 @@ p{
 
 .leftButton{
     float: left; 
-    background: rgb(66,103,178);
-    margin-top: 5px; 
-    font-size: 110%;
-    width: 45%; 
-    padding: 5px 10px; 
-    /*border: 5px solid rgb(40, 96, 144);*/
-}
-/*
-.leftButton:hover{
-    float: left; 
-    margin-top: 10px; 
-    width: 45%; 
-    padding: 10px; 
-    border: 3px inset rgb(40, 96, 144);
-}
-*/
-.rightButton{
-    float: right; 
-    background: rgb(66,103,178);
+    background: rgb(255, 255, 255);
+    color: black;
     margin-top: 5px; 
     font-size: 110%;
     width: 45%; 
     padding: 5px 10px;
-    /*border: 5px outset rgb(40, 96, 144);
-    border-radius: 1px;*/
+    border: 1px solid rgb(0, 0, 0);
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
 }
-/*
+
+
+.leftButton:hover{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.leftButton:focus{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.leftButton:active{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.leftButton:target{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.rightButton{
+    float: right; 
+    background: rgb(255, 255, 255);
+    color: black;
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    border: 1px solid rgb(0, 0, 0);
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
 .rightButton:hover{
     float: right; 
-    margin-top: 10px; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
     width: 45%; 
-    padding: 10px;
-    border: 3px inset rgb(40, 96, 144);
-    border-radius: 1px;
-}*/
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
 
+.rightButton:focus{
+    float: right; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
 
+.rightButton:active{
+    float: right; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.rightButton:target{
+    float: right; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.btn{
+    border: 0;
+}
+
+.btn-primary{
+    border: 0;
+}

@@ -45,7 +45,7 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        
+    <div id="blurEffect">
         <div class="container">
             <div class="extraInfoMargin"></div>
             <div id="loginForm">
@@ -68,7 +68,7 @@ and open the template in the editor.
                         <label for="school">Velg skole</label>
                         <input type="text" class="form-control" id="school" placeholder="Begynn å skriv for valg">
                     </div>
-                    <div style="height: 4px;"></div>
+                    <div style="height: 10px;"></div>
                     <button type="button" class="btn btn-primary leftButton" onclick="location.href='index.php';">Avbryt</button>
                     <button type="button" class="btn btn-primary rightButton" onclick="location.href='index.php';">Registrer konto</button>
         
@@ -80,6 +80,6 @@ and open the template in the editor.
         
         
         
-            
+        </div>
     </body>
 </html>

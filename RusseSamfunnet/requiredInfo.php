@@ -25,9 +25,10 @@ and open the template in the editor.
     </head>
 
     <body>
+    <div id="blurEffect">
         <div class="container">
             <div class="extraInfoMargin"></div>
-            <div id="registerForm">
+            <div id="loginForm">
                 <img src="logos/logo.png"/>
                 <h3 class="text-center">Ekstra informasjon om deg</h3>
                 <form>
@@ -56,11 +57,13 @@ and open the template in the editor.
                         <label for="birthdate">Født (dd-mm-åååå)</label>
                         <input type="text" class="form-control" id="birthdate" placeholder="Født" >
                     </div>
+                    <div style="height: 20px;"></div>
                     <button type="button" class="btn btn-primary leftButton" onclick="registerFacebookUser()">Avbryt</button>
                     <button type="button" class="btn btn-primary rightButton" onclick="registerFacebookUser()">Fullfør registrering</button>
                 </form>
             </div>
             <div class="extraInfoMargin"></div>
         </div>
+    </div>
     </body>
 </html>
