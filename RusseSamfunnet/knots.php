@@ -9,7 +9,9 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Standard Template</title>
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
-        <link rel="stylesheet" type="text/css" href="CSS/main.css">
+        
+        
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         
@@ -23,6 +25,8 @@ and open the template in the editor.
 
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/knots.js"></script>
+        <link rel="stylesheet" type="text/css" href="CSS/main.css">
+        <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
         
     </head>
     <body>

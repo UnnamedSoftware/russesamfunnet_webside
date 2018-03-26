@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
 * {
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 @media only screen and (max-width: 768px) {
@@ -87,4 +91,16 @@ html {
 img {
     width: 100%;
     height: auto;
+}
+
+#navBar{
+    color: white;
+}
+
+.navbar{
+    color: white;
+}
+
+.navbar-light{
+    color: white;
 }

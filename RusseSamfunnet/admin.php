@@ -18,6 +18,8 @@
         <script src="JavaScript/adminScript.js"></script>
         <!--<script src="JavaScript/admin.js"></script>--> 
 
+        <link rel="stylesheet" type="text/css" href="CSS/main.css">
+        <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
 
         <script>
         /*

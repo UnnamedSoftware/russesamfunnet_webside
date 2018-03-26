@@ -1,10 +1,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -12,8 +12,8 @@
         
       <a class="navbar-brand" href="#">Russesamfunnet</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
         <li><a href="feed.php">Feed</a></li>
         <li><a href="knots.php">Knuter</a></li>
         <li><a href="scoreboard.php">Scoreboard</a></li>

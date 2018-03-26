@@ -148,8 +148,6 @@ function loadInfo(){
 
 function makeOrder(id){
     
-    
-    
     var accessToken = getCookie("Russesamfunnet-token");
     var type = "russesamfunnet";
     var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+id+"&witness1="+1+"&witness2="+1;
