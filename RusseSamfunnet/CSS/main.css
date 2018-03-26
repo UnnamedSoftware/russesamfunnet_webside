@@ -1,436 +1,386 @@
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, em, img, strong, sub, sup, b, i, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figure, figcaption, footer, header, hgroup, 
-menu, nav, output, section, time {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+* {
+    box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-    min-height: 900px;
-    min-width: 1000px;
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
 }
 
 body{
+    /*background-image: url("images\bakgrunn.jpg");*/
+    /*background-image: url("https://imbo.vgc.no/users/vgno/images/48ba36c8641bfddf70a54076a8dcafff?t[0]=sharpen:preset=light&t[1]=crop:width=3831,height=2274,x=105,y=0&t[2]=maxSize:width=990&t[3]=resize:width=990&accessToken=7c201289bfbe4472b756e121f1342528aadc0cbb549bda8e82a41fa89df6e6b0");
+    */
     background-image: url("http://drp-images.nettavisen.no/images/article/2017/03/06/3423319959/1/w1024/3524363.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+/*background: #ff515100;*/
+    
 }
 
-.blurEffect{
+#blurEffect{
     background: rgba(0, 0, 0, 0.76);
 }
-  
-#wrap {
-    min-height: 100%;
+
+
+#topBanner{
+    width: 100%;
+    height: 50px;
+    background:#EF2729;
+
 }
-  
+
+#topBannerContent{
+    width: 50%;
+    margin: auto;
+    padding-top: 10px;
+    background: #EF2729;
+
+}
+
 #main {
-    overflow:auto;
-    padding-bottom: 40px; /* this needs to be bigger than footer height*/
+    margin-left: 130px;
+    display: inline-block;
+    width: 100%;
+    background: lightgreen;
 }
 
-.menu-style{
-    border: 1px solid rgb(129, 129, 129);
-    background: rgb(255, 34, 34);
-}
-
-
-
-
-.admin-menu{
-    height: 88%;
-    background: rgb(255, 255, 255);
-    margin-top: 3%;
-}
-
-.customContainer{
+.userInfo{
+    background: #EF7729;
     margin: auto;
     width: 75%;
 }
 
+[class*="col-"] {
+    float: left;
+   
+    border: 1px solid red;
+}
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+.header {
+    background-color: #9933cc;
+    color: #ffffff;
+    padding: 15px;
+}
 
 
-.setHeight{
-    height: 100%;
-    border: 1px solid rgb(129, 129, 129);
-    padding: 0;
+.menu ul {
+    list-style-type: none;
     margin: 0;
+    padding: 0;
 }
-
-.col-sm-3{
-    background: rgb(255, 255, 255);
-}
-
-.col-sm-9{
-    background: rgb(255, 255, 255);
-}
-
-.col-sm-5{
-    background: rgb(255, 255, 255);
-}
-
-.col-sm-4{
-    background: rgb(255, 255, 255);
-}
-
-.menuStyleExtra{
-    overflow: none;
-    padding-top: 15px;
-}
-
-.menuStyleExtra a{
-    color: black;
-    text-decoration: none;
-}
-
-#knuteDiv{
-    display: none;
-}
-
-#knuter{
-    height: 90%;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(129, 129, 129);
-}
-
-.knuterDiv{
-    padding-top: 8px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid black;
-    width: 95%;
-}
-
-
-
-
-#nyKnute{
-    height: 10%;
-    background: rgb(255, 255, 255);
-}
-
-div#showKnotInfo{
-    height: 80%;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(129, 129, 129);
-
-}
-
-div#deleteKnot{
-    height: 10%;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(129, 129, 129);
-}
-
-div#addKnotHeading{
-    height: 10%;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(129, 129, 129);
-    
-}
-
-#addKnotHeading p{
-    padding: 15px 0 0 10px;
-    font-size: 200%;
-}
-
-div#showNewKnotInfo{
-    height: 80%;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(129, 129, 129);
-
-}
-
-
-
-#knotButtons{
-    height: 10%;
-    background: rgb(255, 255, 255);
-}
-
-#newKnotButtons{
-    height: 10%;
-    background: rgb(255, 255, 255);
-}
-
-#knuteNavn{
-    width: 90%;
-    margin-left: 5%;
-    padding: 12px 20px;
-    border: none;
-    border-bottom: 3px double red;
-}
-
-
-#knuteBeskrivelse{
-    width: 90%;
-    margin-left: 5%;
-    height: 100px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 3px double red;
-    /*
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;*/
-    resize: none;
-}
-
-#knuteNavnInfo{
-    width: 90%;
-    margin-left: 5%;
-    padding: 12px 20px;
-    border: none;
-    border-bottom: 3px double red;
-}
-
-#knuteBeskrivelseInfo{
-    width: 90%;
-    margin-left: 5%;
-    height: 100px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 3px double red;
-    /*
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;*/
-    resize: none;
-}
-/******************************** landingDiv *************************************/
-div#landingDiv{
-    background: rgb(255, 65, 96);
-}
-div#landingLogo{
-    width: 40%;
-    margin: auto;
-    margin-top: 80px;
-    margin-bottom: 25px;
-}
-
-#landingDiv img{
-    margin: auto;
-    width: 100%;
-    border: 1px solid black;
-}
-
-#framsideTekst{
-    width: 64%;
-    margin: auto;
-    background: blue;
-}
-
-#landingDiv #framsideTekst p{
-    font-size: 200%;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid black;
-}
-
-
-
-/********************************* brukerDiv *************************************/
-#brukerDiv{
-    display: none;
-}
-
-#brukerSearch{
-    height: 5%;
-    background: #ffffff;
-    width: 100%;
-    margin: 16px 0;
-    background: rgb(255, 255, 255);
-}
-
-#brukerSearchForm{
-    width: 100%;
-}
-
-#brukerSearchFormInput{
-    width: 100%;
-    background: #e7e7e79a;
-    padding: 6px 10px;
-}
-
-#tableContainer{
-    background: #ffffff;
-    height: 81%;
-    overflow-y: scroll;
-}
-
-#brukerTable{
-    border-collapse: collapse;
-    width: 100%;
-    background: rgb(255, 255, 255);
-}
-
-#brukerTable thead{
-    padding-top: 10%;
-    background: rgb(255, 255, 255);
-
-}
-
-#brukerTable th{
-    border: 1px solid rgb(0, 0, 0);
+.menu li {
     padding: 8px;
-}
-
-#brukerTable td{
-    border: 1px solid rgb(0, 0, 0);
-    padding: 3px 8px 0 8px;
-}
-#brukerTable tr:nth-child(even){
-    background-color: #e7e7e79a;
-}
-
-#brukerTable thead tr{
-    /*margin: 50px 10px;*/
-    color: white;
-    background: rgb(0, 0, 0);
-
-}
-
-/*
-tbody#brukerTableBody{
-    height: 262px;
-    overflow-y: scroll;
-    width: 100%
-}
-*/
-div#brukerIkonForklaring{
-    height: 5%;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    width: 100%;
-    padding: 10px 10px 1px 10px;
-    border: 1px solid  black;
-    background: #ffffff;
-    /*position: relative;
-    margin-top: -10px; 
-    height: 10px;
-    clear:both;
-    background: red;
-    padding-top: 0;
-    border: 1px solid rgb(129, 129, 129);
-    background: rgb(255, 255, 255);*/
-}
-
-/********************************* bekreftBrukerDiv *************************************/
-#bekreftBrukerDiv{
-    display: none;
-}
-
-#bekreftBrukerSearch{
-    width: 100%;
-    margin: 16px 0;
-    background: blue;
-}
-
-#bekreftBrukerSearchForm{
-    width: 100%;
-}
-
-#bekreftBrukerSearchFormInput{
-    width: 100%;
-    background: rgb(216, 216, 216);
-    padding: 6px 10px;
-}
-
-
-/********************************* meldingerDiv *************************************/
-#meldingerDiv{
-    display: none;
-}
-
-#registrerAdminDiv{
-    display: none;
-}
-
-
-#rapporterDiv{
-    display: none;
-}
-
-
-#kontaktOssDiv{
-    display: none;
-}
-
-
-#landingDiv{
-    display: none;
-}
-
-
-.buttonDiv{
-    /*height: 10%;*/
-    padding: 0;
-    margin: 0;
-    background: rgb(255, 255, 255);
-    width: 100%; 
-    /*height: 8%;*/
-    border-bottom: 1px solid rgb(129, 129, 129);
-}
-/*
-.buttonDiv:hover{
-    background: red;
-    padding: 15px 0px 15px 20px;
-    margin: 0;
-    font-size: 140%;
-}
-*/
-.buttonDiv p{
-    padding: 15px 0px 15px 20px;
-    margin: 0;
-    background: rgb(255, 255, 255);
-    font-size: 140%;
-}
-
-.buttonDiv p:hover{
-    padding: 15px 0px 15px 20px;
-    margin: 0;
-    background: rgb(230, 230, 230);
-    font-size: 140%;
+    margin-bottom: 7px;
+    background-color :#33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     text-decoration: none;
-    color: black;
 }
-
 /*
-.buttonDiv p.framsideTest{
-    background: black;
+img:hover {
+    width: 298px;
+    min-width: 298px;
+    max-width: 298px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 10px solid rgb(255, 34, 34);
+    border-radius: 50%;
+}*/
+
+div#imgDiv{
+    width: 358px;
+    min-width: 358px;
+    max-width: 358px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 30px solid rgb(255, 34, 34);*/
+    box-shadow: 0 4px 8px 0 rgba(255, 34, 34, 0.2), 0 6px 20px 0 rgba(255, 34, 34, 0.19);
+    border: 30px solid rgb(0,0,0);
+    border-radius: 50%;
 }
 
-.buttonDiv p.framsideTest{
-    background: rgb(255, 255, 255);
+img{
+    width: 298px;
+    min-width: 298px;
+    max-width: 298px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    box-shadow: 0px 0px 25px 0 rgba(0,0,0, 0.8), 0 6px 20px 0 rgba(0,0,0, 0.6);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */border: 20px solid rgb(177, 1, 1);/*rgb(255, 34, 34);*/
+    border-radius: 50%;
 }
-
-.buttonDiv p.framsideTest:hover{
-    background: rgb(121, 121, 121);
+/*
+div#formHeaders{
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    background: #33b5e5;
 }
 */
-/*
-.footer {
-    position: relative;
-    margin-top: -40px; /* negative value of footer height */
-    /*height: 40px;
-    clear:both;
-    padding-top: 0;
-    border: 1px solid rgb(129, 129, 129);
-    background: rgb(255, 34, 34);
-} */
+h3{
+    color: white;
+    font-size: 190%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}   
 
-.footer {
-    height: 30px;
-    clear:both;
-    padding-top: 0;
-    border: 1px solid rgb(129, 129, 129);
-    background: rgb(255, 34, 34);
-} 
+div.extraInfoMargin{
+    background: #ffffff00;
+    min-height: 5vh;
+    max-height: 5vh;
+}
+
+div#testingSomething{
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+#registerForm{
+    vertical-align: middle;
+    background: rgb(255, 34, 34); 
+    height: 90vh;
+    max-height: 90vh;
+    min-height: 810px;
+    margin: auto;
+    padding: 25px 25px 75px 25px;
+    /*width: 40%;*/
+    min-width: 450px; /*350px;*/
+    max-width: 600px;
+    border: 3px solid rgb(255, 34, 34);
+    /*border: 20px solid rgb(255, 63, 66);*/ /*rgb(255, 34, 34);*/
+    border-radius: 1%;
+}
+
+#registerForm form{
+    margin-top: 25px;
+    color: white;
+    font-size: 150%;
+}
+
+#loginForm{
+    vertical-align: middle;
+    background: rgb(177, 1, 1); /*rgb(203, 25, 46);*/ /*rgb(255, 63, 66);*/ /* #FF4136 202, 27, 27 */
+    /*background: rgb(0, 0, 0);*/
+    height: 90vh;
+    max-height: 90vh;
+    min-height: 820px;
+    margin: auto;
+    padding: 25px 25px 75px 25px;
+    /*width: 40%;*/
+    min-width: 450px; /*350px;*/
+    max-width: 600px;
+    /*box-shadow: 0px 0px 20px 0 rgb(202, 27, 27), 0 6px 20px 0 rgb(202, 27, 27);*/
+    box-shadow: 0px 0px 20px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+}
+
+#loginForm form{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: white;
+    font-size: 150%;
+}
+
+#loginForm form input{
+    background: rgb(255, 255, 255);
+    border-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 10px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+
+}
+
+#loginForm form input:focus{
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+
+}
+
+
+
+p{
+    font-size: 150%;
+    color: white;
+}
+
+.leftButton{
+    float: left; 
+    background: rgb(255, 255, 255);
+    color: black;
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    border: 1px solid rgb(0, 0, 0);
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+
+.leftButton:hover{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.leftButton:focus{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.leftButton:active{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.leftButton:target{
+    float: left; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.rightButton{
+    float: right; 
+    background: rgb(255, 255, 255);
+    color: black;
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    border: 1px solid rgb(0, 0, 0);
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.rightButton:hover{
+    float: right; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.rightButton:focus{
+    float: right; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.rightButton:active{
+    float: right; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.rightButton:target{
+    float: right; 
+    background: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+    margin-top: 5px; 
+    font-size: 110%;
+    width: 45%; 
+    padding: 5px 10px;
+    /*border: 1px solid rgb(255, 255, 255);*/
+    /*border-radius: 1%;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    */box-shadow: 0px 0px 20px 0 rgba(0,0,0, 0.493), 0 6px 20px 0 rgba(0,0,0, 0.6);
+}
+
+.btn{
+    border: 0;
+}
+
+.btn-primary{
+    border: 0;
+}
