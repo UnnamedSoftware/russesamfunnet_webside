@@ -31,7 +31,6 @@
         </script>
     </head>
     <body>
-<<<<<<< HEAD
         <div class="row">
             <div class="col-12 col-m-12">
                 <?php include 'Templates/navigation.php';?>
@@ -115,26 +114,6 @@
                                     <a href="#" action="admin.php?mode=knute" onclick="nyKnute();return false;">
                                         <img src="icons/plus.png" style="height: 85%; padding-top: 6px;"/>
                                     </a>
-=======
-    
-    <div id="wrap">
-    <div class="blurEffect">
-        <div id="main" >
-            <div class="container clear-top">
-                <div class="row">
-                    <div class="col-2 col-m-2 menu-style">
-                        THIS IS THE MENU
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="admin-menu">
-                    <div class ="row">
-                        <div class="col-sm-3 setHeight menuStyleExtra">
-                            <a id="framsideLink" href="admin.php" >
-                                <div class="buttonDiv menuLink">
-                                    <p>FRAMSIDE</p>
->>>>>>> 9ddd3386634b83ed4c7c76e5e00501d13c94f54c
                                 </div>
                             </a>
                             <a id="knuterLink" href="admin.php?mode=knute" >
