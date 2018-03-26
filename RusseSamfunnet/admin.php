@@ -18,8 +18,6 @@
         <script src="JavaScript/adminScript.js"></script>
         <!--<script src="JavaScript/admin.js"></script>--> 
 
-        <link rel="stylesheet" type="text/css" href="CSS/main.css">
-        <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
 
         <script>
         /*
@@ -29,91 +27,32 @@
             }
             */
         </script>
+        
+        <link rel="stylesheet" type="text/css" href="CSS/custombootstrap.css">
     </head>
     <body>
-        <div class="row">
-            <div class="col-12 col-m-12">
+        
+        <div class="col-12 col-m-12">
                 <?php include 'Templates/navigation.php';?>
             </div>
-        </div>
-        
+    
     <div id="wrap">
-        <div id="main" class="container clear-top">
-<!--            <div class="row">
-                <div class="col-2 col-m-2 menu-style">
-                    THIS IS THE MENU
+    <div class="blurEffect">
+        <div id="main" >
+            <div class="container clear-top">
+                <div class="row">
+                    <div class="col-2 col-m-2 menu-style">
+                        THIS IS THE MENU
+                    </div>
                 </div>
-            </div>-->
-            
-            <div class="admin-menu">
-                <div class ="row">
-                    <div class="col-sm-3 setHeight menuStyleExtra">
-                        <a id="framsideLink" href="admin.php" >
-                            <div class="buttonDiv menuLink">
-                                <p>FRAMSIDE</p>
-                            </div>
-                        </a>
-                        <a id="knuterLink" href="admin.php?mode=knute" >
-                            <div class="buttonDiv" >    
-                                <p>KNUTER</p>
-                            </div>
-                        </a> <!-- onclick="knots();return false;"  -->
-                        <a id="brukereLink" href="admin.php?mode=brukere" >
-                            <div class="buttonDiv" >
-                                <p>BRUKERE</p>
-                            </div>      
-                        </a>
-                        <!--<a id="bekreftBrukerLink" href="admin.php?mode=bekreftBruker" >
-                            <div class="buttonDiv" >
-                                <p>BEKREFT BRUKER</p>
-                            </div>      
-                        </a>-->
-                        <a id="meldingerLink" href="admin.php?mode=meldinger" >
-                            <div class="buttonDiv" >
-                                <p>MELDINGER</p>
-                            </div>
-                        </a>
-                        <!--<a id="registrerAdminLink" href="admin.php?mode=registrerAdmin" >
-                            <div class="buttonDiv" >    
-                                <p>REGISTRER ADMIN</p>
-                            </div>
-                        </a>-->
-                        <a id="rapporterLink" href="admin.php?mode=rapporterFeil" >
-                            <div class="buttonDiv" >    
-                                <p>RAPPORTER PROBLEM</p>
-                            </div>
-                        </a>
-                        <a id="kontaktOssLink" href="admin.php?mode=kontaktOss" >
-                            <div class="buttonDiv" >    
-                                <p>KONTAKT OSS</p>
-                            </div>
-                        </a>
-                        <a id="hjelpLink" href="admin.php?mode=hjelp" >
-                            <div class="buttonDiv" >    
-                                <p>HJELP</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="landingDiv">
-                        <div class="col-sm-9 setHeight">
-                            <div id="landingLogo">
-                                <img src="logos/logo.png" />  
-                            </div>
-                            <div id="framsideTekst">
-                                <p>Velkommen til Russesamfunnets adminside</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div id="knuteDiv">
-                        <div id="" class="col-sm-4 setHeight">
-                            <div id="knuter" style="overflow-y: scroll;">
-                            </div>
-                            <div id="nyKnute">
-                                <div style="width: 10%; margin: auto;">
-                                    <a href="#" action="admin.php?mode=knute" onclick="nyKnute();return false;">
-                                        <img src="icons/plus.png" style="height: 85%; padding-top: 6px;"/>
-                                    </a>
+            </div>
+            <div class="container">
+                <div class="admin-menu">
+                    <div class ="row">
+                        <div class="col-sm-3 setHeight menuStyleExtra">
+                            <a id="framsideLink" href="admin.php" >
+                                <div class="buttonDiv menuLink">
+                                    <p>FRAMSIDE</p>
                                 </div>
                             </a>
                             <a id="knuterLink" href="admin.php?mode=knute" >
@@ -354,8 +293,5 @@
         </div>
     </div>   
     </div>
-
-
-    
     </body>
 </html>
