@@ -26,52 +26,46 @@ and open the template in the editor.
     </head>
 
     <body>
+        <div id="blurEffect">
+            <div class="container">
+                <div class="extraInfoMargin"></div>
 
-        <h3 class="text-center">Login eller registrer deg</h3>
-        <div class="container">
-            <form>
-                <div class="form-group">
-                <label for="username">E-post</label>
-                <input type="text" class="form-control" id="email" placeholder="E-mail" >
+                <div id="loginForm">
+                    <img src="logos/logo.png"/>
+                    <!--<div id="imgDiv">
+                        
+                    </div> --> 
+                    <!--<div id="testingSomething">-->
+                        <h3 class="text-center">Logg inn</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="username">E-post</label>
+                                <input type="text" class="form-control" id="email" placeholder="E-mail" >
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Passord</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <div style="height: 40px;"></div>
+                            <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
+                            <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer konto</button>
+                            <div style="height: 140px;"></div>
+                            <div style= "width: 240px; margin: auto; ">
+                                <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
+                                        data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
+                                        data-use-continue-as="false">
+                                    Logg inn med Facebook
+                                </div>
+                            </div>
+                        </form> 
+                        <!--<div style="height: 80px;"></div>-->
+                        
+                        
+                        
                 </div>
-                <div class="form-group">
-                    <label for="password">Passord</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-                </div>
-                <button type="button" class="btn btn-primary" onclick="auth()">Login</button>
-                <text>eller</text>
-                <button type="button" class="btn btn-primary" onclick="location.href='registration.php';">Registrer konto</button>
-                <div class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
-                     data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
-                     data-use-continue-as="false">
-                </div>
-                
-                <div id="my-signin2"></div>
-                
-            </form>
-            <br><br>
-            Dersom du ikke har en bruker allerede kan du trykke <a href="register.php">HER</a> for å logge inn
-            <br><br>
-            <!-- <div id="status"></div><br>
-            <div id="status2"></div> --><br>
-            <!--<button onclick="getInfo()">Get Info</button>-->
-            <button onclick="login()">Login with facebook</button>
-            <!--<button onclick="logout()">logout</button>-->
-
-            <br><br>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            <div class="data">
-            <!--<p>Profile Details</p>
-            <img id="pic" class="img-circle" width="100" height="100"/>
-            <p>Email address</p>
-            <p id="email" class="alert alert-danger"></p>
-            <button onclick="signOut()" class="btn btn-danger">Sign out</button>-->
-        </div>
-            <br>
-
-            <!--<div id="token-display">
-                <p id="authResult">No result</p>
-            </div>-->
+                <div class="extraInfoMargin"></div>
+            </div>
         </div>
     </body>
 </html>
+<!--<button onclick="login()">Login with facebook</button>-->
