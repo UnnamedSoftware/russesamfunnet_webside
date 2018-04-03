@@ -49,19 +49,19 @@ and open the template in the editor.
                             <div style="height: 40px;"></div>
                             <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
                             <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer konto</button>
-                            <div style="height: 140px;"></div>
-                            <div style= "width: 240px; margin: auto; ">
+                            <!--<div style="height: 140px;"></div>-->
+                            
+                        </form> 
+                        <div style="height: 80px;"></div>
+                        
+                        <div style= "width: 240px; margin: auto;">
                                 <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
                                         data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
                                         data-use-continue-as="false">
                                     Logg inn med Facebook
                                 </div>
                             </div>
-                        </form> 
-                        <!--<div style="height: 80px;"></div>-->
-                        
-                        
-                        
+                            <!--<button onclick="login()">Login with facebook</button>-->
                 </div>
                 <div class="extraInfoMargin"></div>
             </div>

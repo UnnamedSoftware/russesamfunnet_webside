@@ -58,7 +58,7 @@ and open the template in the editor.
                         <input type="text" class="form-control" id="birthdate" placeholder="Født" >
                     </div>
                     <div style="height: 20px;"></div>
-                    <button type="button" class="btn btn-primary leftButton" onclick="registerFacebookUser()">Avbryt</button>
+                    <button type="button" class="btn btn-primary leftButton" onclick="logout()">Avbryt</button>
                     <button type="button" class="btn btn-primary rightButton" onclick="registerFacebookUser()">Fullfør registrering</button>
                 </form>
             </div>

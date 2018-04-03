@@ -115,6 +115,7 @@ function loginRussesamfunnet(status){
 // <FACEBOOK LOGIN> *****************
 window.onload = function(){
     facebookInit();
+    console.log("Hello?=");
     var cookie = getCookie("Russesamfunnet");
     if(cookie == null){
     } 
@@ -136,6 +137,7 @@ window.onload = function(){
 }
 
 function facebookInit() {
+    console.log("Hello=");
     FB.init({
         appId      : '291199641408779', //'406426833123738',
         cookie     : true, 
@@ -143,6 +145,7 @@ function facebookInit() {
         version    : 'v2.12'
     });
     FB.getLoginStatus(function(response){
+        console.log("Hello");
         if(response.status === 'connected'){
             console.log(response.status + " *** CONNECTED (INIT) *****");
             var access_token =   response.authResponse.accessToken;
@@ -172,7 +175,7 @@ function facebookInit() {
         } else if(response.status === 'not_authorized') {
             console.log(response.status + " *** NOT_AUTHORIZED (INIT) ***");   
         } else {
-            //console.log(response.status  + " *** ELSE (INIT) ***");
+            console.log(response.status  + " *** ELSE (INIT) ***");
         }
     });
 };

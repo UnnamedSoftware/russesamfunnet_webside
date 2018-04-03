@@ -1,3 +1,5 @@
+token = "";
+
 function getURL(){
     return "http://158.38.101.146:8080/";
 }
@@ -224,11 +226,21 @@ function setupSite(){
     
 }
 
-function hentKnuter(){
-    console.log("KNUTER have been clicked!");
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
-    var url = "http://158.38.101.146:8080/knots?accessToken="+accessToken+"&type="+type;
+function utførHentKnuter(type, accessToken) {
+    //var type = getCookie("Russesamfunnet");
+/*
+    if (type == 'facebook') {
+        var accessToken = token;
+        console.log("token: " + token);
+        console.log("type == facebook " + accessToken);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        console.log("type == russesamfunnet " + accessToken);
+    }
+*/
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
+    var url = "http://158.38.101.146:8080/knots?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
         //console.log(response);
@@ -236,7 +248,7 @@ function hentKnuter(){
         //console.log(responseAsJSON.length);
         var knuter = document.getElementById('knuter');
         document.getElementById('knuter').innerHTML = "";
-        for(i = 0; i < responseAsJSON.length; i++){
+        for (i = 0; i < responseAsJSON.length; i++) {
             //må ha: knuteID og knuteNavn
             var knuterDiv = document.createElement('div');
             knuterDiv.setAttribute("class", "knuterDiv");
@@ -245,10 +257,11 @@ function hentKnuter(){
             var newKnuteLink = document.createElement('a');
             //newKnuteLink.setAttribute("style", "background: black;");
             newKnuteLink.setAttribute("href", "#");
-            newKnuteLink.setAttribute("onClick", "visKnute('"+knuteId+"'); return false;");  
+            //console.log(knuteId + type + accessToken);
+            newKnuteLink.setAttribute("onClick", "visKnute('" + knuteId + "','" + type + "','" + accessToken + "'); return false;");
             var newKnuteElement = document.createElement('p');
             //newKnuteElement.setAttribute("style", "border-bottom: 1px solid black;");
-            newKnuteElement.innerText = (i+1)+" - "+knuteNavn;
+            newKnuteElement.innerText = (i + 1) + " - " + knuteNavn;
             //console.log(newKnuteElement);
             newKnuteLink.appendChild(newKnuteElement);
             knuterDiv.appendChild(newKnuteLink);
@@ -257,13 +270,29 @@ function hentKnuter(){
     });
 }
 
-function visKnute(id){
-    console.log("KnuteID: " + id);
+function hentKnuter() {
+    console.log("KNUTER have been clicked! ");
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            utførHentKnuter(type, token);
+        }, 700);
+    } else if(type == 'russesamfunnet'){
+        var accessToken = getCookie("Russesamfunnet-token");
+        utførHentKnuter(type, accessToken);
+    }
+}
+
+function visKnute(id, type, accessToken){
+    //console.log("KnuteID: " + id + ", type == " + type + ", " + accessToken);
+    //console.log("Hello? " + type);
     var knuteTom = document.getElementById('knuteInfoTom');
     var knuteInfo = document.getElementById('knuteInfo');
     var nyKnute = document.getElementById('nyKnuteInput');
     //var deletKnotButton = document.getElementById('deleteKnotButton');
-    document.getElementById('deleteKnotButton').setAttribute("onclick", "slettKnute("+id+"); return false;");
+    document.getElementById('deleteKnotButton').setAttribute("onclick", "slettKnute('" + id + "','" + type + "','" + accessToken + "'); return false;");
 
     nyKnute.style.display = 'none';
     knuteTom.style.display = 'none';
@@ -280,19 +309,9 @@ function visKnute(id){
     client.get(url, function (response) {
         //console.log(response);
         var responseAsJSON = JSON.parse(response);
-        //console.log(responseAsJSON);
-        // var newKnuteElement = document.createElement('p');
+
         var knotId = document.createElement('p'); 
-        //knotId.innerHTML = "<br>KNUTE-ID:" + responseAsJSON.knotId;
-        //knotId.innerHTML = "<br>";
 
-
-        //var knotName = document.createElement('p');
-        //knotName.innerHTML = "KNUTENAVN: " + responseAsJSON.knotName;
-        //var knotDetails = document.createElement('p');
-        //knotDetails.innerHTML = "KNUTEDETALJER: " + responseAsJSON.knotDetails;
-        
-        //console.log(" ID = " + responseAsJSON.knotId);
         var editForm = document.createElement('form');
         editForm.innerHTML = `
         <br><form name="nyRusseKnute" onSubmit="commitChanges(); return false;">
@@ -303,25 +322,6 @@ function visKnute(id){
             <textarea id="knuteBeskrivelseInfo">`+responseAsJSON.knotDetails+`</textarea>
         </form>
         `;
-
-        //console.log("EditForm = " + editForm.attributes);
-/*
-        editForm.innerHTML = `
-        <form name="nyRusseKnute" onSubmit="commitChanges(); return false;">
-            KNUTENAVN:
-            <input type="text" id="knuteNavnInfo" name="knuteNavn" value="`+responseAsJSON.knotName+`"/><br><br>
-            Knutebeskrivelse:
-            <input type="text" id="knuteBeskrivelseInfo" navn="knuteBeskrivelse" value="`+responseAsJSON.knotDetails+`"/><br><br>
-        </form>
-        `;*/
-        //<textarea
-        //var knotNameInput = document.createElement('input');
-        //var knotDetailsInput = document.createElement('input');
-
-
-
-
-
         var knotPicture = document.createElement('p');
         knotPicture.innerHTML = "KNUTEBILDE: " + responseAsJSON.knotPicture;
         var schoolId = document.createElement('p');
@@ -338,25 +338,8 @@ function visKnute(id){
         schoolLongitude.innerHTML = "LENGDEGRAD: " + responseAsJSON.schoolId.schoolLongitude;
         var schoolLatitude = document.createElement('p');
         schoolLatitude.innerHTML = "BREDDEGRAD: " + responseAsJSON.schoolId.schoolLatitude;
-        //console.log(knotId+" "+knotName+" "+knotDetails+" "+knotPicture);
-        //console.log(schoolId+" "+schoolName+" "+schoolStatus+" "+schoolLocation+" "+schoolMunicipality+" "+schoolLongitude+" "+schoolLatitude);
-        //showKnotInfo.appendChild(knotId);
-        //showKnotInfo.appendChild(knotName);
-        //showKnotInfo.appendChild(knotDetails);
         showKnotInfo.appendChild(editForm);
-        //showKnotInfo.appendChild(knotPicture);
-        //showKnotInfo.appendChild(schoolId);
-        //showKnotInfo.appendChild(schoolName);
-        //showKnotInfo.appendChild(schoolStatus);
-        //showKnotInfo.appendChild(schoolLocation);
-        //showKnotInfo.appendChild(schoolMunicipality);
-        //showKnotInfo.appendChild(schoolLongitude);
-        //showKnotInfo.appendChild(schoolLatitude);
-
-        //console.log(showKnotInfo.innerHTML);
-
     });
-
 }
 
 function nyKnute(){
@@ -372,18 +355,18 @@ function nyKnute(){
 
 }
 
-function slettKnute(id){
-    console.log("knot to delete: " + id);
+function slettKnute(id, type, accessToken){
+    //console.log("knot to delete: " + id);
     var confirm = window.confirm("are you sure?");
-    console.log("confirm or not! " + confirm);
+    //console.log("confirm or not! " + confirm);
     if(confirm){
-        console.log("Deleted");
-        var accessToken = getCookie("Russesamfunnet-token");
-        var type = "russesamfunnet";
+        //console.log("Deleted");
+        //var accessToken = getCookie("Russesamfunnet-token");
+        //var type = "russesamfunnet";
         var url = "http://158.38.101.146:8080/deleteKnot?accessToken="+accessToken+"&type="+type+"&knotId="+id;
         var client = new HttpClient();
         client.get(url, function (response) {
-            console.log(response);
+            //console.log(response);
             if(response == 'Knot successfully deleted.'){
                 console.log("I redirect metoden!");
                 setTimeout(function () {
@@ -395,7 +378,7 @@ function slettKnute(id){
                     
                     hentKnuter();
                     //window.location.href = 'admin.php?mode=knute';
-                }, 1000);
+                }, 700);
                 
                 //window.location.href = 'admin.php?mode=knute';
                 //knuteRedirect();
@@ -403,7 +386,7 @@ function slettKnute(id){
                 console.log("Error");
                 setTimeout(function () {
                     window.location.href = 'admin.php?mode=knute';
-                }, 1000);
+                }, 700);
             }
             //var responseAsJSON = JSON.parse(response);
             //console.log(responseAsJSON);
@@ -416,44 +399,60 @@ function slettKnute(id){
 }
 
 function knuteRedirect() {
-    console.log("I redirect metoden!");
+    //console.log("I redirect metoden!");
     setTimeout(function () {
         location.reload();
-    }, 1500);
+    }, 800);
 }
 
-
-
-function registrerKnute(){
+function registrerKnute() {
     console.log("registrer knute");
 
     var knuteNavn = document.getElementById('knuteNavn').value;
     var knuteBeskrivelse = document.getElementById('knuteBeskrivelse').value;
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
-    console.log(accessToken + ", " + knuteNavn + ", " + knuteBeskrivelse);
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
+    //console.log(accessToken + ", " + knuteNavn + ", " + knuteBeskrivelse);
 
     document.getElementById('knuteNavn').value = "";
     document.getElementById('knuteBeskrivelse').value = "";
 
-    
+
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            UtførRegistrerKnute(type, token, knuteNavn, knuteBeskrivelse);
+        }, 700);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        UtførRegistrerKnute(type, accessToken, knuteNavn, knuteBeskrivelse);
+    }
+}
+
+
+
+function UtførRegistrerKnute(type, accessToken, knuteNavn, knuteBeskrivelse){
+    //console.log("Utfører registerering av knute");
+    //console.log(type + accessToken + knuteNavn + knuteBeskrivelse);
     var url = "http://158.38.101.146:8080/addKnot?accessToken="+accessToken+"&type="+type+"&knotName="+knuteNavn+"&knotDescription="+knuteBeskrivelse;
     var client = new HttpClient();
     client.get(url, function (response) {
         //console.log(response);
         var responseAsJSON = JSON.parse(response);
-        console.log(responseAsJSON);
+        //console.log(responseAsJSON);
         var knuter = document.getElementById('knuter');
         var antall = knuter.getElementsByTagName('a').length;
-        console.log(antall);
+        //console.log(antall);
         var knuterDiv = document.createElement('div');
         knuterDiv.setAttribute("class", "knuterDiv");
         var newKnuteLink = document.createElement('a');
         newKnuteLink.setAttribute("href", "#");
-        newKnuteLink.setAttribute("onClick", "visKnute('"+responseAsJSON.knotId+"'); return false;");  
+        newKnuteLink.setAttribute("onClick", "visKnute('"+responseAsJSON.knotId+"','" + type + "','" + accessToken + "'); return false;");  
         var newKnuteElement = document.createElement('p');
         newKnuteElement.innerText = (antall+1) + " - " + knuteNavn;
-        console.log(newKnuteElement);
+        //console.log(newKnuteElement);
         newKnuteLink.appendChild(newKnuteElement);
         knuterDiv.appendChild(newKnuteLink);
         knuter.appendChild(knuterDiv);
@@ -478,26 +477,60 @@ function searchInput(){
         hentBrukere();
     }else{
         //console.log(inputValue);
-        var accessToken = getCookie("Russesamfunnet-token");
-        var type = "russesamfunnet";
-        var url = "http://158.38.101.146:8080/searchForRuss?accessToken="+accessToken+"&type="+type+"&parameter="+inputValue;
-        var client = new HttpClient();
-        client.get(url, function (response) {
-            try{
-                var responseAsJSON = JSON.parse(response); 
-                console.log(responseAsJSON);
-                populateUserTable(responseAsJSON);
-            }catch(error){
-                console.log(error.message);
-            }
-        });
+        var type = getCookie("Russesamfunnet");
+        if (type == 'facebook') {
+            UtførSearchInput(type, token, inputValue);
+            //setTimeout(function () {
+                //window.location.href = "feed.php";
+                //console.log("in timeout: " + token);
+            //    UtførSearchInput(type, token, inputValue);
+            //}, 1000);
+        } else if (type == 'russesamfunnet') {
+            var accessToken = getCookie("Russesamfunnet-token");
+            UtførSearchInput(type, accessToken, inputValue);
+        }
+
+
+        //var accessToken = getCookie("Russesamfunnet-token");
+        //var type = "russesamfunnet";
+
     }
+}
+
+function UtførSearchInput(type, accessToken, inputValue) {
+    var url = "http://158.38.101.146:8080/searchForRuss?accessToken=" + accessToken + "&type=" + type + "&parameter=" + inputValue;
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        try {
+            var responseAsJSON = JSON.parse(response);
+            console.log(responseAsJSON);
+            populateUserTable(responseAsJSON);
+        } catch (error) {
+            console.log(error.message);
+        }
+    });
 }
 
 function hentBrukere(){
     //console.log("BRUKERE have been clicked");
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
+
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        //UtførSearchInput(type, token, inputValue);
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            utførHentBrukere(type, token);
+        }, 1000);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        utførHentBrukere(type, accessToken);
+    }
+}
+
+function utførHentBrukere(type, accessToken){
     var url = "http://158.38.101.146:8080/getAllRussAtSchool?accessToken="+accessToken+"&type="+type;
     //console.log(url);
     var client = new HttpClient();
@@ -569,34 +602,64 @@ function populateUserTable(responseAsJSON){
 function setConfirmed(russId, i){
     console.log("setConfirmed: " + russId);
 
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
 
-    var url = "http://158.38.101.146:8080/toggleRussConfirmation?accessToken="+accessToken+"&type="+type+"&russToConfirm="+russId;
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        //UtførSearchInput(type, token, inputValue);
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            utførSetConfirmed(type, token, russId, i);
+        }, 200);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        utførSetConfirmed(type, accessToken, russId, i);
+    }
+}
+
+function utførSetConfirmed(type, accessToken, russId, i) {
+    var url = "http://158.38.101.146:8080/toggleRussConfirmation?accessToken=" + accessToken + "&type=" + type + "&russToConfirm=" + russId;
     console.log(url);
     var client = new HttpClient();
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
         console.log(responseAsJSON);
-        if(responseAsJSON == 1){
+        if (responseAsJSON == 1) {
             var x = document.getElementById("brukerTableBody").rows[i].cells;
             x[5].innerHTML = "confirmed";
 
-            x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('`+russId+`','`+i+`'); return false;" style="width: 20px; float: left;">
+            x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('` + russId + `','` + i + `'); return false;" style="width: 20px; float: left;">
                 <img src="icons/uparrow.png"  style="height: 30px;"/>
-                </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+russId+`','`+i+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
+                </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+ russId + `','` + i + `'); return false;" style="width: 20px; float: right; margin-right: 7px;">
                 <img src="icons/cancel.png"  style="height: 30px;"/>
                 </a>`;
         }
-     });   
+    });
 }
 
 function setFalse(russId, i){
     console.log("setFalse: " + russId);
 
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
 
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        //UtførSearchInput(type, token, inputValue);
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            utførSetFalse(type, token, russId, i);
+        }, 200);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        utførSetFalse(type, accessToken, russId, i);
+    }
+}
+
+function utførSetFalse(type, accessToken, russId, i){
     var url = "http://158.38.101.146:8080/toggleRussConfirmation?accessToken="+accessToken+"&type="+type+"&russToConfirm="+russId;
     console.log(url);
     var client = new HttpClient();
@@ -613,15 +676,30 @@ function setFalse(russId, i){
                 </a>`;
         }
     });
-
-
 }
 
 function setAdmin(russId, i){
     console.log("setAdmin: " + russId);
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
 
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        //UtførSearchInput(type, token, inputValue);
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            utførSetAdmin(type, token, russId, i);
+        }, 200);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        utførSetAdmin(type, accessToken, russId, i);
+    }
+
+
+}
+
+function utførSetAdmin(type, accessToken, russId, i){
     var url = "http://158.38.101.146:8080/toggleAdmin?accessToken="+accessToken+"&type="+type+"&russToMakeAdmin="+russId;
     console.log(url);
     var client = new HttpClient();
@@ -643,52 +721,79 @@ function setAdmin(russId, i){
 function setRuss(russId, i){
     console.log("setRuss: " + russId);
 
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
 
-    var url = "http://158.38.101.146:8080/toggleAdmin?accessToken="+accessToken+"&type="+type+"&russToMakeAdmin="+russId;
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        //UtførSearchInput(type, token, inputValue);
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            utførSetRuss(type, token, russId, i);
+        }, 200);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        utførSetRuss(type, accessToken, russId, i);
+    }
+
+    
+}
+
+function utførSetRuss(type, accessToken, russId, i){
+    var url = "http://158.38.101.146:8080/toggleAdmin?accessToken=" + accessToken + "&type=" + type + "&russToMakeAdmin=" + russId;
     console.log(url);
     var client = new HttpClient();
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
         console.log(responseAsJSON);
-        if(responseAsJSON.russRole == 'russ'){
+        if (responseAsJSON.russRole == 'russ') {
             console.log("User is now a russ");
         }
 
         var x = document.getElementById("brukerTableBody").rows[i].cells;
         x[4].innerHTML = "russ";
 
-
-        x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('`+russId+`','`+i+`'); return false;" style="width: 20px; float: left;">
+        x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('` + russId + `','` + i + `'); return false;" style="width: 20px; float: left;">
                 <img src="icons/uparrow.png"  style="height: 30px; padding-top: 0;"/>
-                </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+russId+`','`+i+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
+                </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+ russId + `','` + i + `'); return false;" style="width: 20px; float: right; margin-right: 7px;">
                 <img src="icons/cancel.png"  style="height: 30px; padding-top: 0;"/>
                 </a>`;
-
     });
-
-    
 }
 
 function commitChanges(){
     //console.log(id);
-    console.log("changes will be committed!");
+    //console.log("changes will be committed!");
     var knotId = document.getElementById('knotIdInfo').value;
     var knuteNavn = document.getElementById('knuteNavnInfo').value;
     var knuteBeskrivelse = document.getElementById('knuteBeskrivelseInfo').value;
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    //var accessToken = getCookie("Russesamfunnet-token");
+    //var type = "russesamfunnet";
     //console.log(accessToken + ", " + knuteNavn + ", " + knuteBeskrivelse);
-    console.log(knuteNavn + ", " + knuteBeskrivelse);
+    //console.log(knuteNavn + ", " + knuteBeskrivelse);
 
-    
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            utførCommitChanges(type, token, knotId, knuteNavn, knuteBeskrivelse);
+        }, 1000);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        utførCommitChanges(type, accessToken, knotId, knuteNavn, knuteBeskrivelse);
+    }
+
+}
+
+function utførCommitChanges(type, accessToken, knotId, knuteNavn, knuteBeskrivelse){
     var url = "http://158.38.101.146:8080/updateKnot?accessToken="+accessToken+"&type="+type+"&knotId="+knotId+"&knotName="+knuteNavn+"&knotDescription="+knuteBeskrivelse;
     console.log(url);
     var client = new HttpClient();
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
-        console.log(responseAsJSON);
+        //console.log(responseAsJSON);
         
         setTimeout(function () {
             var knuteTom = document.getElementById('knuteInfoTom');
@@ -710,7 +815,7 @@ function commitChanges(){
 }
 
 function cancel(){
-    console.log("canceling the operation");
+    //console.log("canceling the operation");
     //window.location.href = "admin.php?mode=knute";
     var knuteTom = document.getElementById('knuteInfoTom');
     var knuteInfo = document.getElementById('knuteInfo');
@@ -722,7 +827,7 @@ function cancel(){
 }
 
 function cancelNyKnute(){
-    console.log("canceling the operation");
+    //console.log("canceling the operation");
     //window.location.href = "admin.php?mode=knute";
 
     document.getElementById('knuteNavn').value = "";
@@ -861,7 +966,7 @@ var HttpClient = function () {
 }
 
 function facebookInit() {
-    console.log("facebook Init");
+    //console.log("facebook Init 2");
     FB.init({
         appId: '291199641408779',
         cookie: true,
@@ -871,7 +976,10 @@ function facebookInit() {
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
             console.log(response.status);
-            getInfo();
+            token = response.authResponse.accessToken;
+            //console.log(token);
+            //printToken();
+            //getInfo();
         } else if (response.status === 'not_authorized') {
             console.log(response.status);
         } else {
@@ -888,6 +996,9 @@ function facebookInit() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+function printToken(){
+    console.log("print: " + token);
+}
 /*
 function login() {
     FB.login(function (response) {

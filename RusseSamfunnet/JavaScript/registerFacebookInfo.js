@@ -1,5 +1,36 @@
 var token = "";
 
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function setCookieFB(name,value,seconds) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (seconds*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
 window.onload = function(){
     facebookInit();
     //setToken();
@@ -13,6 +44,37 @@ window.onload = function(){
 
 function getURL(){
     return "http://158.38.101.146:8080/";
+}
+
+function cancelRegisterFacebookUser(){
+    logout();
+}
+
+function logout() {
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            console.log(response.status);
+        } else if (response.status === 'not_authorized') {
+            console.log(response.status);
+        } else {
+            console.log("ELSE");
+        }
+    });
+    FB.logout(function (response) {
+        /*
+        * REMEMBER TO DESTROY THE COOKIE 
+        */
+        setCookie("Russesamfunnet", "", -10)
+        setTimeout(function () {
+            //alert("logging out of FB");
+            window.location.href = 'index.php';
+        }, 1500);
+    });
+
+    setTimeout(function () {
+        //alert("logging out of FB");
+        window.location.href = 'index.php';
+    }, 1500);
 }
 
 function registerFacebookUser(){
