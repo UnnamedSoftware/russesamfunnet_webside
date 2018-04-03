@@ -6,7 +6,7 @@
   function makeRequest() {
       
     var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    var type = getCookie("Russesamfunnet");
     var url = "http://158.38.101.146:8080/completedKnots?accessToken="+accessToken+"&type="+type;
       
     httpRequest = new XMLHttpRequest();
@@ -23,7 +23,7 @@
     function makeSecondRequest() {
       
     var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
+    var type = getCookie("Russesamfunnet");
     var url = "http://158.38.101.146:8080/getKnotsList?accessToken="+accessToken+"&type="+type;
       
     httpRequest2 = new XMLHttpRequest();
@@ -101,7 +101,7 @@
         var tr="<tr id=" + currentId + ">";
         var td="<td>"+obj[i]["knotName"]+"</td>";
         var td2="<td>"+obj[i]["knotDetails"]+"</td>";
-        var td3="<td>"+ '<button type="button"' + "onclick='makeOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
+        var td3="<td>"+ '<button type="button"' + "onclick='makeSecondOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
         if (obj[i]["completed"] === false)    {
             $("#table2").append(tr+td+td2+td3);
         }
@@ -146,11 +146,11 @@ function loadInfo(){
     
 }
 
-function makeOrder(id){
+function makeSecondOrder(id){
     
     var accessToken = getCookie("Russesamfunnet-token");
     var type = "russesamfunnet";
-    var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+id+"&witness1="+1+"&witness2="+1;
+    var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+id+"&witness1="+1+"&witness2="+2;
       
     httpRequest = new XMLHttpRequest();
 
@@ -172,6 +172,12 @@ function makeOrder(id){
     httpRequest.open('GET', url);
     httpRequest.send();
     location.reload();
+    
+}
+
+function makeOrder(id){
+    
+    
     
 }
             

@@ -29,9 +29,8 @@ body{
     /*background-image: url("images\bakgrunn.jpg");*/
     /*background-image: url("https://imbo.vgc.no/users/vgno/images/48ba36c8641bfddf70a54076a8dcafff?t[0]=sharpen:preset=light&t[1]=crop:width=3831,height=2274,x=105,y=0&t[2]=maxSize:width=990&t[3]=resize:width=990&accessToken=7c201289bfbe4472b756e121f1342528aadc0cbb549bda8e82a41fa89df6e6b0");
     */
-    background-image: url("http://drp-images.nettavisen.no/images/article/2017/03/06/3423319959/1/w1024/3524363.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url(images/square_bg.png);
+    background-repeat: repeat;
 /*background: #ff515100;*/
     
 }
@@ -72,7 +71,7 @@ body{
 [class*="col-"] {
     float: left;
    
-    border: 1px solid red;
+    border: 1px solid transparent;
 }
 
 html {
@@ -137,8 +136,8 @@ img{
     height: auto;
     box-shadow: 0px 0px 25px 0 rgba(0,0,0, 0.8), 0 6px 20px 0 rgba(0,0,0, 0.6);
     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    */border: 20px solid rgb(177, 1, 1);/*rgb(255, 34, 34);*/
-    border-radius: 50%;
+    border: 20px solid rgb(177, 1, 1);/*rgb(255, 34, 34);
+    border-radius: 50%;*/
 }
 /*
 div#formHeaders{
