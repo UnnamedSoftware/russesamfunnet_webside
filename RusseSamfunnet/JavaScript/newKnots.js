@@ -1,3 +1,6 @@
+var accessToken = "";
+var type = "";
+
 window.onload = function () {
     var cookie = getCookie("Russesamfunnet");
     if (cookie == null) {
@@ -36,15 +39,16 @@ function setupSite(){
 
 function hentKnuter() {
     console.log("KNUTER have been clicked! ");
-    var type = getCookie("Russesamfunnet");
+    type = getCookie("Russesamfunnet");
     if (type == 'facebook') {
         setTimeout(function () {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
             utførHentKnuter(type, token);
+            
         }, 700);
     } else if(type == 'russesamfunnet'){
-        var accessToken = getCookie("Russesamfunnet-token");
+        accessToken = getCookie("Russesamfunnet-token");
         utførHentKnuter(type, accessToken);
     }
 }
@@ -68,12 +72,12 @@ function makeTableMuligeKnuter(type, accessToken){
         for (i = 0; i < responseAsJSON.length; i++) {
             console.log("KNUTER have been clicked!");
     
-        var currentId = responseAsJSON[i]["knotId"]["knotId"];
+        var currentId = responseAsJSON[i]["knotId"];
         var tr="<tr>";
         var td2="<td>"+responseAsJSON[i]["knotName"]+"</td>";
         var td3="<td>"+responseAsJSON[i]["knotDetails"]+"</td>";
         /*var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +obj[i]["witnessId1"]["lastName"]+ " og " +obj[i]["witnessId2"]["firstName"]+ " " +obj[i]["witnessId2"]["lastName"]+"</td>";*/
-        var td4="<td>"+ '<button type="button"' + "onclick='makeOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
+        var td4="<td>"+ '<button type="button"' + "onclick='markKnotAsComplete(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
 
        $("#table2").append(tr+td2+td3+td4);
 
@@ -101,14 +105,31 @@ function makeTableFerdigeKnuter(type, accessToken){
         var tr="<tr>";
         var td2="<td>"+responseAsJSON[i]["knotId"]["knotName"]+"</td>";
         var td3="<td>"+responseAsJSON[i]["knotId"]["knotDetails"]+"</td>";
-        var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +responseAsJSON[i]["witnessId1"]["lastName"]+ " og " +responseAsJSON[i]["witnessId2"]["firstName"]+ " " +responseAsJSON[i]["witnessId2"]["lastName"]+"</td>";
-        var td5="<td>"+ '<button type="button"' + "onclick='makeOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
+        var td4="<td>"+"test"+"</td>";
+        /*var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +responseAsJSON[i]["witnessId1"]["lastName"]+ " og " +responseAsJSON[i]["witnessId2"]["firstName"]+ " " +responseAsJSON[i]["witnessId2"]["lastName"]+"</td>";*/
+        var td5="<td>"+ '<button type="button"' + "onclick='removeKnotAsComplete(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
 
        $("#table").append(tr+td2+td3+td4+td5);
 
     }
     $("#table").append("</tbody>");
         
+    });
+}
+
+function markKnotAsComplete(knotId){
+    var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+knotId+"&witness1="+1+"&witness2="+1;
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+    });
+}
+
+function removeKnotAsComplete(knotId){
+    var url = "http://158.38.101.146:8080/unRegisterCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+knotId;
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
     });
 }
     
@@ -124,3 +145,26 @@ var HttpClient = function () {
         anHttpRequest.send(null);
     }
 }
+
+function facebookInit() {
+    //console.log("facebook Init 2");
+    FB.init({
+        appId: '291199641408779',
+        cookie: true,
+        xfbml: true,
+        version: 'v2.12'
+    });
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            console.log(response.status);
+            accessToken = response.authResponse.accessToken;
+            //console.log(token);
+            //printToken();
+            //getInfo();
+        } else if (response.status === 'not_authorized') {
+            console.log(response.status);
+        } else {
+            console.log(response.status);
+        }
+    });
+}//;
