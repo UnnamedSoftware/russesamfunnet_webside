@@ -383,3 +383,22 @@ p{
 .btn-primary{
     border: 0;
 }
+
+#profileWidget{
+    background: whitesmoke;
+    text-align: center;
+    color: #000 !important;
+    
+}
+
+#profileWidget p{
+    
+    color: #000 !important;
+    
+}
+
+#profileWidget h3{
+    
+    color: #000 !important;
+    
+}

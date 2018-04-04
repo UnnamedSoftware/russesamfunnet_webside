@@ -1,15 +1,50 @@
 /*   JAVASCRIPT CODE SPECIFIC TO THE KNOTS.PHP WEB PAGE    */
 
-  var httpRequest;
-  var httpRequest2;
+  var token = "";
+  var type = "";
+  
+  function initialize() {
+    var cookie = getCookie("Russesamfunnet");
+    if (cookie === null) {
+        facebookInit();
+        try {
+            logoutNoRedirect();
+        } catch (error) {
+            console.log("FacebookError: " + error);
+        } 
+        redirectUser();
+        /*USER MUST BE REDIRECTED TO LOGIN AND SESSION WITH
+          GOOGLE/FACEBOOK/RUSSESAMFUNNET MUST BE ENDED*/
+    }
+    else if (cookie !== null) {
+        //console.log("HELLO THIS IS THE ONLOAD IN ADMINSCRIPT.JS");
+        if (cookie === "facebook") {
+            facebookInit();
+            type = "facebook";
+            
+        }
+        else if (cookie === "russesamfunnet") {
+            //console.log(cookie);
+            //console.log(getCookie("Russesamfunnet-token"));
+            type = "russesamfunnet";
+            token = getCookie("Russesamfunnet-token");
+        }
+        //getInfoForPage();
+    }
+    else {
+        //console.log("ELSE...HOW?");
+    }
+}
   
   function makeRequest() {
       
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = getCookie("Russesamfunnet");
-    var url = "http://158.38.101.146:8080/completedKnots?accessToken="+accessToken+"&type="+type;
+      
+      
+    var url = "http://158.38.101.146:8080/completedKnots?accessToken="+token+"&type="+type;
       
     httpRequest = new XMLHttpRequest();
+    
+    
 
     if (!httpRequest) {
       alert('Giving up :( Cannot create an XMLHTTP instance');
@@ -21,11 +56,9 @@
     }
     
     function makeSecondRequest() {
-      
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = getCookie("Russesamfunnet");
-    var url = "http://158.38.101.146:8080/getKnotsList?accessToken="+accessToken+"&type="+type;
-      
+    
+    var url = "http://158.38.101.146:8080/getKnotsList?accessToken="+token+"&type="+type;
+
     httpRequest2 = new XMLHttpRequest();
 
     if (!httpRequest2) {
@@ -110,41 +143,12 @@
     $("#table2").append("</tbody>");
     
     }
-    
-    
 
 function getInfoForPage(){
-    console.log("is this code executed? knots.js");
-    getUserInfo();
-    getKnots();
-    
-    }
-    
-function getUserInfo(){
-    console.log("Getting user info and adding it to the page");
-
-    
-
-}
-
-function getKnots(){
-    console.log("Getting the knots for this user and adding it to the page");
-    console.log("TEST");
-    
+    initialize();
     makeSecondRequest();
-   makeRequest();
-   
-    
-}
-
-function getKnot(){
-    console.log("User have clicked a knot and is redirected to a new page for that specific knot, there the user can register"
-    + " the knot a done and register 1 or 2 witnesses");
-}
-
-function loadInfo(){
-    
-}
+    makeRequest();
+    }
 
 function makeSecondOrder(id){
     
@@ -168,7 +172,6 @@ function makeSecondOrder(id){
         alert('There was a problem with the request.');
       }
     }
-   
     httpRequest.open('GET', url);
     httpRequest.send();
     location.reload();
@@ -180,4 +183,38 @@ function makeOrder(id){
     
     
 }
-            
+
+var HttpClient = function () {
+    this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+    }
+}
+
+function facebookInit() {
+    //console.log("facebook Init 2");
+    FB.init({
+        appId: '291199641408779',
+        cookie: true,
+        xfbml: true,
+        version: 'v2.12'
+    });
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            console.log(response.status);
+            token = response.authResponse.accessToken;
+            //console.log(token);
+            //printToken();
+            //getInfo();
+        } else if (response.status === 'not_authorized') {
+            console.log(response.status);
+        } else {
+            console.log(response.status);
+        }
+    });
+}//;

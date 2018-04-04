@@ -33,13 +33,20 @@ and open the template in the editor.
         </div>
             
                 <div class="row">
-                    <div class="col-2 col-m-2"><a href="https://placeholder.com"><img src="http://via.placeholder.com/300x150"></a></div>
-                    <div class="col-8 col-m-7">
-                        <h2>Insert name here</h2>
-                        <p>Profile info here, blahblalgllfgldflslflsflsdfsdfgdhgslsdhgjpoejhojh phøjsølhgj ølsjghøl jsølhj ølj</p>
+                    <div class="col-5 col-m-2"></div>
+                    <div class="col-2 col-m-7">
+                        <div id="profileWidget">
+                        <img src="http://via.placeholder.com/300x150">
+                        <h3>Billy bob bobson</h3>
+                        <p>Endre profilbilde</p>
+                        <p>Endre passord</p>
+                        <p>Slett bruker</p>
+                        </div>
                     </div>
-                    <div class="col-2 col-m-12">Antall knuter</div>
-                </div>
+                        
+                        <div class="col-5 col-m-12"></div>
+                    </div>
+                
                 
             
             
