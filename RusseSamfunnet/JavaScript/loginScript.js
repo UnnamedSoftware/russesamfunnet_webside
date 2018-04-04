@@ -45,7 +45,8 @@ function eraseCookie(name) {
 
 // DEFAULT LOGIN MED RUSSESAMFUNNET
 function auth() {
-    var url = 'http://158.38.101.146:8080/loginToken?email=' + document.getElementById('email').value + "&password=" + document.getElementById('password').value;
+    var hashedPassword = sha256(document.getElementById('password').value);
+    var url = 'http://158.38.101.146:8080/loginToken?email=' + document.getElementById('email').value + "&password=" + hashedPassword;
     var client = new HttpClient();
     client.get(url, function (response) {
         console.log(response);

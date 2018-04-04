@@ -71,22 +71,27 @@ function register() {
     //console.log("id name: " + schoolId.innerHTML);
     //console.log(email + ", " + password + ", " + confirmPassword + ", " + schoolName);
 
+    if (password == confirmPassword) {
+        var hashedPassword = sha256(password);
+        var url = "http://158.38.101.146:8080/russasamfunnetRegister?email=" + email + "&password=" + hashedPassword + "&schoolName=" + schoolName + "&firstName=" + firstName + "&lastName=" + lastName;
+        console.log(url);
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            //console.log(response);
+            responseAsJSON = JSON.parse(response);
+            //console.log(responseAsJSON);
+            var accessToken = responseAsJSON.accessToken;
+            var loginStatus = responseAsJSON.loginStatus;
+            var expiresInDays = responseAsJSON.expiresInDays
+            //console.log(accessToken);
+            setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
+            setCookie("Russesamfunnet-token", accessToken, expiresInDays);
+            setTimeout(function () {
+                window.location.href = "feed.php";
+            }, 1000);
+        });
+    }
 
-    var url = "http://158.38.101.146:8080/russasamfunnetRegister?email=" + email + "&password=" + password + "&schoolName=" + schoolName + "&firstName=" + firstName + "&lastName=" + lastName;
-    console.log(url);
-    var client = new HttpClient();
-    client.get(url, function (response) {
-        //console.log(response);
-        responseAsJSON = JSON.parse(response);
-        //console.log(responseAsJSON);
-        var accessToken = responseAsJSON.accessToken;
-        var loginStatus = responseAsJSON.loginStatus;
-        var expiresInDays = responseAsJSON.expiresInDays
-        //console.log(accessToken);
-        setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
-        setCookie("Russesamfunnet-token", accessToken, expiresInDays);
-        setTimeout(function(){
-            window.location.href = "feed.php";
-        }, 1000);
-    });
+
+    
 }
