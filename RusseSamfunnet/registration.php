@@ -85,11 +85,11 @@ and open the template in the editor.
 -->
                         <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Begynn å skriv for valg">
                         <datalist id="schools">
-                            <option value="Skole nr 1">
+                            <!--<option value="Skole nr 1">
                             <option value="Borgund vgs">
                             <option value="Skole nr 3">
                             <option value="Skole nr 4">
-                            <option value="Skole nr 5">
+                            <option value="Skole nr 5">-->
                         </datalist>
                     </div>
 
