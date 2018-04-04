@@ -59,7 +59,7 @@ function utførHentKnuter(type, accessToken) {
 }
 
 function makeTableMuligeKnuter(type, accessToken){
-    var url = "http://158.38.101.146:8080/knots?accessToken=" + accessToken + "&type=" + type;
+    var url = "http://158.38.101.146:8080/getKnotsList?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
         //console.log(response);
@@ -78,9 +78,9 @@ function makeTableMuligeKnuter(type, accessToken){
         var td3="<td>"+responseAsJSON[i]["knotDetails"]+"</td>";
         /*var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +obj[i]["witnessId1"]["lastName"]+ " og " +obj[i]["witnessId2"]["firstName"]+ " " +obj[i]["witnessId2"]["lastName"]+"</td>";*/
         var td4="<td>"+ '<button type="button"' + "onclick='markKnotAsComplete(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
-
+        if (responseAsJSON[i]["completed"] === false)    {
        $("#table2").append(tr+td2+td3+td4);
-
+        }
     }
     $("#table2").append("</tbody>");
         
@@ -108,9 +108,9 @@ function makeTableFerdigeKnuter(type, accessToken){
         var td4="<td>"+"test"+"</td>";
         /*var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +responseAsJSON[i]["witnessId1"]["lastName"]+ " og " +responseAsJSON[i]["witnessId2"]["firstName"]+ " " +responseAsJSON[i]["witnessId2"]["lastName"]+"</td>";*/
         var td5="<td>"+ '<button type="button"' + "onclick='removeKnotAsComplete(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
-
+        
        $("#table").append(tr+td2+td3+td4+td5);
-
+       
     }
     $("#table").append("</tbody>");
         
