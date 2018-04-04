@@ -123,6 +123,7 @@ function markKnotAsComplete(knotId){
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
     });
+    location.reload();
 }
 
 function removeKnotAsComplete(knotId){
@@ -131,6 +132,7 @@ function removeKnotAsComplete(knotId){
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
     });
+    location.reload();
 }
     
 
