@@ -19,6 +19,7 @@ and open the template in the editor.
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="JavaScript/registratonScript.js"></script>
+        <script src="JavaScript/sha256.js"></script>
         <script type="text/javascript">
             /*
                 function auth(){
@@ -85,11 +86,11 @@ and open the template in the editor.
 -->
                         <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Begynn å skriv for valg">
                         <datalist id="schools">
-                            <option value="Skole nr 1">
+                            <!--<option value="Skole nr 1">
                             <option value="Borgund vgs">
                             <option value="Skole nr 3">
                             <option value="Skole nr 4">
-                            <option value="Skole nr 5">
+                            <option value="Skole nr 5">-->
                         </datalist>
                     </div>
 

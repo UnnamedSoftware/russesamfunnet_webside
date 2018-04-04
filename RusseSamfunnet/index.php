@@ -23,6 +23,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
 
         <script src="JavaScript/loginScript.js"></script>
+        <script src="JavaScript/sha256.js"></script>
     </head>
 
     <body>
