@@ -43,9 +43,6 @@
     var url = "http://158.38.101.146:8080/completedKnots?accessToken="+token+"&type="+type;
       
     httpRequest = new XMLHttpRequest();
-    
-    
-
     if (!httpRequest) {
       alert('Giving up :( Cannot create an XMLHTTP instance');
       return false;
