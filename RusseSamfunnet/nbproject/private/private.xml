@@ -4,12 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/CSS/main.css</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/admin.php</file>
             <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/feed.js</file>
             <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/adminScript.js</file>
             <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/userprofile.php</file>
             <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/knots.js</file>
             <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/feed.php</file>
-            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/CSS/custombootstrap.css</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/newKnots.js</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/knots.php</file>
         </group>
     </open-files>
 </project-private>

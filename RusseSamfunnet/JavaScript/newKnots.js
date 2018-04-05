@@ -34,6 +34,7 @@ window.onload = function () {
 }
     
 function setupSite(){
+    
     hentKnuter();
 }
 
@@ -44,18 +45,20 @@ function hentKnuter() {
         setTimeout(function () {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
-            utførHentKnuter(type, token);
+            utførHentKnuter(type, accessToken);
             
         }, 700);
     } else if(type == 'russesamfunnet'){
         accessToken = getCookie("Russesamfunnet-token");
         utførHentKnuter(type, accessToken);
+        
     }
 }
 
 function utførHentKnuter(type, accessToken) {
     makeTableMuligeKnuter(type, accessToken);
     makeTableFerdigeKnuter(type, accessToken);
+    console.log(accessToken);
 }
 
 function makeTableMuligeKnuter(type, accessToken){
@@ -77,7 +80,7 @@ function makeTableMuligeKnuter(type, accessToken){
         var td2="<td>"+responseAsJSON[i]["knotName"]+"</td>";
         var td3="<td>"+responseAsJSON[i]["knotDetails"]+"</td>";
         /*var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +obj[i]["witnessId1"]["lastName"]+ " og " +obj[i]["witnessId2"]["firstName"]+ " " +obj[i]["witnessId2"]["lastName"]+"</td>";*/
-        var td4="<td>"+ '<button type="button"' + "onclick='markKnotAsComplete(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
+        var td4="<td>"+ '<button type="button"' + "onclick='markKnotAsComplete(" + currentId + ")'" + ">Legg til</button>" +"</td>\n\</tr>";
         if (responseAsJSON[i]["completed"] === false)    {
        $("#table2").append(tr+td2+td3+td4);
         }
@@ -88,6 +91,8 @@ function makeTableMuligeKnuter(type, accessToken){
 }
 
 function makeTableFerdigeKnuter(type, accessToken){
+    console.log("accessToken");
+    console.log(accessToken);
     var url = "http://158.38.101.146:8080/completedKnots?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
@@ -107,7 +112,7 @@ function makeTableFerdigeKnuter(type, accessToken){
         var td3="<td>"+responseAsJSON[i]["knotId"]["knotDetails"]+"</td>";
         var td4="<td>"+"test"+"</td>";
         /*var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +responseAsJSON[i]["witnessId1"]["lastName"]+ " og " +responseAsJSON[i]["witnessId2"]["firstName"]+ " " +responseAsJSON[i]["witnessId2"]["lastName"]+"</td>";*/
-        var td5="<td>"+ '<button type="button"' + "onclick='removeKnotAsComplete(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
+        var td5="<td>"+ '<button type="button"' + "onclick='removeKnotAsComplete(" + currentId + ")'" + ">Fjern</button>" +"</td>\n\</tr>";
         
        $("#table").append(tr+td2+td3+td4+td5);
        
@@ -160,7 +165,8 @@ function facebookInit() {
         if (response.status === 'connected') {
             console.log(response.status);
             accessToken = response.authResponse.accessToken;
-            //console.log(token);
+            console.log(accessToken);
+            
             //printToken();
             //getInfo();
         } else if (response.status === 'not_authorized') {
@@ -169,4 +175,4 @@ function facebookInit() {
             console.log(response.status);
         }
     });
-}//;
+};

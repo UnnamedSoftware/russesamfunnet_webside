@@ -33,18 +33,17 @@ and open the template in the editor.
         </div>
             
                 <div class="row">
-                    <div class="col-5 col-m-2"></div>
-                    <div class="col-2 col-m-7">
+                    <div class="col-3 col-m-2"></div>
+                    <div class="col-6 col-m-7">
                         <div id="profileWidget">
                         <img src="http://via.placeholder.com/300x150">
                         <h3>Billy bob bobson</h3>
-                        <p>Endre profilbilde</p>
-                        <p>Endre passord</p>
-                        <p>Slett bruker</p>
+                        <p>Innstillinger</p>
+                        
                         </div>
                     </div>
                         
-                        <div class="col-5 col-m-12"></div>
+                        <div class="col-3 col-m-12"></div>
                     </div>
                 
                 

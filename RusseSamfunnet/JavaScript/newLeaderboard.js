@@ -67,7 +67,20 @@ function makeTableLeaderboard(type, accessToken){
         //console.log(response);
         var responseAsJSON = JSON.parse(response);
         
-        
+        var tbl=$("<table/>").attr("id","table");
+$("#div1").append(tbl);
+$("#table").append("<tbody>"); 
+for(var i=0;i<responseAsJSON.length;i++)
+{
+    var tr="<tr>";
+    var td2="<td>"+responseAsJSON[i]["position"]+"</td>";
+    var td3="<td>"+responseAsJSON[i]["russId"]["firstName"] + " " +responseAsJSON[i]["russId"]["lastName"]+"</td>";
+    var td4="<td>"+responseAsJSON[i]["points"]+"</td>\n\</tr>";
+
+   $("#table").append(tr+td2+td3+td4);
+
+}
+$("#table").append("</tbody>"); 
         
     });
 }

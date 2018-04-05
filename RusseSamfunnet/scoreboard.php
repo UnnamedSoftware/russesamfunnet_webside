@@ -21,13 +21,13 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script src="JavaScript/mainScript.js"></script>
-        <script src="JavaScript/Scoreboard.js"></script>
+        <script src="JavaScript/newLeaderboard.js"></script>
         
         <link rel="stylesheet" type="text/css" href="CSS/main.css">
         <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
         
     </head>
-    <body onload="Scoreboard">
+    <body>
         <div class="row">
             <div class="col-12 col-m-12">
                 <?php include 'Templates/navigation.php';?>
