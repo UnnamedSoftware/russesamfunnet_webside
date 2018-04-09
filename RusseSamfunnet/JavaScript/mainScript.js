@@ -1,3 +1,5 @@
+token = "";
+
 function getURL(){
     return "http://158.38.101.146:8080/";
 }
@@ -111,20 +113,75 @@ window.onload = function () {
         console.log("HELLO THIS IS THE ONLOAD IN MAINSCRIPT.JS");
         if (cookie == "facebook") {
             facebookInit();
+            getFeed();
             
         }/*
         if (cookie == "google") {
             googleInit();
         }*/
         if (cookie == "russesamfunnet") {
-
+            getFeed();
         }
-        getInfoForPage();
     }
     else {
         console.log("ELSE...HOW?");
     }
 }
+
+
+
+function getInfoForPage(){
+    console.log("is this code executed? feed.js");
+    //getUserInfo();
+    getFeed();
+    //getSchools();
+
+    // fetch data from the rest api and add the data to the page.
+}
+
+function getUserInfo(){
+    console.log("Getting user info and adding it to the page");
+}
+
+function getFeed(){
+    console.log("Getting the feed for this user and adding it to the page lol");
+
+    var feedItems = document.getElementById('feedItems');
+    for(i = 0; i < 40; i++){
+        var newFeedItem = document.createElement('div');
+        newFeedItem.setAttribute("class", "container col-7 col-m-7 feedStyle");
+        newFeedItem.innerHTML = i + " hello, it's me<br>Kristian F Hustad";
+        feedItems.appendChild(newFeedItem);
+    }
+
+
+    /*var newFeedItem = document.createElement('div');
+    newFeedItem.setAttribute("class", "container col-7 col-m-7 feedStyle");
+    newFeedItem.innerHTML = "hello, it's me<br>Kristian F Hustad";
+    feedItems.appendChild(newFeedItem);*/
+
+
+}
+
+function handleActions(){
+    console.log("handle actions like clicks on a feed item");
+}
+
+function postNewMessageToFeed(){
+    console.log("post a new message to the feed (separate for area, school and group?)");
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function facebookInit() {
     console.log("facebook Init");
@@ -137,6 +194,7 @@ function facebookInit() {
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
             console.log(response.status);
+            token = response.authResponse.accessToken;
             //getInfo();
             //alert("connected!");
         } else if (response.status === 'not_authorized') {

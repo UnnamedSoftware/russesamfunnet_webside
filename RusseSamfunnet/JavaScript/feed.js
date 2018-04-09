@@ -1,8 +1,8 @@
 /*   JAVASCRIPT CODE SPECIFIC TO THE FEED.PHP WEB PAGE    */
-
+/*
 function getInfoForPage(){
     console.log("is this code executed? feed.js");
-    getUserInfo();
+    //getUserInfo();
     getFeed();
     getSchools();
 
@@ -24,8 +24,9 @@ function handleActions(){
 function postNewMessageToFeed(){
     console.log("post a new message to the feed (separate for area, school and group?)");
 }
-
+*/
 //Just a test
+/*
 function getSchools(){
     var url = getURL();
     console.log(url);
@@ -57,3 +58,4 @@ function getSchools(){
         //console.log(response.json());
     });
 }
+*/

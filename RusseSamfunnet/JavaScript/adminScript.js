@@ -180,7 +180,7 @@ function setupSite(){
             kontakt.style.display = 'none';
             meldinger.style.display = 'block';
             console.log("meldinger");
-            hentMeldinger();
+            getFeed();
         }
 
         if(param == 'registrerAdmin'){
@@ -248,6 +248,7 @@ function utførHentKnuter(type, accessToken) {
     //var accessToken = getCookie("Russesamfunnet-token");
     //var type = "russesamfunnet";
     var url = "http://158.38.101.146:8080/knots?accessToken=" + accessToken + "&type=" + type;
+    console.log(url);
     var client = new HttpClient();
     client.get(url, function (response) {
         //console.log(response);
@@ -958,6 +959,137 @@ function populateUnconfirmedUserTable(responseAsJSON){
 function hentMeldinger(){
     console.log("MELDINGER have been clicked");
 }
+
+
+
+function getFeed(){
+    console.log("getFeed");
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        setTimeout(function () {
+            getFeedExecute(type, token);
+        }, 1000);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        getFeedExecute(type, accessToken);
+    }
+}
+
+function getFeedExecute(type, accessToken){
+    console.log("getFeedExecute");
+    var url = "http://158.38.101.146:8080/schoolFeed?accessToken="+accessToken+"&type="+type;
+    //console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        try{
+            var responseAsJSON = JSON.parse(response); 
+            populateFeedTable(responseAsJSON);
+        }catch(error){
+            console.log(error.message);
+        }
+    });
+}
+
+function populateFeedTable(responseAsJSON){
+    console.log("populateFeedTable");
+    var table = document.getElementById("feedTable");
+    var tableBody = document.getElementById("feedTableBody");
+    tableBody.innerHTML = "";
+    if(responseAsJSON != 'null' && responseAsJSON != 'undefined'){
+        //console.log("not null: " + responseAsJSON);
+        var rowCounter = 0;
+        for(i = 0; i < responseAsJSON.length; i++){
+            //var role = responseAsJSON[i].russRole;
+            //if(role == 'admin' || role == 'russ'){
+                var row = tableBody.insertRow(rowCounter);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+
+                cell1.innerHTML = responseAsJSON[i].feedId;
+                cell2.innerHTML = responseAsJSON[i].russId.firstName + " " + responseAsJSON[i].russId.lastName;
+                cell3.innerHTML = responseAsJSON[i].message;
+                cell4.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="deleteMessage('`+responseAsJSON[i].feedId+`','`+rowCounter+`'); return false;">
+                    <img src="icons/cancel.png"  style="height: 30px; padding-top: 0; padding-bottom: 3px; padding-left: 8px;"/>
+                    </a>`;
+                rowCounter++;
+            //}  
+        }
+    }else{
+        console.log("null or undefined");
+    }
+}
+
+function deleteMessage(feedId, row){
+    console.log(feedId + " Deleted, Row in table = " + row);
+    var confirmed = confirm("Vil du slette denne meldingen?");
+    console.log(confirmed);
+    if(confirmed == true){
+        var x = document.getElementById("feedTableBody").rows[row].cells;
+        //x[0].innerHTML = "X";
+        x[0].style.color = "white";
+        x[0].style.background = "green";
+        x[1].innerHTML = "SLETTET";
+        x[1].style.color = "white";
+        x[1].style.background = "green";
+        x[2].innerHTML = "SLETTET";
+        x[2].style.color = "white";
+        x[2].style.background = "green";
+        x[3].innerHTML = "";
+        x[3].style.background = "green";
+    }
+}
+
+
+
+
+
+
+
+
+function errorReport(){
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            errorReportExecute(type, token);
+        }, 1000);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        errorReportExecute(type, accessToken);
+    }
+}
+
+function errorReportExecute(type, accessToken){
+    var errorSubject = document.getElementById('errorSubject').value;
+    var errorMessage = document.getElementById('errorMessage').value;
+
+    //console.log(errorSubject + ", " + errorMessage);
+    if(errorSubject != "" && errorMessage != ""){
+        //console.log("not null");
+        var url = "http://158.38.101.146:8080/createErrorReport?accessToken="+accessToken+"&type="+type+"&subject="+errorSubject+"&message="+errorMessage;
+        console.log(url);
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            var responseAsJSON = JSON.parse(response);
+            var status = document.getElementById('statusField');
+            if(responseAsJSON.errorSubject == errorSubject){
+                status.innerHTML = "Problemet er registrert: " + responseAsJSON.errorSubject;
+                status.style.color = "green";
+                errorSubject.value = "";
+                errorMessage.value = "";
+            }else{
+                status.innerHTML = "En feil oppstod, prøv igjen";
+                status.style.color = "red";
+            }
+        });
+    }
+
+    
+}
+
 
 
 var HttpClient = function () {
