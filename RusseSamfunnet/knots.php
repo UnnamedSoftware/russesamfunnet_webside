@@ -24,7 +24,7 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script src="JavaScript/mainScript.js"></script>
-        <script src="JavaScript/knots.js"></script>
+        <script src="JavaScript/newKnots.js"></script>
         <link rel="stylesheet" type="text/css" href="CSS/main.css">
         <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
         
@@ -37,7 +37,7 @@ and open the template in the editor.
         </div>
         <div class="row">
     <div class="col-2 col-m-2"></div>
-    <div class="col-7 col-m-9">
+    <div class="col-8 col-m-9" style="border-color: gray;">
 
       <table id="table" class="table table-striped">
           <thead>
@@ -61,7 +61,7 @@ and open the template in the editor.
       </table>
                 
         </div>
-    <div class="col-3 col-m-12">...</div>
+    <div class="col-2 col-m-12">...</div>
         </div>
         <div class="row">
             <div class="col-4"><p></p></div>

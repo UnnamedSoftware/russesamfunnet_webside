@@ -1,16 +1,48 @@
 /*   JAVASCRIPT CODE SPECIFIC TO THE KNOTS.PHP WEB PAGE    */
 
-  var httpRequest;
-  var httpRequest2;
+  var token = "";
+  var type = "";
+  
+  function initialize() {
+    var cookie = getCookie("Russesamfunnet");
+    if (cookie === null) {
+        facebookInit();
+        try {
+            logoutNoRedirect();
+        } catch (error) {
+            console.log("FacebookError: " + error);
+        } 
+        redirectUser();
+        /*USER MUST BE REDIRECTED TO LOGIN AND SESSION WITH
+          GOOGLE/FACEBOOK/RUSSESAMFUNNET MUST BE ENDED*/
+    }
+    else if (cookie !== null) {
+        //console.log("HELLO THIS IS THE ONLOAD IN ADMINSCRIPT.JS");
+        if (cookie === "facebook") {
+            facebookInit();
+            type = "facebook";
+            
+        }
+        else if (cookie === "russesamfunnet") {
+            //console.log(cookie);
+            //console.log(getCookie("Russesamfunnet-token"));
+            type = "russesamfunnet";
+            token = getCookie("Russesamfunnet-token");
+        }
+        //getInfoForPage();
+    }
+    else {
+        //console.log("ELSE...HOW?");
+    }
+}
   
   function makeRequest() {
       
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
-    var url = "http://158.38.101.146:8080/completedKnots?accessToken="+accessToken+"&type="+type;
+      
+      
+    var url = "http://158.38.101.146:8080/completedKnots?accessToken="+token+"&type="+type;
       
     httpRequest = new XMLHttpRequest();
-
     if (!httpRequest) {
       alert('Giving up :( Cannot create an XMLHTTP instance');
       return false;
@@ -21,11 +53,9 @@
     }
     
     function makeSecondRequest() {
-      
-    var accessToken = getCookie("Russesamfunnet-token");
-    var type = "russesamfunnet";
-    var url = "http://158.38.101.146:8080/getKnotsList?accessToken="+accessToken+"&type="+type;
-      
+    
+    var url = "http://158.38.101.146:8080/getKnotsList?accessToken="+token+"&type="+type;
+
     httpRequest2 = new XMLHttpRequest();
 
     if (!httpRequest2) {
@@ -101,7 +131,7 @@
         var tr="<tr id=" + currentId + ">";
         var td="<td>"+obj[i]["knotName"]+"</td>";
         var td2="<td>"+obj[i]["knotDetails"]+"</td>";
-        var td3="<td>"+ '<button type="button"' + "onclick='makeOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
+        var td3="<td>"+ '<button type="button"' + "onclick='makeSecondOrder(" + currentId + ")'" + ">X</button>" +"</td>\n\</tr>";
         if (obj[i]["completed"] === false)    {
             $("#table2").append(tr+td+td2+td3);
         }
@@ -110,47 +140,18 @@
     $("#table2").append("</tbody>");
     
     }
-    
-    
 
 function getInfoForPage(){
-    console.log("is this code executed? knots.js");
-    getUserInfo();
-    getKnots();
-    
-    }
-    
-function getUserInfo(){
-    console.log("Getting user info and adding it to the page");
-
-    
-
-}
-
-function getKnots(){
-    console.log("Getting the knots for this user and adding it to the page");
-    console.log("TEST");
-    
+    initialize();
     makeSecondRequest();
-   makeRequest();
-   
-    
-}
+    makeRequest();
+    }
 
-function getKnot(){
-    console.log("User have clicked a knot and is redirected to a new page for that specific knot, there the user can register"
-    + " the knot a done and register 1 or 2 witnesses");
-}
-
-function loadInfo(){
-    
-}
-
-function makeOrder(id){
+function makeSecondOrder(id){
     
     var accessToken = getCookie("Russesamfunnet-token");
     var type = "russesamfunnet";
-    var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+id+"&witness1="+1+"&witness2="+1;
+    var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+id+"&witness1="+1+"&witness2="+2;
       
     httpRequest = new XMLHttpRequest();
 
@@ -168,10 +169,49 @@ function makeOrder(id){
         alert('There was a problem with the request.');
       }
     }
-   
     httpRequest.open('GET', url);
     httpRequest.send();
     location.reload();
     
 }
-            
+
+function makeOrder(id){
+    
+    
+    
+}
+
+var HttpClient = function () {
+    this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+    }
+}
+
+function facebookInit() {
+    //console.log("facebook Init 2");
+    FB.init({
+        appId: '291199641408779',
+        cookie: true,
+        xfbml: true,
+        version: 'v2.12'
+    });
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            console.log(response.status);
+            token = response.authResponse.accessToken;
+            //console.log(token);
+            //printToken();
+            //getInfo();
+        } else if (response.status === 'not_authorized') {
+            console.log(response.status);
+        } else {
+            console.log(response.status);
+        }
+    });
+}//;
