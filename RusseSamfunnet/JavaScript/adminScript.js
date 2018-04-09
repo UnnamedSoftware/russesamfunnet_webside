@@ -40,8 +40,15 @@ function logoutRussesamfunnet(){
     },1500);
 }
 
+/*
+WE NEED TO CHECK IF A USER IS AN ADMIN/SYS.ADMIN BEFORE WE LOAD THE ADMIN PAGE FOR THE USER
+ID THE USER IS NOT AN ADMIN REDIRECT THEM
 
+WE ALSO NEED TO MAKE THE ADMIN MENU ITEM ONLY VISIBLE TO ADMINS
+*/
 window.onload = function () {
+    /***************************************** ADMIN CHECK HERE ******************************************************/
+
     var cookie = getCookie("Russesamfunnet");
     if (cookie == null) {
         facebookInit();
