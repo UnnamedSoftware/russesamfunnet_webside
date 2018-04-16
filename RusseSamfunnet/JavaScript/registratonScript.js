@@ -79,19 +79,21 @@ function register() {
         client.get(url, function (response) {
             //console.log(response);
             responseAsJSON = JSON.parse(response);
-            //console.log(responseAsJSON);
-            var accessToken = responseAsJSON.accessToken;
+            console.log(responseAsJSON);
+            alert("check console!!1");
             var loginStatus = responseAsJSON.loginStatus;
-            var expiresInDays = responseAsJSON.expiresInDays
-            //console.log(accessToken);
-            setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
-            setCookie("Russesamfunnet-token", accessToken, expiresInDays);
-            setTimeout(function () {
-                window.location.href = "feed.php";
-            }, 1000);
+            if (loginStatus == "Login success") {
+                var accessToken = responseAsJSON.accessToken;
+                var russId = responseAsJSON.russId;
+                var expiresInDays = responseAsJSON.expiresInDays
+                //console.log(accessToken);
+                setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
+                setCookie("Russesamfunnet-token", accessToken, expiresInDays);
+                setCookie("Russesamfunnet-id", russId, expiresInDays);
+                setTimeout(function () {
+                    window.location.href = "feed.php";
+                }, 1000);
+            }
         });
     }
-
-
-    
 }
