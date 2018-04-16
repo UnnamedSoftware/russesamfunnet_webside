@@ -37,8 +37,8 @@ and open the template in the editor.
     <div class="col-2 col-m-2"></div>
     <div class="col-7 col-m-9" style="border-color: gray;">
         
-        <table id="table" class="table table-striped">
-          <thead class="thead-">
+        <table id="table">
+          <thead>
                 <tr>
                   <th scope="col">Posisjon</th>
                   <th scope="col">Navn</th>
