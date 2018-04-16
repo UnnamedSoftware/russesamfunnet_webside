@@ -11,12 +11,17 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
         
         
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         
         
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    
 
         <meta name="google-signin-client_id" content="906320627350-4b7lhkufslsljv9et2soi2i49ektmv6k.apps.googleusercontent.com">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,10 +42,9 @@ and open the template in the editor.
         </div>
         <div class="row">
     <div class="col-2 col-m-2"></div>
-    <div class="col-8 col-m-9" style="border-color: gray;">
-
+    <div class="col-8 col-m-9">
       <table id="table" class="table table-striped">
-          <thead>
+          <thead class="thead-dark" style="background: black;">
                 <tr>
                   <th scope="col">Knute</th>
                   <th scope="col">Description</th>
@@ -58,8 +62,7 @@ and open the template in the editor.
                   <th scope="col">TRØKK HER</th>
                 </tr>
           </thead>
-      </table>
-                
+        </table>
         </div>
     <div class="col-2 col-m-12">...</div>
         </div>
