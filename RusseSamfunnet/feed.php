@@ -23,8 +23,9 @@ and open the template in the editor.
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/feed.js"></script> 
 
-        <link rel="stylesheet" type="text/css" href="CSS/main.css">
-        <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
+        <!--<link rel="stylesheet" type="text/css" href="CSS/main.css">-->
+        <link rel="stylesheet" type="text/css" href="CSS/custombootstrap.css">
+        <link rel="stylesheet" type="text/css" href="CSS/feed.css">
           
         <script>
         /*
@@ -36,31 +37,42 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div class="row">
-            <div class="col-12 col-m-12">
-                <?php include 'Templates/navigation.php';?>
+    <div id="wrap">
+        <div class="col-12 col-m-12">
+        <?php include 'Templates/navigation.php';?>
+    </div>
+        <div id="feedItems" class="container feedContainer">
+
+            <div class="container col-7 col-m-7 feedStyle feedInput">
+                + (Send en ny melding)
+            </div>
+
+            <div class="container col-7 col-m-7 feedStyle">
+                hello <br>
+                - (Slett melding)
+            </div>
+
+            <div class="container col-7 col-m-7 feedStyle">
+                hello <br>
+                - (Slett melding)
+            </div>
+            <div class="container col-7 col-m-7 feedStyle">
+                hello <br>
+                - (Slett melding)
             </div>
         </div>
-        <div class="row">
+        <!--<div class="row">
             <div class="col-2 col-m-2">
-                
+                Hello
             </div>
-            <div id="topBannerContent">   
-                hjk 
-            </div>
-            <div id="schoolInfo">   
-                hjk 
-            </div>
-        
             <div class="col-3 col-m-12">
-                ...
+                Hello
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-m-12">
-                <p>footer</p>
-            </div>
-        </div>
-        
+        </div>-->
+      <div class="footer">
+        <p>footer footer fdhsjfkds</p>
+    </div>  
+    </div> 
+    
     </body>
 </html>

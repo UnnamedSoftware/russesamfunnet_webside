@@ -351,6 +351,90 @@ div#brukerIkonForklaring{
     display: none;
 }
 
+#feedSearch{
+    height: 5%;
+    background: #ffffff;
+    width: 100%;
+    margin: 16px 0;
+    background: rgb(255, 255, 255);
+}
+
+#feedSearchForm{
+    width: 100%;
+}
+
+#feedSearchFormInput{
+    width: 100%;
+    background: #e7e7e79a;
+    padding: 6px 10px;
+}
+
+#feedTableContainer{
+    background: #ffffff;
+    height: 81%;
+    overflow-y: scroll;
+}
+
+#feedTable{
+    border-collapse: collapse;
+    width: 100%;
+    background: rgb(255, 255, 255);
+}
+
+#feedTable thead{
+    padding-top: 10%;
+    background: rgb(255, 255, 255);
+
+}
+
+#feedTable th{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px;
+}
+
+#feedTable td{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 3px 8px 0 8px;
+}
+#feedTable tr:nth-child(even){
+    background-color: #e7e7e79a;
+}
+
+#feedTable thead tr{
+    /*margin: 50px 10px;*/
+    color: white;
+    background: rgb(0, 0, 0);
+
+}
+
+/*
+tbody#brukerTableBody{
+    height: 262px;
+    overflow-y: scroll;
+    width: 100%
+}
+*/
+div#feedIkonForklaring{
+    height: 5%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+    padding: 10px 10px 1px 10px;
+    border: 1px solid  black;
+    background: #ffffff;
+    /*position: relative;
+    margin-top: -10px; 
+    height: 10px;
+    clear:both;
+    background: red;
+    padding-top: 0;
+    border: 1px solid rgb(129, 129, 129);
+    background: rgb(255, 255, 255);*/
+}
+
+
+
+
 #registrerAdminDiv{
     display: none;
 }
@@ -360,6 +444,53 @@ div#brukerIkonForklaring{
     display: none;
 }
 
+div#statusField{
+    margin: auto;
+    margin-top: 5%;
+    width: 80%;
+    height: 5%;
+    background: rgb(255, 255, 255);
+}
+
+div#errorReportForm{
+    margin: auto;
+    margin-top: 5%;
+    width: 80%;
+    height: 80%;
+    background: rgb(255, 255, 255);
+}
+
+#errorSubject{
+    width: 90%;
+    margin-left: 5%;
+    padding: 12px 20px;
+    border: none;
+    border-bottom: 3px double red;
+}
+
+#errorMessage{
+    width: 90%;
+    margin-left: 5%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 3px double red;
+    /*
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;*/
+    resize: none;
+}
+
+#errorReportSubmit{
+    width: 25%;
+    margin-top: 25px;
+    margin-left: 5%;
+    padding: 10px;
+    background: green;
+    color: white;
+}
 
 #kontaktOssDiv{
     display: none;

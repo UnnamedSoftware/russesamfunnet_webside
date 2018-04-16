@@ -248,7 +248,29 @@
                                 </div>
                                 <div id="meldingerDiv">
                                     <div class="col-sm-9 setHeight">
-                                        meldingerDiv    
+                                        <div id="feedSearch">
+                                            <form id="feedSearchForm">
+                                                <input type="search" id="feedSearchFormInput"/>
+                                            </form>  
+                                        </div>
+                                        <div id="feedTableContainer">
+                                            <table id="feedTable">
+                                                <thead class="fixedHeader">
+                                                    <tr>
+                                                        <th style="width: 5%;">ID</th>
+                                                        <th style="width: 30%;">RUSS</th>
+                                                        <th style="width: 60%;">MELDING</th>
+                                                        <th style="width: 5%;">SLETT</th>
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody id="feedTableBody">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="feedIkonForklaring">
+                                            <img src="icons/cancel.png"  style="height: 20px; padding-top: 0;"/> Slett melding
+                                        </div> 
                                     </div>
                                 </div>
                                 <div id="registrerAdminDiv">
@@ -258,7 +280,23 @@
                                 </div>
                                 <div id="rapporterDiv">
                                     <div class="col-sm-9 setHeight">
-                                        rapporterDiv   
+                                        <div>
+                                            <div id="statusField">
+
+                                            </div>
+                                            <div id="errorReportForm">
+                                                <form name="errorReportForm" onSubmit="errorReport(); return false;">
+                                                    Subject: <br>
+                                                    <input type="text" id="errorSubject" name="errorReportSubject"/><br><br>
+                                                    Melding:<br>
+                                                    <!--<input type="text" id="knuteBeskrivelse" navn="knuteBeskrivelse"/><br><br>-->
+                                                    <textarea id="errorMessage"></textarea><br>
+                                                    <input type="submit" id="errorReportSubmit" name="Submit" value="Send problemmelding"/>
+                                                </form> 
+                                            </div>
+                                        
+                                        </div>
+                                          
                                     </div>
                                 </div>
                                 <div id="kontaktOssDiv">
@@ -272,12 +310,12 @@
                 </div>  
             </div>
             <div class="blurEffect">
-        <div class="footer">
-            <div>
+                <div class="footer">
+                    <div>
                 
-            </div>
-        </div>
-    </div> 
+                    </div>
+                </div>
+            </div> 
         </div>
     </body>
 </html>
