@@ -44,31 +44,37 @@ and open the template in the editor.
         <div id="feedItems" class="container feedContainer">
 
             <div class="container col-7 col-m-7 feedStyle feedInput">
-                + (Send en ny melding)
+                <div id="messageInput">
+                    <form>
+                        <textarea id="messageTextarea"></textarea>                    
+                    </form>
+                </div>
+                <div id="messageInputButton">
+                    <a href="#" onclick="postNewMessageToFeed(); return false;"><img src="icons/confirm2.PNG" id="messageConfirmButton"/></a>
+                </div>
             </div>
-
-            <div class="container col-7 col-m-7 feedStyle">
-                hello <br>
-                - (Slett melding)
-            </div>
-
-            <div class="container col-7 col-m-7 feedStyle">
-                hello <br>
-                - (Slett melding)
-            </div>
-            <div class="container col-7 col-m-7 feedStyle">
-                hello <br>
-                - (Slett melding)
-            </div>
+            <br style="clear: both; margin-bottom: 20px;">
+            <!--<div class="container col-7 col-m-7 feedStyle">
+                <div class="theMessageSender">
+                    <div class="theSendersName">
+                        Kristian Flisnes Hustad
+                    </div>
+                    <div class="deleteButton">
+                        <a href="#" onclick="deleteMessage(); return false;">X</a>
+                    </div>
+                </div>
+                <div class="theMessage">
+                    Lan-party på L167 kl. 08:15 - 14:45, skjermer på rommet, BYOC
+                </div>
+                <div class="theMessageTimestamp">
+                    09:02:42 - 10.04.2018
+                </div>
+            </div>-->
+            
         </div>
-        <!--<div class="row">
-            <div class="col-2 col-m-2">
-                Hello
-            </div>
-            <div class="col-3 col-m-12">
-                Hello
-            </div>
-        </div>-->
+        <div class="container col-7 col-m-7 feedStyle">
+            <a href="#" onclick="showMore(); return false;">Vis flere</a>
+        </div>
       <div class="footer">
         <p>footer footer fdhsjfkds</p>
     </div>  

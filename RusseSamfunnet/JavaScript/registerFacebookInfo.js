@@ -77,7 +77,8 @@ function logout() {
     }, 1500);
 }
 
-function registerFacebookUser(){
+function testRegisterFacebookUser(){
+    alert("In test register facebook user");
     var url = getURL();
     var email = document.getElementById('email').value;
     var schoolName = document.getElementById('schoolName').value;
@@ -86,16 +87,58 @@ function registerFacebookUser(){
     console.log(email + ", " + schoolName + ", " + russYear + ", " + birthdate);
     
     console.log("token id register " + token); email, schoolName, russYear, birthdate
-    
+    alert("In register facebook user 2");
     var registerFacebookUserURL = url+"facebookRegisterNew?accessToken="+token+"&email="+email+"&schoolId="+schoolName+"&russYear="+russYear+"&birthdate="+birthdate;
     console.log(registerFacebookUserURL);
     var client = new HttpClient();
     client.get(registerFacebookUserURL, function (response) {
+        alert("In register facebook user3");
         JSONresponse = JSON.parse(response);
+        alert("check console");
         console.log(JSONresponse);
+        alert("In register facebook user4");
         if(JSONresponse.loginStatus = 'User successfully registered'){
+            setCookie("Russesamfunnet-id", JSONresponse.userId, 7);
+            alert("In register facebook user5");
             setTimeout(function(){
-                window.location.href = "feed.php";
+                alert("check console");
+            },1000);
+            
+        }
+        if(JSONresponse.loginStatus = 'There is no school with that name'){
+            console.log("This school is not registered in the database");
+        }
+    });
+
+
+}
+
+function registerFacebookUser(){
+    alert("In register facebook user");
+    var url = getURL();
+    var email = document.getElementById('email').value;
+    var schoolName = document.getElementById('schoolName').value;
+    var russYear = document.getElementById('russYear').value;
+    var birthdate = document.getElementById('birthdate').value;
+    console.log(email + ", " + schoolName + ", " + russYear + ", " + birthdate);
+    
+    console.log("token id register " + token); email, schoolName, russYear, birthdate
+    alert("In register facebook user 2");
+    var registerFacebookUserURL = url+"facebookRegisterNew?accessToken="+token+"&email="+email+"&schoolId="+schoolName+"&russYear="+russYear+"&birthdate="+birthdate;
+    console.log(registerFacebookUserURL);
+    var client = new HttpClient();
+    client.get(registerFacebookUserURL, function (response) {
+        alert("In register facebook user3");
+        JSONresponse = JSON.parse(response);
+        alert("check console");
+        console.log(JSONresponse);
+        alert("In register facebook user4");
+        if(JSONresponse.loginStatus = 'User successfully registered'){
+            setCookie("Russesamfunnet-id", JSONresponse.userId, 7);
+            alert("In register facebook user5");
+            setTimeout(function(){
+                alert("check console");
+                //window.location.href = "feed.php";
             },1000);
             
         }

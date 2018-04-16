@@ -447,7 +447,7 @@ function UtførRegistrerKnute(type, accessToken, knuteNavn, knuteBeskrivelse){
     var url = "http://158.38.101.146:8080/addKnot?accessToken="+accessToken+"&type="+type+"&knotName="+knuteNavn+"&knotDescription="+knuteBeskrivelse;
     var client = new HttpClient();
     client.get(url, function (response) {
-        //console.log(response);
+        console.log(response);
         var responseAsJSON = JSON.parse(response);
         //console.log(responseAsJSON);
         var knuter = document.getElementById('knuter');
@@ -1022,22 +1022,49 @@ function populateFeedTable(responseAsJSON){
 }
 
 function deleteMessage(feedId, row){
+    console.log(feedId + " Being deleted, Row in table = " + row);
+
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        setTimeout(function () {
+            deleteMessageExecute(type, token, feedId, row);
+        }, 1000);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        deleteMessageExecute(type, accessToken, feedId, row);
+    }
+}
+
+
+function deleteMessageExecute(type, accessToken, feedId, row) {
     console.log(feedId + " Deleted, Row in table = " + row);
     var confirmed = confirm("Vil du slette denne meldingen?");
     console.log(confirmed);
-    if(confirmed == true){
-        var x = document.getElementById("feedTableBody").rows[row].cells;
-        //x[0].innerHTML = "X";
-        x[0].style.color = "white";
-        x[0].style.background = "green";
-        x[1].innerHTML = "SLETTET";
-        x[1].style.color = "white";
-        x[1].style.background = "green";
-        x[2].innerHTML = "SLETTET";
-        x[2].style.color = "white";
-        x[2].style.background = "green";
-        x[3].innerHTML = "";
-        x[3].style.background = "green";
+    if (confirmed == true) {
+        var url = "http://158.38.101.146:8080/deleteMessage?accessToken=" + accessToken + "&type=" + type + "&feedId=" + feedId;
+        //console.log(url);
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            console.log(response);
+            responseAsJSON = JSON.parse(response);
+            console.log(responseAsJSON);
+            if (responseAsJSON.response == "An error occured") {
+                console.log("An error occured!");
+            } else {
+                var x = document.getElementById("feedTableBody").rows[row].cells;
+                //x[0].innerHTML = "X";
+                x[0].style.color = "white";
+                x[0].style.background = "green";
+                x[1].innerHTML = "SLETTET";
+                x[1].style.color = "white";
+                x[1].style.background = "green";
+                x[2].innerHTML = "SLETTET";
+                x[2].style.color = "white";
+                x[2].style.background = "green";
+                x[3].innerHTML = "";
+                x[3].style.background = "green";
+            }
+        });
     }
 }
 
@@ -1078,8 +1105,12 @@ function errorReportExecute(type, accessToken){
             if(responseAsJSON.errorSubject == errorSubject){
                 status.innerHTML = "Problemet er registrert: " + responseAsJSON.errorSubject;
                 status.style.color = "green";
-                errorSubject.value = "";
-                errorMessage.value = "";
+                //errorSubject.value = "";
+                //errorMessage.value = "";
+                //errorSubject.innerText = "";
+                //errorMessage.innerText = "";
+                document.getElementById('errorSubject').value = "";
+                document.getElementById('errorMessage').value = "";
             }else{
                 status.innerHTML = "En feil oppstod, prøv igjen";
                 status.style.color = "red";

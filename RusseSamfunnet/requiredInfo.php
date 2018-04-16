@@ -59,7 +59,7 @@ and open the template in the editor.
                     </div>
                     <div style="height: 20px;"></div>
                     <button type="button" class="btn btn-primary leftButton" onclick="logout()">Avbryt</button>
-                    <button type="button" class="btn btn-primary rightButton" onclick="registerFacebookUser()">Fullfør registrering</button>
+                    <button type="button" class="btn btn-primary rightButton" onclick="testRegisterFacebookUser()">Fullfør registrering</button>
                 </form>
             </div>
             <div class="extraInfoMargin"></div>

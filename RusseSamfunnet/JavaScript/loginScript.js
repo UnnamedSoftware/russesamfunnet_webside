@@ -81,10 +81,13 @@ function loginRussesamfunnet(status){
         var responseAsJSON = JSON.parse(status);
         console.log(responseAsJSON);
         var loginStatus = responseAsJSON.loginStatus;
+        var expiresInDays = responseAsJSON.expiresInDays;
         console.log(loginStatus);
+        alert("Check console plz");
         if(loginStatus == 'Login success'){
-            setCookie("Russesamfunnet", "russesamfunnet", 1)
-            setCookie("Russesamfunnet-token", responseAsJSON.accessToken, 1);
+            setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
+            setCookie("Russesamfunnet-token", responseAsJSON.accessToken, expiresInDays);
+            setCookie("Russesamfunnet-id", responseAsJSON.russId, expiresInDays);
             setTimeout(function () {
                 window.location.href = 'admin.php';
             }, 500);
@@ -95,6 +98,9 @@ function loginRussesamfunnet(status){
                 window.location.href = 'feed.php';
             }*/
         }
+    }
+    else{
+        console.log("Error: user needs feedback here!");
     }
 
 
@@ -206,13 +212,14 @@ function completeFBLogin(){
             client.get(checkUserURL, function(response){
                 let JSONresponse = JSON.parse(response);
                 console.log(JSONresponse);
-                //alert("check console");
+                alert("check console");
                 if(JSONresponse.loginStatus == 'User not in db'){
                     setCookie("Russesamfunnet", "facebook", expiresIn);
                     window.location.href = 'requiredInfo.php';
                 } 
                 if(JSONresponse.loginStatus == 'Login success'){
                     setCookie("Russesamfunnet", "facebook", expiresIn);
+                    setCookie("Russesamfunnet-id", JSONresponse.userId, expiresIn);
                     setTimeout(function () {
                         window.location.href = 'feed.php';
                     }, 500);
@@ -250,8 +257,10 @@ function login(){
             client.get(checkUserURL, function(response){
                 let JSONresponse = JSON.parse(response);
                 console.log(JSONresponse);
-                //alert("check console");
+                alert("check console");
+                
                 if(JSONresponse.loginStatus == 'User not in db'){
+                    alert("check console");
                     window.location.href = 'requiredInfo.php';
                 } 
                 if(JSONresponse.loginStatus == 'Login success'){
