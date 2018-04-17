@@ -123,12 +123,18 @@ function makeTableFerdigeKnuter(type, accessToken){
 }
 
 function markKnotAsComplete(knotId){
+    //alert("marking");
+    //console.log("marking knot as complete");
     var url = "http://158.38.101.146:8080/registerCompletedKnot?accessToken="+accessToken+"&type="+type+"&knotId="+knotId+"&witness1="+1+"&witness2="+1;
+    //console.log(url);
     var client = new HttpClient();
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
+        //console.log(responseAsJSON);
+        //alert("reloading now!");
+        location.reload();
     });
-    location.reload();
+    
 }
 
 function removeKnotAsComplete(knotId){
@@ -136,8 +142,9 @@ function removeKnotAsComplete(knotId){
     var client = new HttpClient();
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
+        location.reload();
     });
-    location.reload();
+    
 }
     
 

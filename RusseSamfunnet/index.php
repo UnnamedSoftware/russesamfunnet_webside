@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Standard Template</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
-        <link rel="stylesheet" type="text/css" href="CSS/main.css">
+        <link rel="stylesheet" type="text/css" href="CSS/login.css">
         
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         
@@ -27,46 +27,40 @@ and open the template in the editor.
     </head>
 
     <body>
-        <div id="blurEffect">
-            <div class="container">
-                <div class="extraInfoMargin"></div>
-
-                <div id="loginForm">
-                    <img src="logos/logo.png"/>
-                    <!--<div id="imgDiv">
-                        
-                    </div> --> 
-                    <!--<div id="testingSomething">-->
-                        <h3 class="text-center">Logg inn</h3>
-                        <form>
-                            <div class="form-group">
-                                <label for="username">E-post</label>
-                                <input type="text" class="form-control" id="email" placeholder="E-mail" >
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Passord</label>
-                                <input type="password" class="form-control" id="password" placeholder="Password">
-                            </div>
-                            <div style="height: 40px;"></div>
-                            <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
-                            <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer konto</button>
-                            <!--<div style="height: 140px;"></div>-->
+    <div id="blurEffect" class="outer">
+        <div class="middle">
+            <div class="inner">
+                <div id="loginForm" class="container">
+                    <img src="logos/logo.png" height="250" style="height: 250px; text-align: center;"/>
+                    <h3 class="text-center">Logg inn</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="username">E-post<span class="errorMessage" id="emailError" style="display: none;"></span></label>
+                            <input type="text" class="form-control" id="email" placeholder="e-post" >
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Passord<span class="errorMessage" id="passwordError" style="display: none"></span></label>
+                            <input type="password" class="form-control" id="password" placeholder="passord">
+                        </div>
+                        <div style="height: 10px;">
+                        </div>
+                        <button type="button" class="btn btn-primary rightButton" onclick="auth()">Login</button>
+                            <button type="button" class="btn btn-primary leftButton" onclick="location.href='registration.php';">Registrer ny bruker</button>
+                    </form> 
+                    <div style="height: 80px;">
+                    </div>
                             
-                        </form> 
-                        <div style="height: 80px;"></div>
-                        
-                        <div style= "width: 240px; margin: auto;">
-                                <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
-                                        data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
-                                        data-use-continue-as="false">
-                                    Logg inn med Facebook
-                                </div>
-                            </div>
-                            <!--<button onclick="login()">Login with facebook</button>-->
+                    <div style= "width: 240px; margin: auto;">
+                        <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
+                                data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
+                                data-use-continue-as="false">
+                            Logg inn med Facebook
+                        </div>
+                    </div>
                 </div>
-                <div class="extraInfoMargin"></div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
 <!--<button onclick="login()">Login with facebook</button>-->
