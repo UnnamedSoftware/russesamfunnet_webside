@@ -43,28 +43,29 @@ and open the template in the editor.
         <div class="row">
     <div class="col-2 col-m-2"></div>
     <div class="col-8 col-m-9">
-      <table id="table" class="table table-striped">
-          <thead class="thead-dark" style="background: black;">
-                <tr>
-                  <th scope="col">Knute</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Vitner</th>
-                  <th scope="col">TRØKK HER</th>
-                </tr>
-          </thead>
-      </table>
-        <h1>Velg her</h1>
-        <table id="table2" class="table table-striped">
+      <h4>Ferdige knuter</h4>
+      <table id="table" >
           <thead>
                 <tr>
                   <th scope="col">Knute</th>
                   <th scope="col">Description</th>
-                  <th scope="col">TRØKK HER</th>
+                  <th scope="col">Vitner</th>
+                  <th scope="col">Fjern</th>
+                </tr>
+          </thead>
+      </table>
+        <h4>Mulige knuter</h4>
+        <table id="table2">
+          <thead>
+                <tr>
+                  <th scope="col">Knute</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Legg til</th>
                 </tr>
           </thead>
         </table>
         </div>
-    <div class="col-2 col-m-12">...</div>
+    <div class="col-2 col-m-12"></div>
         </div>
         <div class="row">
             <div class="col-4"><p></p></div>

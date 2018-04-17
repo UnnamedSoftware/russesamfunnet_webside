@@ -71,6 +71,43 @@ body{
     background: lightgreen;
 }
 
+#wrap {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+#table  {
+    background: white;
+    border-color: black;
+    border: 2px;
+    border-style: solid;
+    min-width: 100%;
+}
+
+#table2 {
+    background: white;
+    border-color: black;
+    border: 2px;
+    border-style: solid;
+    min-width: 100%;
+}
+
+td {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th  {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+  background: black;
+  color: white;
+}
+
 .userInfo{
     background: #EF7729;
     margin: auto;
