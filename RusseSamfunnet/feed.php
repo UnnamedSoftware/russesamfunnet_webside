@@ -46,15 +46,71 @@ and open the template in the editor.
             <div class="container col-7 col-m-7 feedStyle feedInput">
                 <div id="messageInput">
                     <form>
-                        <textarea id="messageTextarea"></textarea>                    
+                        <textarea id="messageTextarea" placeholder="skriv her!" autofocus></textarea>                    
                     </form>
                 </div>
                 <div id="messageInputButton">
                     <a href="#" onclick="postNewMessageToFeed(); return false;"><img src="icons/confirm2.PNG" id="messageConfirmButton"/></a>
                 </div>
             </div>
+            <br style="clear: both; margin-bottom: 20px;"><!--
+            <div class="col-7 col-m-7 messageContainer">
+                <div class="pictureContainer">
+                    <img src="images/profile3.png" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="headingContainer">
+                        <p>Kristian</p> 
+                    </div>
+                    <img src="icons/cancel.png" class="deleteMessage" height=30 width=30 style="height: 30px; border-radius: 50%;"/>
+                    
+                    <div class="messageContentContainer" style="">
+                        <div class="theMessageContainer">
+                        Lan-party på L167 kl. 08:15 - 14:45, skjermer på rommet, BYOC
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!--<br style="clear: both; margin-bottom: 20px;">
+            <div class="col-7 col-m-7 messageContainer">
+                <div class="pictureContainer">
+                    <img src="images/profile3.png" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="headingContainer">
+                        <p>Kristian Flisnes Hustad<p> 
+                    </div>
+                    <div class="messageContentContainer" style="">
+                        <div class="theMessageContainer">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type 
+                        specimen book. It has survived not only five centuries, but also the leap into 
+                        electronicwhen an unknown printer took a galley of type and scrambled it to make a type 
+                        specimen book. It has survived not only five centuries, but also the leap into 
+                        electronic
+                        </div>
+                    </div>
+                </div>
+            </div>
             <br style="clear: both; margin-bottom: 20px;">
-            <!--<div class="container col-7 col-m-7 feedStyle">
+            <div class="col-7 col-m-7 messageContainer">
+                <div class="pictureContainer">
+                    <img src="images/profile3.png" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="headingContainer">
+                        <p>Alexander<p> 
+                    </div>
+                    <div class="messageContentContainer" style="">
+                        <div class="theMessageContainer">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknownd not only five centuries, but also the leap into 
+                        electronic
+                        </div>
+                    </div>
+                </div>
+            </div>
+        -->
+
+<!--
+            <br style="clear: both; margin-bottom: 20px;">
+            <div class="container col-7 col-m-7 feedStyle">
                 <div class="theMessageSender">
                     <div class="theSendersName">
                         Kristian Flisnes Hustad
@@ -64,6 +120,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <div class="theMessage">
+                    
                     Lan-party på L167 kl. 08:15 - 14:45, skjermer på rommet, BYOC
                 </div>
                 <div class="theMessageTimestamp">
@@ -76,7 +133,7 @@ and open the template in the editor.
             <a href="#" onclick="showMore(); return false;">Vis flere</a>
         </div>
       <div class="footer">
-        <p>footer footer fdhsjfkds</p>
+        <p>Kontakt oss på e-post: Russesamfunnet@gmail.com</p>
     </div>  
     </div> 
     
