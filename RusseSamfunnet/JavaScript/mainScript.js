@@ -175,7 +175,92 @@ function getFeedExecute(type, accessToken) {
         var responseAsJSON = JSON.parse(response);
         feedMessages = responseAsJSON;
         
-        //console.log(responseAsJSON);
+        console.log(responseAsJSON);
+        /*
+        MAKE A CHECK HERE TO SEE IF THE RESPONSE IS NULL OR UNDEFINED! 
+        */
+        var cookieId = getCookie('Russesamfunnet-id');
+        for (i = (responseAsJSON.length - 1); i > (responseAsJSON.length - (displayFirstMessages+1)); i--) {
+            var feedId = responseAsJSON[i].feedId;
+            var russId = responseAsJSON[i].russId.russId;
+            var profilePicture = responseAsJSON[i].russId.profilePicture;
+            if(profilePicture == null){
+                profilePicture = "images/profile3.png";
+            }
+            var message = responseAsJSON[i].message;
+            var firstName = responseAsJSON[i].russId.firstName;
+            var lastName = responseAsJSON[i].russId.lastName;
+            var theMessage = document.createElement('div');
+            /*
+            Check if the userid matches!!! 
+            */
+            theMessage.setAttribute("class", "col-7 col-m-7 messageContainer");
+            theMessage.setAttribute("id", "message" + feedId);
+
+
+            if (cookieId == russId) {
+                theMessage.innerHTML = `
+                <div class="pictureContainer">
+                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="headingContainer">
+                        <p>`
+                        +
+                        firstName + ` ` + lastName
+                        +
+                        `</p>
+                    </div>
+                    <a href="#" onclick="deleteMessage(`+feedId+`); return false;">
+                        <img src="icons/cancel.png" class="deleteMessage" height=30 width=30 style="height: 30px; border-radius: 50%;"/>
+                    </a>
+                    <div class="messageContentContainer" style="">
+                        <div class="theMessageContainer" id="`+feedId+`">`
+                            +
+                            message
+                            +
+                        `</div>
+                    </div>
+                </div>`;
+            } else if (cookieId != russId) {
+                theMessage.innerHTML = `
+                <div class="pictureContainer">
+                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="headingContainer">
+                        <p>`
+                        +
+                        firstName + ` ` + lastName
+                        +
+                        `</p>
+                    </div>
+                    <div class="messageContentContainer" style="">
+                        <div class="theMessageContainer" id="`+feedId+`">`
+                            +
+                            message
+                            +
+                        `</div>
+                    </div>
+                </div>`;
+            }
+            
+            feedItems.appendChild(theMessage);
+            messagesDisplayed++;
+        }
+        //var showMoreMessages
+    });
+}
+
+function getFeedExecute2(type, accessToken) {
+    //console.log("Getting the feed for this user and adding it to the page lol");
+
+    var feedItems = document.getElementById('feedItems');
+
+    var url = "http://158.38.101.146:8080/schoolFeed?accessToken=" + accessToken + "&type=" + type;
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        //console.log(response);
+        var responseAsJSON = JSON.parse(response);
+        feedMessages = responseAsJSON;
+        
+        console.log(responseAsJSON);
         /*
         MAKE A CHECK HERE TO SEE IF THE RESPONSE IS NULL OR UNDEFINED! 
         */
@@ -262,52 +347,56 @@ function showMore(){
         if (feedMessages[i] != undefined) {
             var feedId = feedMessages[i].feedId;
             var russId = feedMessages[i].russId.russId;
+            var profilePicture = feedMessages[i].russId.profilePicture;
+            if(profilePicture == null){
+                profilePicture = "images/profile3.png";
+            }
             var message = feedMessages[i].message;
             var firstName = feedMessages[i].russId.firstName;
             var lastName = feedMessages[i].russId.lastName;
             var theMessage = document.createElement('div');
-            theMessage.setAttribute("class", "container col-7 col-m-7 feedStyle");
-            theMessage.setAttribute("id", "message"+feedId);
+            theMessage.setAttribute("class", "col-7 col-m-7 messageContainer");
+            theMessage.setAttribute("id", "message" + feedId);
             if (cookieId == russId) {
                 theMessage.innerHTML = `
-                <div class="theMessageSender">
-                    <div class="theSendersName" onclick="showHideMessage(`+ feedId + `)">`
-                    +
-                    firstName + ` ` + lastName
-                    +
-                    `</div>
-                    <div class="deleteButton">
-                        <a href="#" onclick="deleteMessage(`+ feedId + `); return false;">X</a>
+                <div class="pictureContainer">
+                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="headingContainer">
+                        <p>`
+                        +
+                        firstName + ` ` + lastName
+                        +
+                        `</p>
                     </div>
-                </div>
-                <div class="theMessage" id="`+ feedId + `">`
-                    +
-                    message
-                    +
-                    `</div>
-                <div class="theMessageTimestamp">
-                    09:02:42 - 10.04.2018
+                    <a href="#" onclick="deleteMessage(`+feedId+`); return false;">
+                        <img src="icons/cancel.png" class="deleteMessage" height=30 width=30 style="height: 30px; border-radius: 50%;"/>
+                    </a>
+                    <div class="messageContentContainer" style="">
+                        <div class="theMessageContainer" id="`+feedId+`">`
+                            +
+                            message
+                            +
+                        `</div>
+                    </div>
                 </div>`;
-
-
             } else if (cookieId != russId) {
                 theMessage.innerHTML = `
-                <div class="theMessageSender">
-                    <div class="theSendersName" onclick="showHideMessage(`+ feedId + `)">`
-                    +
-                    firstName + ` ` + lastName
-                    +
-                    `</div>
-                    <div class="deleteButton">
+                <div class="pictureContainer">
+                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="headingContainer">
+                        <p>`
+                        +
+                        firstName + ` ` + lastName
+                        +
+                        `</p>
                     </div>
-                </div>
-                <div class="theMessage" id="`+ feedId + `">`
-                    +
-                    message
-                    +
-                    `</div>
-                <div class="theMessageTimestamp">
-                    09:02:42 - 10.04.2018
+                    <div class="messageContentContainer" style="">
+                        <div class="theMessageContainer" id="`+feedId+`">`
+                            +
+                            message
+                            +
+                        `</div>
+                    </div>
                 </div>`;
             }
             feedItems.appendChild(theMessage);

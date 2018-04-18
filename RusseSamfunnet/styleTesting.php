@@ -32,41 +32,34 @@ and open the template in the editor.
                 <div class="inner">
                     <div id="loginForm" class="container">
                         <img src="logos/logo.png" height="250" style="height: 250px; text-align: center;"/>
-                        <h3 class="text-center">Registrer deg</h3>
+                        <h3 class="text-center">Ekstra informasjon om deg</h3>
                         <form>
                             <div class="form-group">
-                                <div class="col-6 col-m-6">
-                                    <label for="firstName">Fornavn</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="fornavn" >
-                                </div>
-                                <div class="col-6 col-m-6">
-                                    <label for="lastName">Etternavn</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="etternavn" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="username">E-post</label>
-                                <input type="text" class="form-control" id="email" placeholder="E-mail" >
-                            </div>
-                            <div class="form-group">
-                                <div class="col-6 col-m-6">
-                                    <label for="password">Passord</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
-                                </div>
-                                <div class="col-6 col-m-6">
-                                    <label for="password">Bekreft passord</label>
-                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
-                                </div>
+                                <label for="email">E-post</label>
+                                <input type="text" class="form-control" id="email" placeholder="E-post">
                             </div>
                             <div class="form-group">
                                 <label for="skole">Din skole</label>
-                                <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Begynn å skriv for valg">
+                                <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Din skole">
                                 <datalist id="schools">
+                                    <option value="Skole nr 1">
+                                    <option value="Borgund vgs">
+                                    <option value="Skole nr 3">
+                                    <option value="Skole nr 4">
+                                    <option value="Skole nr 5">
                                 </datalist>
                             </div>
-                            <div style="height: 10px;"></div>
-                            <button type="button" class="btn btn-primary leftButton" onclick="location.href='index.php';">Avbryt</button>
-                            <button type="button" class="btn btn-primary rightButton" onclick="register(); return false;">Registrer konto</button>
+                            <div class="form-group">
+                                <label for="russYear">Russeår (eks. 2018)</label>
+                                <input type="text" class="form-control" id="russYear" placeholder="Russeår" >
+                            </div>
+                            <div class="form-group">
+                                <label for="birthdate">Født (dd-mm-åååå)</label>
+                                <input type="text" class="form-control" id="birthdate" placeholder="Født" >
+                            </div>
+                            <div style="height: 20px;"></div>
+                            <button type="button" class="btn btn-primary leftButton" onclick="logout()">Avbryt</button>
+                            <button type="button" class="btn btn-primary rightButton" onclick="testRegisterFacebookUser()">Fullfør registrering</button>
                         </form>
                     </div>
                 </div>

@@ -353,4 +353,225 @@ alert(request);
 
 alert("check");
 
+<<<<<<< HEAD
 }
+
+
+
+
+
+/*
+@PostMapping("/upload")
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, 
+            RedirectAttributes redirectAttributes) {
+
+        storageService.store(file, name);
+        redirectAttributes.addFlashAttribute("message",
+                "You successfully uploaded " + file.getOriginalFilename() + "!");
+
+        return "redirect:/";
+    }
+
+    HttpResponse<String> response = Unirest.post("http://158.38.101.162:8080/upload")
+  .header("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
+  .header("cache-control", "no-cache")
+  .header("postman-token", "5f7d1fd4-f1ea-95cc-218e-3970333bb1ea")
+  .body("------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"file\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\ntesting.jpg\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--")
+  .asString();
+
+*/
+
+function facebookInit() {
+    //console.log("facebook Init");
+    FB.init({
+        appId: '291199641408779',
+        cookie: true,
+        xfbml: true,
+        version: 'v2.12'
+    });
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            //console.log(response.status);
+            token = response.authResponse.accessToken;
+            //getInfo();
+            //alert("connected!");
+        } else if (response.status === 'not_authorized') {
+            //console.log(response.status);
+        } else {
+            //console.log(response.status);
+        }
+    });
+}//;
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+/*
+function login() {
+    FB.login(function (response) {
+        var access_token = response.authResponse.accessToken;
+        console.log('Access Token = ' + access_token);
+        document.getElementById('authResult').innerHTML = access_token;
+        if (response.status === 'connected') {
+            setCookie("Russesamfunnet", "facebook", 1)
+            window.location.href = 'feed.php';
+        } else if (response.status === 'not_authorized') {
+            console.log(response.status + " not log");
+        } else {
+            console.log(response.status + " else log");
+        }
+    });
+}
+*/
+/*
+function getInfo() {
+    FB.api('/me', 'GET', { fields: 'last_name,name, email, first_name, id' }, function (response) {
+        document.getElementById("topBannerContent").innerHTML = "Velkommen til Russesamfunnet, " + response.name + ", " + response.id;
+    });
+}
+*/
+function logout() {
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            //console.log(response.status);
+        } else if (response.status === 'not_authorized') {
+            //console.log(response.status);
+        } else {
+            //console.log("ELSE");
+        }
+    });
+    FB.logout(function (response) {
+        /*
+        * REMEMBER TO DESTROY THE COOKIE 
+        */
+        setCookie("Russesamfunnet", "", -10)
+        setTimeout(function () {
+            //alert("logging out of FB");
+            window.location.href = 'index.php';
+        }, 1500);
+    });
+}
+
+function logoutNoRedirect() {
+    //alert("logout no redirect!");
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            //console.log(response.status);
+        } else if (response.status === 'not_authorized') {
+            //console.log(response.status);
+        } else {
+            //console.log("ELSE");
+        }
+    });
+    setCookie("Russesamfunnet", "", -10)
+    FB.logout(function (response) {
+        /*
+         * REMEMBER TO DESTROY THE COOKIE 
+         */
+        setCookie("Russesamfunnet", "", -10)
+    });
+}
+// </FACEBOOK LOGIN>
+
+
+
+
+
+// <GOOGLE LOGIN> *****************
+/*
+function googleInit() {
+    /* 
+    INITIALIZE GOOGLE LOGIN
+    *//*
+onLoadGoogle();
+}
+
+function onLoadGoogle() {
+gapi.load('auth2', function () {
+    gapi.auth2.init();
+});
+}*/
+
+/*
+function onSignIn(googleUser) {
+    console.log("googleUser: " + googleUser);
+    var profile = googleUser.getBasicProfile();
+
+    var idToken = googleUser.getAuthResponse();
+    console.log(idToken);
+    console.log(idToken.id_token);
+    setCookie("Russesamfunnet", "Google", 1);
+    window.location.href = 'feed.php';
+}
+*/
+/*
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        setCookie("Russesamfunnet", "", -10);
+        setTimeout(function () {
+            document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/dashboard/projects/russesamfunnet_webside/RusseSamfunnet/index.php";
+        }, 1500);
+    });
+}
+
+function signOutNoRedirect() {
+    setTimeout(function () {
+        document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/dashboard/projects/russesamfunnet_webside/RusseSamfunnet/index.php";
+    }, 1500);
+}*/
+// </GOOGLE LOGIN> 
+
+
+
+
+// <LOGOUT>
+/*
+    * WHEN USER CLICKS LOGOUT, WE NEED TO KNOW WHICH SERVICE THE USER WANTS TO LOGOUT FROM
+    * RUSSESAMFUNNET_LOGOUT()
+    * FACEBOOK_LOGOUT()
+    * GOOGLE_LOGOUT()
+*/
+function logoutUser() {
+    var cookie = getCookie("Russesamfunnet");
+    if (cookie == null) {
+        //console.log("COOKIE == NULL");
+        /*USER MUST BE REDIRECTED TO LOGIN AND SESSION WITH
+          GOOGLE/FACEBOOK/RUSSESAMFUNNET MUST BE ENDED*/
+    }
+    else if (cookie != null) {
+        //console.log("COOKIE != NULL " + cookie);
+        if (cookie == "facebook") {
+            logout();
+        }
+        /*
+        if (cookie == "google") {
+            signOut();
+        }*/
+        if (cookie == "russesamfunnet") {
+            logoutRussesamfunnet();
+        }
+    }
+    else {
+        //console.log("ELSE...HOW?");
+    }
+}
+
+function redirectUser() {
+    setTimeout(function () {
+        window.location.href = 'index.php';
+    }, 1000);
+
+}
+// </LOGOUT>
+
+
+
+=======
+}
+>>>>>>> b713fff462f5f8a4bd7cdaadb3610129bcb5b890

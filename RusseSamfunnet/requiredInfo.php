@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Standard Template</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
-        <link rel="stylesheet" type="text/css" href="CSS/main.css">
+        <link rel="stylesheet" type="text/css" href="CSS/login.css">
         
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         
@@ -25,45 +25,43 @@ and open the template in the editor.
     </head>
 
     <body>
-    <div id="blurEffect">
-        <div class="container">
-            <div class="extraInfoMargin"></div>
-            <div id="loginForm">
-                <img src="logos/logo.png"/>
-                <h3 class="text-center">Ekstra informasjon om deg</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="email">E-post</label>
-                        <input type="text" class="form-control" id="email" placeholder="E-post">
-                    </div>
-                    <div class="form-group">
-                        <label for="skole">Din skole</label>
-                        <!--<input type="text" class="form-control" id="schoolId" placeholder="Din skole">
--->
-                        <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Din skole">
-                        <datalist id="schools">
-                            <option value="Skole nr 1">
-                            <option value="Borgund vgs">
-                            <option value="Skole nr 3">
-                            <option value="Skole nr 4">
-                            <option value="Skole nr 5">
-                        </datalist>
-                    </div>
-                    <div class="form-group">
-                        <label for="russYear">Russeår (eks. 2018)</label>
-                        <input type="text" class="form-control" id="russYear" placeholder="Russeår" >
-                    </div>
-                    <div class="form-group">
-                        <label for="birthdate">Født (dd-mm-åååå)</label>
-                        <input type="text" class="form-control" id="birthdate" placeholder="Født" >
-                    </div>
-                    <div style="height: 20px;"></div>
-                    <button type="button" class="btn btn-primary leftButton" onclick="logout()">Avbryt</button>
-                    <button type="button" class="btn btn-primary rightButton" onclick="testRegisterFacebookUser()">Fullfør registrering</button>
-                </form>
+    <div id="blurEffect" class="outer">
+        <div class="middle">
+            <div class="inner">
+                <div id="loginForm" class="container">
+                    <img src="logos/logo.png" height="250" style="height: 250px; text-align: center;"/>
+                    <h3 class="text-center">Ekstra informasjon om deg</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="email"><span class="errorMessage2" id="emailError" style="display: none;"></span>E-post</label>
+                            <input type="text" class="form-control" id="email" placeholder="E-post">
+                        </div>
+                        <div class="form-group">
+                            <label for="skole"><span class="errorMessage2" id="schoolError" style="display: none;"></span>Din skole</label>
+                            <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Din skole">
+                            <datalist id="schools">
+                                <!--<option value="Skole nr 1">
+                                <option value="Borgund vgs">
+                                <option value="Skole nr 3">
+                                <option value="Skole nr 4">
+                                <option value="Skole nr 5">-->
+                            </datalist>
+                        </div>
+                        <div class="form-group">
+                            <label for="russYear"><span class="errorMessage2" id="russYearError" style="display: none;"></span>Russeår (eks. 2018)</label>
+                            <input type="text" class="form-control" id="russYear" placeholder="Russeår" >
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate"><span class="errorMessage2" id="bornError" style="display: none;"></span>Født (ddmmåååå)</label>
+                            <input type="text" class="form-control" id="birthdate" placeholder="Født" >
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <button type="button" class="btn btn-primary leftButton" onclick="logout()">Avbryt</button>
+                        <button type="button" class="btn btn-primary rightButton" onclick="testRegisterFacebookUser()">Fullfør registrering</button>
+                    </form>
+                </div>
             </div>
-            <div class="extraInfoMargin"></div>
         </div>
     </div>
-    </body>
+</body>
 </html>

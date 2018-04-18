@@ -33,6 +33,7 @@ function getCookie(name) {
 
 window.onload = function(){
     facebookInit();
+    getSchoolOptions();
     //setToken();
 
     //setTimeout(function(){
@@ -40,6 +41,22 @@ window.onload = function(){
     //},2000);
 
     //console.log("on load " + token);
+}
+
+function getSchoolOptions() {
+    var url = "http://158.38.101.146:8080/getAllSchools";
+    //console.log(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var schoolList = document.getElementById('schools');
+        responseAsJSON = JSON.parse(response);
+        //console.log(responseAsJSON);
+        for (i = 0; i < responseAsJSON.length; i++) {
+            var schoolOption = document.createElement('option');
+            schoolOption.setAttribute("value", responseAsJSON[i].schoolName);
+            schoolList.appendChild(schoolOption);
+        }
+    });
 }
 
 function getURL(){
@@ -78,39 +95,79 @@ function logout() {
 }
 
 function testRegisterFacebookUser(){
-    alert("In test register facebook user");
+    //alert("In test register facebook user");
     var url = getURL();
+
+    var emailError = document.getElementById('emailError');
+    var schoolError = document.getElementById('schoolError');
+    var russYearError = document.getElementById('russYearError');
+    var bornError = document.getElementById('bornError');
+
+    emailError.style.display = "none";
+    schoolError.style.display = "none";
+    russYearError.style.display = "none";
+    bornError.style.display = "none";
+
     var email = document.getElementById('email').value;
     var schoolName = document.getElementById('schoolName').value;
     var russYear = document.getElementById('russYear').value;
     var birthdate = document.getElementById('birthdate').value;
-    console.log(email + ", " + schoolName + ", " + russYear + ", " + birthdate);
+
+    if(email == ""){
+        //console.log("Email");
+        emailError.innerHTML = "!";
+        emailError.style.display = "inline-block";
+    } if(schoolName == ""){
+        schoolError.innerHTML = "!";
+        schoolError.style.display = "inline-block";
+    } if(russYear == ""){
+        russYearError.innerHTML = "!";
+        russYearError.style.display = "inline-block";
+    } else if(Number.isInteger(+russYear) == false){
+        //console.log(Number.isNaN(russYear) + " Not an integer! " + russYear);
+        russYearError.innerHTML = "Må være et tall!";
+        russYearError.style.display = "inline-block";
+    } else if(Number.isInteger(+russYear) && russYear.length != 4){
+        //console.log("Interger but wrong length!");
+        russYearError.innerHTML = "Feil lengde!";
+        russYearError.style.display = "inline-block";
+    } if (birthdate == "") {
+        bornError.innerHTML = "!";
+        bornError.style.display = "inline-block";
+    }  else if(Number.isInteger(+birthdate) == false){
+        //console.log(Number.isNaN(russYear) + " Not an integer! " + russYear);
+        bornError.innerHTML = "Må være et tall!";
+        bornError.style.display = "inline-block";
+    } else if(Number.isInteger(+birthdate) && birthdate.length != 8){
+        //console.log("Interger but wrong length!");
+        bornError.innerHTML = "Feil lengde!";
+        bornError.style.display = "inline-block";
+    }
     
-    console.log("token id register " + token); email, schoolName, russYear, birthdate
-    alert("In register facebook user 2");
-    var registerFacebookUserURL = url+"facebookRegisterNew?accessToken="+token+"&email="+email+"&schoolId="+schoolName+"&russYear="+russYear+"&birthdate="+birthdate;
-    console.log(registerFacebookUserURL);
-    var client = new HttpClient();
-    client.get(registerFacebookUserURL, function (response) {
-        alert("In register facebook user3");
-        JSONresponse = JSON.parse(response);
-        alert("check console");
-        console.log(JSONresponse);
-        alert("In register facebook user4");
-        if(JSONresponse.loginStatus = 'User successfully registered'){
-            setCookie("Russesamfunnet-id", JSONresponse.userId, 7);
-            alert("In register facebook user5");
-            setTimeout(function(){
-                alert("check console");
-            },1000);
-            
-        }
-        if(JSONresponse.loginStatus = 'There is no school with that name'){
-            console.log("This school is not registered in the database");
-        }
-    });
-
-
+    if ((email!="") && (schoolName!="") && (russYear!="") && (birthdate!="")) {
+        //alert("In register facebook user 2");
+        var registerFacebookUserURL = url + "facebookRegisterNew?accessToken=" + token + "&email=" + email + "&schoolId=" + schoolName + "&russYear=" + russYear + "&birthdate=" + birthdate;
+        console.log(registerFacebookUserURL);
+        var client = new HttpClient();
+        client.get(registerFacebookUserURL, function (response) {
+            console.log(response);
+            //alert("In register facebook user3");
+            JSONresponse = JSON.parse(response);
+            //alert("check console");
+            console.log(JSONresponse);
+            //alert("In register facebook user4");
+            if (JSONresponse.loginStatus == 'User successfully registered') {
+                setCookie("Russesamfunnet-id", JSONresponse.userId, 7);
+                alert("In register facebook user5");
+                setTimeout(function () {
+                    alert("check console");
+                }, 1000);
+            }
+            if (JSONresponse.loginStatus == 'There is no school with that name') {
+                console.log("This school is not registered in the database");
+            }
+        });
+    }
 }
 
 function registerFacebookUser(){
