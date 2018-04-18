@@ -35,8 +35,8 @@ and open the template in the editor.
         </div>
         <div class="row">
     <div class="col-2 col-m-2"></div>
-    <div class="col-7 col-m-9" style="border-color: gray;">
-        
+    <div class="col-7 col-m-9">
+        <h4>Toppliste</h4>
         <table id="table">
           <thead>
                 <tr>
@@ -49,7 +49,7 @@ and open the template in the editor.
                 
             
         </div>
-    <div class="col-3 col-m-12">...</div>
+    <div class="col-3 col-m-12"></div>
     </div>
     
         <div class="row">
