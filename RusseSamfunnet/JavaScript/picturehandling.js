@@ -45,40 +45,38 @@ window.onload = function () {
     
 function setupSite(){
     
-    hentKnuter();
+    hentRussId();
 }
 
-function hentKnuter() {
+function hentRussId() {
     console.log("KNUTER have been clicked! ");
     type = getCookie("Russesamfunnet");
     if (type == 'facebook') {
         setTimeout(function () {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
-            utførHentKnuter(type, accessToken);
+            executeGetRussId(type, accessToken);
             
         }, 700);
     } else if(type == 'russesamfunnet'){
         accessToken = getCookie("Russesamfunnet-token");
-        utførHentKnuter(type, accessToken);
+        executeGetRussId(type, accessToken);
         
     }
 }
 
-function utførHentKnuter(type, accessToken) {
-    makeTableMuligeKnuter(type, accessToken);
-    makeTableFerdigeKnuter(type, accessToken);
-    console.log(accessToken);
+function executeGetRussId(type, accessToken) {
+    getRussId(type, accessToken);
 }
 
-function makeTableMuligeKnuter(type, accessToken){
+function getRussId(type, accessToken){
     var url = "http://158.38.101.146:8080/userRuss?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
         //console.log(response);
         var responseAsJSON = JSON.parse(response);
 
-        russeId = responseAsJSON[i]["knotId"];
+        russeId = responseAsJSON["russId"];
         
     
         
@@ -120,3 +118,7 @@ function facebookInit() {
         }
     });
 };
+
+function setProfilePicture(){
+    
+}

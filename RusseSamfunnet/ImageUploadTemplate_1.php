@@ -22,8 +22,6 @@
   
     request.open("POST", "http://localhost:8090/upload");
     formData.append('name', 'testing.jpg');
-    
-    
 
     request.send(formData);
     alert(request);
@@ -46,7 +44,7 @@
                                 <tr><td><input value="test69.jpg" type="hidden" name="name" id="name" /></td></tr>
                                 <tr><td></td><td><input type="submit" value="Upload" onclick="onClickUpload()" /></td></tr>
 			</table>
-                         <img src="http://localhost:8090/files/testing.jpg" alt="Smiley face" height="42" width="42"> 
+                         <img src="http://localhost:8090/files/testing.jpg" alt="Smiley face" height="42" width="42">
 		</form>
 	</div>
 

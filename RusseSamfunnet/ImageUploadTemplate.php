@@ -1,6 +1,6 @@
 <html>
     <head>
-      
+        <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/picturehandling.js"></script>
         
         
