@@ -11,16 +11,21 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
         <link rel="stylesheet" type="text/css" href="CSS/login.css">
-        <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-        
         
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="JavaScript/registratonScript.js"></script>
+
+        <meta name="google-signin-client_id" content="906320627350-4b7lhkufslsljv9et2soi2i49ektmv6k.apps.googleusercontent.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
+
+        <script src="JavaScript/loginScript.js"></script>
         <script src="JavaScript/sha256.js"></script>
     </head>
+
     <body>
         <div id="blurEffect" class="outer">
             <div class="middle">
@@ -31,39 +36,31 @@ and open the template in the editor.
                         <form>
                             <div class="form-group">
                                 <div class="col-6 col-m-6">
-                                    <div class="form-group">
-                                        <label for="firstName">Fornavn<span class="errorMessage" id="firstNameError" style="display: none;"></label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="fornavn" >
-                                    </div>
+                                    <label for="firstName">Fornavn</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="fornavn" >
                                 </div>
                                 <div class="col-6 col-m-6">
-                                    <div class="form-group">
-                                        <label for="lastName">Etternavn<span class="errorMessage" id="lastNameError" style="display: none;"></label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="etternavn" >
-                                    </div>
+                                    <label for="lastName">Etternavn</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="etternavn" >
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="username">E-post<span class="errorMessage" id="emailError" style="display: none;"></span></label>
-                                <input type="text" class="form-control" id="email" placeholder="e-post" >
+                                <label for="username">E-post</label>
+                                <input type="text" class="form-control" id="email" placeholder="E-mail" >
                             </div>
                             <div class="form-group">
                                 <div class="col-6 col-m-6">
-                                    <div class="form-group">
-                                        <label for="password">Passord<span class="errorMessageSmall" id="passwordError" style="display: none;"></span></label>
-                                        <input type="password" class="form-control" id="password" placeholder="passord">
-                                    </div>
+                                    <label for="password">Passord</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
                                 </div>
                                 <div class="col-6 col-m-6">
-                                    <div class="form-group">
-                                        <label for="password">Bekreft passord<span class="errorMessage" id="confirmPasswordError" style="display: none;"></label>
-                                        <input type="password" class="form-control" id="confirmPassword" placeholder="bekreft passord">
-                                    </div>
+                                    <label for="password">Bekreft passord</label>
+                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="skole">Din skole<span class="errorMessage" id="schoolError" style="display: none;"></label>
-                                <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="begynn å skriv for valg">
+                                <label for="skole">Din skole</label>
+                                <input class="form-control" id="schoolName" list="schools" name="schools" placeholder="Begynn å skriv for valg">
                                 <datalist id="schools">
                                 </datalist>
                             </div>
@@ -77,14 +74,3 @@ and open the template in the editor.
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

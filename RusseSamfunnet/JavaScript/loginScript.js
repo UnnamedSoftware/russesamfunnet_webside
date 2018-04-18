@@ -45,6 +45,10 @@ function eraseCookie(name) {
 
 // DEFAULT LOGIN MED RUSSESAMFUNNET
 function auth() {
+    var emailError = document.getElementById('emailError');
+    emailError.style.display = "none";
+    var passwordError = document.getElementById('passwordError');
+    passwordError.style.display = "none";
     var hashedPassword = sha256(document.getElementById('password').value);
     var url = 'http://158.38.101.146:8080/loginToken?email=' + document.getElementById('email').value + "&password=" + hashedPassword;
     var client = new HttpClient();
@@ -77,19 +81,31 @@ function russesamfunnetInit(){
 }
 
 function loginRussesamfunnet(status){
-    if(status != 'Incorrect password'){
+    // 'User not in db'
+    if(status == 'User not in db'){
+        console.log("NOT IN DB!");
+        var emailError = document.getElementById('emailError');
+        emailError.innerHTML = "Feil e-post";
+        emailError.style.display = "inline-block";
+
+    } else if(status == 'Incorrect password'){
+        console.log("INCORRECT PASSWORD");
+        var passwordError = document.getElementById('passwordError');
+        passwordError.innerHTML = "Feil passord";
+        passwordError.style.display = "inline-block";
+    } else{
         var responseAsJSON = JSON.parse(status);
-        console.log(responseAsJSON);
+        console.log("response: " + responseAsJSON);
         var loginStatus = responseAsJSON.loginStatus;
         var expiresInDays = responseAsJSON.expiresInDays;
         console.log(loginStatus);
-        alert("Check console plz");
+        //alert("Check console plz");
         if(loginStatus == 'Login success'){
             setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
             setCookie("Russesamfunnet-token", responseAsJSON.accessToken, expiresInDays);
             setCookie("Russesamfunnet-id", responseAsJSON.russId, expiresInDays);
             setTimeout(function () {
-                window.location.href = 'admin.php';
+                window.location.href = 'feed.php';
             }, 500);
             /*if(status == "new"){
                 window.location.href = 'additionalInfo.php';
@@ -98,9 +114,6 @@ function loginRussesamfunnet(status){
                 window.location.href = 'feed.php';
             }*/
         }
-    }
-    else{
-        console.log("Error: user needs feedback here!");
     }
 
 
