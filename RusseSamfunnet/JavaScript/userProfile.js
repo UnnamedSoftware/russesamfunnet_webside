@@ -353,6 +353,7 @@ alert(request);
 
 alert("check");
 
+<<<<<<< HEAD
 }
 
 
@@ -571,3 +572,6 @@ function redirectUser() {
 
 
 
+=======
+}
+>>>>>>> b713fff462f5f8a4bd7cdaadb3610129bcb5b890
