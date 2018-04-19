@@ -1,13 +1,3 @@
-var filename = "";
-var russeId = "default";
-
-function generateFilenameProfilePicture(){
-    
-    filename = russeId + "profil" + ".jpg";
-    document.getElementById('name').value=filename;
-    document.forms[0].submit();
-}
-
 var accessToken = "";
 var type = "";
 
@@ -119,6 +109,27 @@ function facebookInit() {
     });
 };
 
-function setProfilePicture(){
+function sendFilenameToServer(incomingUrl, picturetype){
+    if(picturetype === "profile"){
+    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+accessToken+"&type="+type+"&pictureName="+incomingUrl;
+    
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        
+        
+    });
+    
+    }   else if (picturetype === "card") {
+        var url = "http://158.38.101.146:8080/setRussCard?accessToken="+accessToken+"&type="+type+"&pictureName="+incomingUrl;
+        var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        
+        
+    });
+    }
+    
+    
     
 }

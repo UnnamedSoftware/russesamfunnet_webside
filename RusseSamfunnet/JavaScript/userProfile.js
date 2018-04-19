@@ -145,7 +145,7 @@ function getProfileInfoExecute(type, accessToken){
             document.getElementById("profilePictureImage").src = "images/profile3.png";
             //profilePictureImage.setAttribute("src", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
         } else{
-            document.getElementById("profilePictureImage").src = profilePicture;
+            document.getElementById("profilePictureImage").src = "http://158.38.101.162:8080/files/"+ profilePicture;
         }
 
         if(russCard == null){
@@ -155,7 +155,7 @@ function getProfileInfoExecute(type, accessToken){
             console.log("Or here");
             document.getElementById("russCardImage").src = "images/russekort.jpg";
         } else{
-            document.getElementById("russCardImage").src = russCard;
+            document.getElementById("russCardImage").src = "http://158.38.101.162:8080/files/"+russCard;
         }
 
         var userContent = document.getElementById("userInfoContent");
@@ -323,63 +323,6 @@ function getGroupsExecute(type, accessToken){
 
     });
 }
-
-
-
-
-
-
-function generateFilename(){
-    filename = russeId + "profil" + ".jpg";
-}
-
-function onClickUpload(){ 
-    alert("resrr");
-generateFilename();
-var selectedFile = document.getElementById('input').files[0];
-
-var formData = new FormData("file",selectedFile);
-    alert("resrr");
-console.log(filename);
-
-var request = new XMLHttpRequest();
-alert(request);
-request.open("POST", "localhost:8090");
-formData.append('name', 'fuckert123.jpg');
-alert(formData);
-         
-request.send(formData);
-alert(request);
-
-alert("check");
-
-<<<<<<< HEAD
-}
-
-
-
-
-
-/*
-@PostMapping("/upload")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, 
-            RedirectAttributes redirectAttributes) {
-
-        storageService.store(file, name);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/";
-    }
-
-    HttpResponse<String> response = Unirest.post("http://158.38.101.162:8080/upload")
-  .header("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-  .header("cache-control", "no-cache")
-  .header("postman-token", "5f7d1fd4-f1ea-95cc-218e-3970333bb1ea")
-  .body("------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"file\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\ntesting.jpg\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--")
-  .asString();
-
-*/
 
 function facebookInit() {
     //console.log("facebook Init");
@@ -568,10 +511,21 @@ function redirectUser() {
     }, 1000);
 
 }
-// </LOGOUT>
 
-
-
-=======
+function toggleChangeProfilePopup(){
+    var changeProfilePopup = document.getElementById("changeProfilePopup");
+    
+    
+    if(changeProfilePopup.style.display === "block"){
+        changeProfilePopup.style.display = "none";
+    } else if (changeProfilePopup.style.display === "none") {
+        changeProfilePopup.style.display = "block";
+    }
+    //check dispy
+    
+    // if none
+        // set to block
+   // if block
+        // set to none
 }
->>>>>>> b713fff462f5f8a4bd7cdaadb3610129bcb5b890
+// </LOGOUT>
