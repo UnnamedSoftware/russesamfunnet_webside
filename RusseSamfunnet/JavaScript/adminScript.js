@@ -286,7 +286,7 @@ function hentKnuter() {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
             utførHentKnuter(type, token);
-        }, 700);
+        }, 1000);
     } else if(type == 'russesamfunnet'){
         var accessToken = getCookie("Russesamfunnet-token");
         utførHentKnuter(type, accessToken);

@@ -213,6 +213,8 @@ box-shadow: 4px 10px 20px 0px rgba(0,0,0,0.75);*/
     top: 0px;
     left: 0px;
     z-index: 2;
+    background: rgb(177, 1, 1);
+    /*background-image: url("images/profile3.png");*/
     /*display: inline-block;*/
 }
 

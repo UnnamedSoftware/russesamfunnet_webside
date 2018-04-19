@@ -53,7 +53,7 @@ function auth() {
     var url = 'http://158.38.101.146:8080/loginToken?email=' + document.getElementById('email').value + "&password=" + hashedPassword;
     var client = new HttpClient();
     client.get(url, function (response) {
-        console.log(response);
+        //console.log(response);
         if(response != null){
             loginRussesamfunnet(response);
         }
@@ -83,22 +83,22 @@ function russesamfunnetInit(){
 function loginRussesamfunnet(status){
     // 'User not in db'
     if(status == 'User not in db'){
-        console.log("NOT IN DB!");
+        //console.log("NOT IN DB!");
         var emailError = document.getElementById('emailError');
         emailError.innerHTML = "Feil e-post";
         emailError.style.display = "inline-block";
 
     } else if(status == 'Incorrect password'){
-        console.log("INCORRECT PASSWORD");
+        //console.log("INCORRECT PASSWORD");
         var passwordError = document.getElementById('passwordError');
         passwordError.innerHTML = "Feil passord";
         passwordError.style.display = "inline-block";
     } else{
         var responseAsJSON = JSON.parse(status);
-        console.log("response: " + responseAsJSON);
+        //console.log("response: " + responseAsJSON);
         var loginStatus = responseAsJSON.loginStatus;
         var expiresInDays = responseAsJSON.expiresInDays;
-        console.log(loginStatus);
+        //console.log(loginStatus);
         //alert("Check console plz");
         if(loginStatus == 'Login success'){
             setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
@@ -135,7 +135,7 @@ function loginRussesamfunnet(status){
 // <FACEBOOK LOGIN> *****************
 window.onload = function(){
     facebookInit();
-    console.log("Hello?=");
+    //console.log("Hello?=");
     var cookie = getCookie("Russesamfunnet");
     if(cookie == null){
     } 
@@ -147,17 +147,17 @@ window.onload = function(){
             googleInit();
         }
         if(cookie == "russesamfunnet"){
-            console.log("logget inn!");
+            //console.log("logget inn!");
             window.location.href = 'feed.php';
         }
     }
     else{
-        console.log("ELSE...HOW?");
+        //console.log("ELSE...HOW?");
     }
 }
 
 function facebookInit() {
-    console.log("Hello=");
+    //console.log("Hello=");
     FB.init({
         appId      : '291199641408779', //'406426833123738',
         cookie     : true, 
@@ -165,18 +165,18 @@ function facebookInit() {
         version    : 'v2.12'
     });
     FB.getLoginStatus(function(response){
-        console.log("Hello");
+        //console.log("Hello");
         if(response.status === 'connected'){
-            console.log(response.status + " *** CONNECTED (INIT) *****");
+            //console.log(response.status + " *** CONNECTED (INIT) *****");
             var access_token =   response.authResponse.accessToken;
             let url = getURL();
             let checkUserURL = url+"facebookLogin?accessToken="+access_token;
-            console.log(checkUserURL);
+            //console.log(checkUserURL);
             //alert("check console plz!");
             let client = new HttpClient();
             client.get(checkUserURL, function(response){
                 let JSONresponse = JSON.parse(response);
-                console.log(JSONresponse);
+                //console.log(JSONresponse);
                 //alert("check console");
                 if(JSONresponse.loginStatus == 'User not in db'){
                     window.location.href = 'requiredInfo.php';
@@ -193,9 +193,9 @@ function facebookInit() {
 
             //getInfo();
         } else if(response.status === 'not_authorized') {
-            console.log(response.status + " *** NOT_AUTHORIZED (INIT) ***");   
+            //console.log(response.status + " *** NOT_AUTHORIZED (INIT) ***");   
         } else {
-            console.log(response.status  + " *** ELSE (INIT) ***");
+            //console.log(response.status  + " *** ELSE (INIT) ***");
         }
     });
 };
@@ -211,7 +211,7 @@ function facebookInit() {
 function completeFBLogin(){
     //alert("CompleteFBLogin");
     FB.getLoginStatus(function(response){
-        console.log(response);
+        //console.log(response);
         //console.log("accessToken: " + response.authResponse.accessToken);
         if(response.status === 'connected'){
             //console.log(response.status + " *** CONNECTED (INIT) ***");     
@@ -219,13 +219,13 @@ function completeFBLogin(){
             var expiresIn = response.authResponse.expiresIn;
             let url = getURL();
             let checkUserURL = url+"facebookLogin?accessToken="+access_token;
-            console.log(checkUserURL);
+            //console.log(checkUserURL);
             //alert("check console plz!");
             let client = new HttpClient();
             client.get(checkUserURL, function(response){
                 let JSONresponse = JSON.parse(response);
-                console.log(JSONresponse);
-                alert("check console");
+                //console.log(JSONresponse);
+                //alert("check console");
                 if(JSONresponse.loginStatus == 'User not in db'){
                     setCookie("Russesamfunnet", "facebook", expiresIn);
                     window.location.href = 'requiredInfo.php';
@@ -238,7 +238,7 @@ function completeFBLogin(){
                     }, 500);
                 } 
                 if(JSONresponse.loginStatus == 'Wrong appToken'){
-                    console.log("Wrong appToken");
+                    //console.log("Wrong appToken");
                     //alert("This is not a valid token for this app");
                 }    
             });
@@ -257,30 +257,30 @@ function login(){
         if(response.status === 'connected'){
             //console.log(response.status + " *** CONNECTED (LOGIN) ***");
             setCookie("Russesamfunnet", "facebook", 1);
-            console.log(response);
-            console.log("Here we are! " + access_token);
+            //console.log(response);
+            //console.log("Here we are! " + access_token);
             //alert("check console!");
             
             //Make a call to the server to check if user is registered already
             let url = getURL();
             let checkUserURL = url+"facebookLogin?accessToken="+access_token;
-            console.log(checkUserURL);
+            //console.log(checkUserURL);
             //alert("check console plz!");
             let client = new HttpClient();
             client.get(checkUserURL, function(response){
                 let JSONresponse = JSON.parse(response);
-                console.log(JSONresponse);
-                alert("check console");
+                //console.log(JSONresponse);
+                //alert("check console");
                 
                 if(JSONresponse.loginStatus == 'User not in db'){
-                    alert("check console");
+                    //alert("check console");
                     window.location.href = 'requiredInfo.php';
                 } 
                 if(JSONresponse.loginStatus == 'Login success'){
                     window.location.href = 'feed.php';
                 } 
                 if(JSONresponse.loginStatus == 'Wrong appToken'){
-                    console.log("Wrong appToken");
+                    //console.log("Wrong appToken");
                     //alert("This is not a valid token for this app");
                 }    
             });
@@ -327,13 +327,15 @@ function logout(){
 
 
 // <GOOGLE LOGIN> *****************
+/*
 function googleInit(){
     /* 
     INITIALIZE GOOGLE LOGIN
     */
-    onLoadGoogle();
+    /*onLoadGoogle();
 }
-
+*/
+/*
 function onLoadGoogle() {
     gapi.load('auth2', function() {
       gapi.auth2.init();
@@ -343,12 +345,10 @@ function onLoadGoogle() {
 function onSignIn(googleUser){
     var profile = googleUser.getBasicProfile();
     var idToken = googleUser.getAuthResponse();
-    //console.log(idToken);
-    //console.log(idToken.id_token);
     setCookie("Russesamfunnet", "google", 1) 
     window.location.href = 'feed.php';
 }
-
+*/
 /*
 function signOut(){
     var auth2 = gapi.auth2.getAuthInstance();
