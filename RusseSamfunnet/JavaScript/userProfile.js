@@ -118,7 +118,7 @@ function getProfileInfo(){
             console.log("Facebook user");
         }, 1000);
     } else if (type == 'russesamfunnet') {
-        accessToken = getCookie("Russesamfunnet-token");
+        var accessToken = getCookie("Russesamfunnet-token");
         console.log("Other user");
         getProfileInfoExecute(type, accessToken);
         
@@ -199,7 +199,7 @@ function getCompletedKnots(){
             //console.log("in timeout: " + token);
             getCompletedKnotsExecute(type, token);
             console.log("Facebook user");
-        }, 1000);
+        }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
         console.log("Other user");
