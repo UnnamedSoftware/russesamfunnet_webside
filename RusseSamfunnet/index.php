@@ -16,10 +16,10 @@ and open the template in the editor.
         
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-        <meta name="google-signin-client_id" content="906320627350-4b7lhkufslsljv9et2soi2i49ektmv6k.apps.googleusercontent.com">
+        <!--<meta name="google-signin-client_id" content="906320627350-4b7lhkufslsljv9et2soi2i49ektmv6k.apps.googleusercontent.com">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
         <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
 
         <script src="JavaScript/loginScript.js"></script>
@@ -53,9 +53,10 @@ and open the template in the editor.
                     <div style= "width: 240px; margin: auto;">
                         <div onlogin="completeFBLogin()" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" 
                                 data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" 
-                                data-use-continue-as="false">
+                                data-use-continue-as="true">
                             Logg inn med Facebook
                         </div>
+                        <!--<button id="loginBtn" onclick="completeFBLogin()">Facebook Login</button>-->
                     </div>
                 </div>
             </div>

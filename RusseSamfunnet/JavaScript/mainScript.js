@@ -260,7 +260,7 @@ function getFeedExecute2(type, accessToken) {
         var responseAsJSON = JSON.parse(response);
         feedMessages = responseAsJSON;
         
-        console.log(responseAsJSON);
+        //console.log(responseAsJSON);
         /*
         MAKE A CHECK HERE TO SEE IF THE RESPONSE IS NULL OR UNDEFINED! 
         */
