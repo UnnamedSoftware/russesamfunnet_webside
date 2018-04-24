@@ -61,7 +61,17 @@ and open the template in the editor.
                     <div id="russCard">
                         
                         <img src="images/russekort.jpg" height="300" style="height: 300px; text-align: center;"  id="russCardImage"/>
-                        <a href="changeCardPicture.php">Skift russekortbilde</a>
+                        <a href="#" onclick="toggleChangeCardPopup(); return false;">Skift profilbilde</a>
+                    </div>
+                    <div id="changeCardPopup" style="display: none;">
+                        <form method="POST" enctype="multipart/form-data" action="http://158.38.101.162:8080/upload">
+                            <table>
+                                    <tr><td>File to upload:</td><td><input type="file" name="file" id="input" /></td></tr>
+                                    <tr><td><input value="test69.jpg" type="hidden" name="name" id="cardname" /></td></tr>
+                                    <tr><td></td><td><input type="submit" value="Upload" onclick="generateFilenameCardPicture()" /></td></tr>
+                            </table>
+                             
+                    </form>
                     </div>
                 </div>
             </div>

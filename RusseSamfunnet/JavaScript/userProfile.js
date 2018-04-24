@@ -2,6 +2,7 @@ var filename = "";
 var russId = "test";
 var token = "";
 var type = "";
+var pictureToken = "";
 
 function getURL() {
     return "http://158.38.101.146:8080/";
@@ -117,7 +118,7 @@ function getProfileInfo(){
             console.log("Facebook user");
         }, 1000);
     } else if (type == 'russesamfunnet') {
-        var accessToken = getCookie("Russesamfunnet-token");
+        accessToken = getCookie("Russesamfunnet-token");
         console.log("Other user");
         getProfileInfoExecute(type, accessToken);
         
@@ -142,6 +143,7 @@ function getProfileInfoExecute(type, accessToken){
         var role = responseAsJSON.russRole;
         var school = responseAsJSON.schoolId.schoolName;
         russId = responseAsJSON.russId;
+        pictureToken = accessToken;
 
         if(profilePicture == null){
             console.log("Here");
@@ -517,6 +519,7 @@ function redirectUser() {
     }, 1000);
 
 }
+// </LOGOUT>
 
 function toggleChangeProfilePopup(){
     var changeProfilePopup = document.getElementById("changeProfilePopup");
@@ -534,14 +537,72 @@ function toggleChangeProfilePopup(){
    // if block
         // set to none
 }
-// </LOGOUT>
+
+function toggleChangeCardPopup(){
+    var changeCardPopup = document.getElementById("changeCardPopup");
+    
+    
+    if(changeCardPopup.style.display === "block"){
+        ChangeCardPopup.style.display = "none";
+    } else if (changeCardPopup.style.display === "none") {
+        changeCardPopup.style.display = "block";
+    }
+    //check dispy
+    
+    // if none
+        // set to block
+   // if block
+        // set to none
+}
+
 
 function sendFilenameToServer(incomingUrl, picturetype){
     var type = getCookie("Russesamfunnet");
     
-    alert("test");
-    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+token+"&type="+type+"&pictureName="+incomingUrl;
     
+    
+    
+    if(picturetype === "profilepicture"){
+    alert("tesProfile2");
+    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+pictureToken+"&type="+type+"&pictureName="+incomingUrl;
+    alert(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+        
+    });
+    }
+    
+    if (picturetype === "card") {
+        alert("testcard");
+    var url = "http://158.38.101.146:8080/setRussCard?accessToken="+pictureToken+"&type="+type+"&pictureName="+incomingUrl;
+    alert(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+    });
+    }
+    
+    
+    
+    alert("test3");
+       
+    }
+
+function generateFilenameProfilePicture(){
+    alert("profilepicture");
+    var type = getCookie("Russesamfunnet");
+    var picturetype = "profile";
+    
+    filename = russId + "profil" + ".jpg";
+    document.getElementById('name').value=filename;
+    document.forms[0].submit();
+    
+    
+    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+pictureToken+"&type="+type+"&pictureName="+filename;
+    alert(url);
     var client = new HttpClient();
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
@@ -549,26 +610,28 @@ function sendFilenameToServer(incomingUrl, picturetype){
         
     });
     
-       
-    }
-
-function generateFilenameProfilePicture(){
-    alert("test");
-    var picturetype = "profile";
-    
-    filename = russId + "profil" + ".jpg";
-    document.getElementById('name').value=filename;
-    document.forms[0].submit();
-    sendFilenameToServer(filename, picturetype);
-    
 }
 
 function generateFilenameCardPicture(){
+    alert("card");
     var picturetype = "card"
+    var type = getCookie("Russesamfunnet");
     
     filename = russId + "card" + ".jpg";
-    document.getElementById('name').value=filename;
+    document.getElementById('cardname').value=filename;
     document.forms[0].submit();
-    sendFilenameToServer(filename, picturetype);
+    
+    
+    
+        alert("testcard");
+    var url = "http://158.38.101.146:8080/setRussCard?accessToken="+pictureToken+"&type="+type+"&pictureName="+filename;
+    alert(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+    });
+    
+    
 }
 
