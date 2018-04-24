@@ -111,7 +111,7 @@ function getProfileInfo(){
             //console.log("in timeout: " + token);
             getProfileInfoExecute(type, token);
             console.log("Facebook user");
-        }, 1000);
+        }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
         console.log("Other user");
@@ -125,9 +125,9 @@ function getProfileInfoExecute(type, accessToken){
     var url = "http://158.38.101.146:8080/userRuss?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
-        console.log(response);
+        //console.log(response);
         var responseAsJSON = JSON.parse(response);
-        console.log(responseAsJSON);
+        //console.log(responseAsJSON);
 
         var profilePicture = responseAsJSON.profilePicture;
         var russCard = responseAsJSON.russCard;
@@ -191,7 +191,7 @@ function getCompletedKnots(){
             //console.log("in timeout: " + token);
             getCompletedKnotsExecute(type, token);
             console.log("Facebook user");
-        }, 1000);
+        }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
         console.log("Other user");
@@ -279,10 +279,10 @@ function getGroups(){
             //console.log("in timeout: " + token);
             getGroupsExecute(type, token);
             console.log("Facebook user");
-        }, 1000);
+        }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
-        console.log("Other user");
+        //console.log("Other user");
         getGroupsExecute(type, accessToken);
         
     }
@@ -296,10 +296,10 @@ function getGroupsExecute(type, accessToken){
         //response.length
         //console.log(response.length);
         var responseAsJSON = JSON.parse(response);
-        console.log(responseAsJSON);
+        //console.log(responseAsJSON);
         var numOfGroups = document.getElementById("numOfGroups");
         if(responseAsJSON.length == 0){
-            console.log("Not a member of any group");
+            //console.log("Not a member of any group");
             var groupsContent =  document.getElementById("groupsContent");
             
             var list = document.createElement("ul");

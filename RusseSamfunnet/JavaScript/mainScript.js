@@ -156,7 +156,7 @@ function getFeed() {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
             getFeedExecute(type, token);
-        }, 1000);
+        }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
         getFeedExecute(type, accessToken);
