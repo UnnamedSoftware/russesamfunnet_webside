@@ -20,9 +20,7 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script src="JavaScript/userProfile.js"></script>
-        <script src="JavaScript/picturehandlingjs"></script>
-        <script src="JavaScript/changeProfilePicture.js"></script>
-        <script src="JavaScript/changeCardPicture.js"></script>
+       
         <!--<script src="JavaScript/feed.js"></script> -->
     <link rel="stylesheet" type="text/css" href="CSS/profile.css">
     <!--   --> <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">

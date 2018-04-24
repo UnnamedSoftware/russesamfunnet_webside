@@ -1,6 +1,7 @@
 var filename = "";
-var russeId = "test";
-token = "";
+var russId = "test";
+var token = "";
+var type = "";
 
 function getURL() {
     return "http://158.38.101.146:8080/";
@@ -60,6 +61,7 @@ window.onload = function () {
     //alert("mainScript onload()");
     //console.log("web page: " + window.location.href.includes("feed"));
     var cookie = getCookie("Russesamfunnet");
+    type = cookie;
     if (cookie == null) {
         //alert("Cookie == null");
         facebookInit();
@@ -86,6 +88,7 @@ window.onload = function () {
             getProfileInfo();
             getCompletedKnots();
             getGroups();
+            
 
         }/*
         if (cookie == "google") {
@@ -95,6 +98,7 @@ window.onload = function () {
             getProfileInfo();
             getCompletedKnots();
             getGroups();
+            
         }
     }
     else {
@@ -121,6 +125,7 @@ function getProfileInfo(){
 }
 
 function getProfileInfoExecute(type, accessToken){
+    
     console.log("Execute " + type + ": " + accessToken);
     var url = "http://158.38.101.146:8080/userRuss?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
@@ -136,6 +141,7 @@ function getProfileInfoExecute(type, accessToken){
         var status = responseAsJSON.russStatus;
         var role = responseAsJSON.russRole;
         var school = responseAsJSON.schoolId.schoolName;
+        russId = responseAsJSON.russId;
 
         if(profilePicture == null){
             console.log("Here");
@@ -529,3 +535,40 @@ function toggleChangeProfilePopup(){
         // set to none
 }
 // </LOGOUT>
+
+function sendFilenameToServer(incomingUrl, picturetype){
+    var type = getCookie("Russesamfunnet");
+    
+    alert("test");
+    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+token+"&type="+type+"&pictureName="+incomingUrl;
+    
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+        
+    });
+    
+       
+    }
+
+function generateFilenameProfilePicture(){
+    alert("test");
+    var picturetype = "profile";
+    
+    filename = russId + "profil" + ".jpg";
+    document.getElementById('name').value=filename;
+    document.forms[0].submit();
+    sendFilenameToServer(filename, picturetype);
+    
+}
+
+function generateFilenameCardPicture(){
+    var picturetype = "card"
+    
+    filename = russId + "card" + ".jpg";
+    document.getElementById('name').value=filename;
+    document.forms[0].submit();
+    sendFilenameToServer(filename, picturetype);
+}
+
