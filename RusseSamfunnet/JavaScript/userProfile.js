@@ -1,6 +1,8 @@
 var filename = "";
-var russeId = "test";
-token = "";
+var russId = "test";
+var token = "";
+var type = "";
+var pictureToken = "";
 
 function getURL() {
     return "http://158.38.101.146:8080/";
@@ -60,6 +62,7 @@ window.onload = function () {
     //alert("mainScript onload()");
     //console.log("web page: " + window.location.href.includes("feed"));
     var cookie = getCookie("Russesamfunnet");
+    type = cookie;
     if (cookie == null) {
         //alert("Cookie == null");
         facebookInit();
@@ -86,6 +89,7 @@ window.onload = function () {
             getProfileInfo();
             getCompletedKnots();
             getGroups();
+            
 
         }/*
         if (cookie == "google") {
@@ -95,6 +99,7 @@ window.onload = function () {
             getProfileInfo();
             getCompletedKnots();
             getGroups();
+            
         }
     }
     else {
@@ -121,6 +126,7 @@ function getProfileInfo(){
 }
 
 function getProfileInfoExecute(type, accessToken){
+    
     console.log("Execute " + type + ": " + accessToken);
     var url = "http://158.38.101.146:8080/userRuss?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
@@ -136,6 +142,8 @@ function getProfileInfoExecute(type, accessToken){
         var status = responseAsJSON.russStatus;
         var role = responseAsJSON.russRole;
         var school = responseAsJSON.schoolId.schoolName;
+        russId = responseAsJSON.russId;
+        pictureToken = accessToken;
 
         if(profilePicture == null){
             console.log("Here");
@@ -145,7 +153,7 @@ function getProfileInfoExecute(type, accessToken){
             document.getElementById("profilePictureImage").src = "images/profile3.png";
             //profilePictureImage.setAttribute("src", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
         } else{
-            document.getElementById("profilePictureImage").src = profilePicture;
+            document.getElementById("profilePictureImage").src = "http://158.38.101.162:8080/files/"+ profilePicture;
         }
 
         if(russCard == null){
@@ -155,7 +163,7 @@ function getProfileInfoExecute(type, accessToken){
             console.log("Or here");
             document.getElementById("russCardImage").src = "images/russekort.jpg";
         } else{
-            document.getElementById("russCardImage").src = russCard;
+            document.getElementById("russCardImage").src = "http://158.38.101.162:8080/files/"+russCard;
         }
 
         var userContent = document.getElementById("userInfoContent");
@@ -325,10 +333,6 @@ function getGroupsExecute(type, accessToken){
 }
 
 
-
-
-
-
 function generateFilename(){
     filename = russeId + "profil" + ".jpg";
 }
@@ -354,28 +358,6 @@ alert(request);
 alert("check");
 
 }
-
-
-/*
-@PostMapping("/upload")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, 
-            RedirectAttributes redirectAttributes) {
-
-        storageService.store(file, name);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/";
-    }
-
-    HttpResponse<String> response = Unirest.post("http://158.38.101.162:8080/upload")
-  .header("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-  .header("cache-control", "no-cache")
-  .header("postman-token", "5f7d1fd4-f1ea-95cc-218e-3970333bb1ea")
-  .body("------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"file\"; filename=\"test.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\ntesting.jpg\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--")
-  .asString();
-
-*/
 
 function facebookInit() {
     //console.log("facebook Init");
@@ -566,4 +548,116 @@ function redirectUser() {
 }
 // </LOGOUT>
 
+function toggleChangeProfilePopup(){
+    var changeProfilePopup = document.getElementById("changeProfilePopup");
+    
+    
+    if(changeProfilePopup.style.display === "block"){
+        changeProfilePopup.style.display = "none";
+    } else if (changeProfilePopup.style.display === "none") {
+        changeProfilePopup.style.display = "block";
+    }
+    //check dispy
+    
+    // if none
+        // set to block
+   // if block
+        // set to none
+}
 
+function toggleChangeCardPopup(){
+    var changeCardPopup = document.getElementById("changeCardPopup");
+    
+    
+    if(changeCardPopup.style.display === "block"){
+        ChangeCardPopup.style.display = "none";
+    } else if (changeCardPopup.style.display === "none") {
+        changeCardPopup.style.display = "block";
+    }
+    //check dispy
+    
+    // if none
+        // set to block
+   // if block
+        // set to none
+}
+
+
+function sendFilenameToServer(incomingUrl, picturetype){
+    var type = getCookie("Russesamfunnet");
+    
+    
+    
+    
+    if(picturetype === "profilepicture"){
+    alert("tesProfile2");
+    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+pictureToken+"&type="+type+"&pictureName="+incomingUrl;
+    alert(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+        
+    });
+    }
+    
+    if (picturetype === "card") {
+        alert("testcard");
+    var url = "http://158.38.101.146:8080/setRussCard?accessToken="+pictureToken+"&type="+type+"&pictureName="+incomingUrl;
+    alert(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+    });
+    }
+    
+    
+    
+    alert("test3");
+       
+    }
+
+function generateFilenameProfilePicture(){
+    alert("profilepicture");
+    var type = getCookie("Russesamfunnet");
+    var picturetype = "profile";
+    
+    filename = russId + "profil" + ".jpg";
+    document.getElementById('name').value=filename;
+    document.forms[0].submit();
+    
+    
+    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+pictureToken+"&type="+type+"&pictureName="+filename;
+    alert(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+        
+    });
+    
+}
+
+function generateFilenameCardPicture(){
+    alert("card");
+    var picturetype = "card"
+    var type = getCookie("Russesamfunnet");
+    
+    filename = russId + "card" + ".jpg";
+    document.getElementById('cardname').value=filename;
+    document.forms[0].submit();
+    
+    
+    
+        alert("testcard");
+    var url = "http://158.38.101.146:8080/setRussCard?accessToken="+pictureToken+"&type="+type+"&pictureName="+filename;
+    alert(url);
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        alert(responseAsJSON);
+    });
+    
+    
+}

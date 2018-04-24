@@ -2,7 +2,7 @@
     <head>
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/picturehandling.js"></script>
-        
+        <script src="JavaScript/generateFilenameProfile.js"></script>
         
     </head>
     <body>
@@ -15,6 +15,7 @@
                             </table>
                              <img src="http://158.38.101.162:8080/files/testing.jpg" alt="Smiley face" height="42" width="42"> 
                     </form>
+                <a href="userprofile.php">Avbryt</a>
             </div>
 
     </body>
