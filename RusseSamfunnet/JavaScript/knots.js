@@ -94,6 +94,8 @@
   function makeTable(x){
       
       var obj = JSON.parse(x);
+      console.log(obj);
+      alert("check console");
       
       console.log("KNUTER have been clicked!");
     

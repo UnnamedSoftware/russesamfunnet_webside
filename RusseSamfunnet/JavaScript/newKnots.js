@@ -67,7 +67,8 @@ function makeTableMuligeKnuter(type, accessToken) {
     client.get(url, function (response) {
         //console.log(response);
         var responseAsJSON = JSON.parse(response);
-        //console.log(responseAsJSON.length);
+        //console.log(responseAsJSON);
+        //alert("check console")
         var tbl = $("<table/>").attr("id", "table");
         $("#div1").append(tbl);
         $("#table2").append("<tbody>");

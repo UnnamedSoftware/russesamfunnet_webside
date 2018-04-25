@@ -1,8 +1,8 @@
-var filename = "";
-var russId = "test";
+//var filename = "";
+//var russId = "test";
 var token = "";
 var type = "";
-var pictureToken = "";
+//var pictureToken = "";
 
 function getURL() {
     return "http://158.38.101.146:8080/";
@@ -89,7 +89,7 @@ window.onload = function () {
             getProfileInfo();
             getCompletedKnots();
             getGroups();
-            
+
 
         }/*
         if (cookie == "google") {
@@ -99,7 +99,7 @@ window.onload = function () {
             getProfileInfo();
             getCompletedKnots();
             getGroups();
-            
+
         }
     }
     else {
@@ -107,27 +107,27 @@ window.onload = function () {
     }
 }
 
-function getProfileInfo(){
-    console.log("Getting profile information!");
+function getProfileInfo() {
+    //console.log("Getting profile information!");
     var type = getCookie("Russesamfunnet");
     if (type == 'facebook') {
         setTimeout(function () {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
             getProfileInfoExecute(type, token);
-            console.log("Facebook user");
+            //console.log("Facebook user");
         }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
-        console.log("Other user");
+        //console.log("Other user");
         getProfileInfoExecute(type, accessToken);
-        
+
     }
 }
 
-function getProfileInfoExecute(type, accessToken){
-    
-    console.log("Execute " + type + ": " + accessToken);
+function getProfileInfoExecute(type, accessToken) {
+
+    //console.log("Execute " + type + ": " + accessToken);
     var url = "http://158.38.101.146:8080/userRuss?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
@@ -145,25 +145,25 @@ function getProfileInfoExecute(type, accessToken){
         russId = responseAsJSON.russId;
         pictureToken = accessToken;
 
-        if(profilePicture == null){
-            console.log("Here");
+        if (profilePicture == null) {
+            //console.log("Here");
             document.getElementById("profilePictureImage").src = "images/profile3.png";
-        } else if(profilePicture == undefined){
-            console.log("Or here");
+        } else if (profilePicture == undefined) {
+            //console.log("Or here");
             document.getElementById("profilePictureImage").src = "images/profile3.png";
             //profilePictureImage.setAttribute("src", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
-        } else{
-            document.getElementById("profilePictureImage").src = "http://158.38.101.162:8080/files/"+ profilePicture;
+        } else {
+            document.getElementById("profilePictureImage").src = "http://158.38.101.162:8080/files/" + profilePicture;
         }
 
-        if(russCard == null){
-            console.log("Here");
+        if (russCard == null) {
+            //console.log("Here");
             document.getElementById("russCardImage").src = "images/russekort.jpg";
-        } else if(russCard == undefined){
-            console.log("Or here");
+        } else if (russCard == undefined) {
+            //console.log("Or here");
             document.getElementById("russCardImage").src = "images/russekort.jpg";
-        } else{
-            document.getElementById("russCardImage").src = "http://158.38.101.162:8080/files/"+russCard;
+        } else {
+            document.getElementById("russCardImage").src = "http://158.38.101.162:8080/files/" + russCard;
         }
 
         var userContent = document.getElementById("userInfoContent");
@@ -190,37 +190,37 @@ function getProfileInfoExecute(type, accessToken){
 }
 
 
-function getCompletedKnots(){
-    console.log("Getting profile information!");
+function getCompletedKnots() {
+    //console.log("Getting profile information!");
     var type = getCookie("Russesamfunnet");
     if (type == 'facebook') {
         setTimeout(function () {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
             getCompletedKnotsExecute(type, token);
-            console.log("Facebook user");
+            //console.log("Facebook user");
         }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
-        console.log("Other user");
+        //console.log("Other user");
         getCompletedKnotsExecute(type, accessToken);
-        
+
     }
 }
 
-function getCompletedKnotsExecute(type, accessToken){
-    console.log("Execute " + type + ": " + accessToken);
+function getCompletedKnotsExecute(type, accessToken) {
+    //console.log("Execute " + type + ": " + accessToken);
     var url = "http://158.38.101.146:8080/completedKnots?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
-        console.log(response);
+        //console.log(response);
         var responseAsJSON = JSON.parse(response);
-        console.log(responseAsJSON);
+        //console.log(responseAsJSON);
         var knotsContent = document.getElementById("knotsContent");
         var numOfKnots = document.getElementById("numOfKnots");
         var knotTableBody = document.getElementById("knotTableBody");
-        
-        if(responseAsJSON.length == 0){
+
+        if (responseAsJSON.length == 0) {
             var row = knotTableBody.insertRow(0);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -230,8 +230,8 @@ function getCompletedKnotsExecute(type, accessToken){
             //var knotName = responseAsJSON[i].knotId.knotName;
             //listItem.innerText = "Du har ikke gjennomført noen knuter";
             //list.appendChild(listItem);
-        } else{
-            for(i = 0; i < responseAsJSON.length; i++){
+        } else {
+            for (i = 0; i < responseAsJSON.length; i++) {
                 var row = knotTableBody.insertRow(i);
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
@@ -278,26 +278,26 @@ function getCompletedKnotsExecute(type, accessToken){
 }*/
 
 
-function getGroups(){
-    console.log("Getting groups information!");
+function getGroups() {
+    //console.log("Getting groups information!");
     var type = getCookie("Russesamfunnet");
     if (type == 'facebook') {
         setTimeout(function () {
             //window.location.href = "feed.php";
             //console.log("in timeout: " + token);
             getGroupsExecute(type, token);
-            console.log("Facebook user");
+            //console.log("Facebook user");
         }, 2000);
     } else if (type == 'russesamfunnet') {
         var accessToken = getCookie("Russesamfunnet-token");
         //console.log("Other user");
         getGroupsExecute(type, accessToken);
-        
+
     }
 }
 
-function getGroupsExecute(type, accessToken){
-    console.log("getGroupsExecute " + type + ": " + accessToken);
+function getGroupsExecute(type, accessToken) {
+    //console.log("getGroupsExecute " + type + ": " + accessToken);
     var url = "http://158.38.101.146:8080/groups?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
@@ -306,25 +306,25 @@ function getGroupsExecute(type, accessToken){
         var responseAsJSON = JSON.parse(response);
         //console.log(responseAsJSON);
         var numOfGroups = document.getElementById("numOfGroups");
-        if(responseAsJSON.length == 0){
+        if (responseAsJSON.length == 0) {
             //console.log("Not a member of any group");
-            var groupsContent =  document.getElementById("groupsContent");
-            
+            var groupsContent = document.getElementById("groupsContent");
+
             var list = document.createElement("ul");
             var listItem = document.createElement("li");
             listItem.innerText = "Du er ikke medlem i noen grupper";
-            list.appendChild(listItem); 
+            list.appendChild(listItem);
             groupsContent.appendChild(list);
-        } else{
-            var groupsContent =  document.getElementById("groupsContent");
+        } else {
+            var groupsContent = document.getElementById("groupsContent");
             var list = document.createElement("ul");
-            for(i = 0; i < responseAsJSON.length; i++){
+            for (i = 0; i < responseAsJSON.length; i++) {
                 var listItem = document.createElement("li");
                 listItem.innerText = responseAsJSON[i].groupId.groupName;
-                list.appendChild(listItem); 
+                list.appendChild(listItem);
 
             }
-            
+
             groupsContent.appendChild(list);
         }
         numOfGroups.innerText = responseAsJSON.length;
@@ -333,29 +333,29 @@ function getGroupsExecute(type, accessToken){
 }
 
 
-function generateFilename(){
+function generateFilename() {
     filename = russeId + "profil" + ".jpg";
 }
 
-function onClickUpload(){ 
-    alert("resrr");
-generateFilename();
-var selectedFile = document.getElementById('input').files[0];
+function onClickUpload() {
+    //alert("resrr");
+    generateFilename();
+    var selectedFile = document.getElementById('input').files[0];
 
-var formData = new FormData("file",selectedFile);
-    alert("resrr");
-console.log(filename);
+    var formData = new FormData("file", selectedFile);
+    //alert("resrr");
+    //console.log(filename);
 
-var request = new XMLHttpRequest();
-alert(request);
-request.open("POST", "localhost:8090");
-formData.append('name', 'fuckert123.jpg');
-alert(formData);
-         
-request.send(formData);
-alert(request);
+    var request = new XMLHttpRequest();
+    //alert(request);
+    request.open("POST", "localhost:8090");
+    formData.append('name', 'fuckert123.jpg');
+    //alert(formData);
 
-alert("check");
+    request.send(formData);
+    //alert(request);
+
+    //alert("check");
 
 }
 
@@ -471,7 +471,7 @@ onLoadGoogle();
 
 function onLoadGoogle() {
 gapi.load('auth2', function () {
-    gapi.auth2.init();
+gapi.auth2.init();
 });
 }*/
 
@@ -548,116 +548,187 @@ function redirectUser() {
 }
 // </LOGOUT>
 
-function toggleChangeProfilePopup(){
+function toggleChangeProfilePopup() {
     var changeProfilePopup = document.getElementById("changeProfilePopup");
-    
-    
-    if(changeProfilePopup.style.display === "block"){
+
+
+    if (changeProfilePopup.style.display === "block") {
         changeProfilePopup.style.display = "none";
     } else if (changeProfilePopup.style.display === "none") {
         changeProfilePopup.style.display = "block";
     }
     //check dispy
-    
+
     // if none
-        // set to block
-   // if block
-        // set to none
+    // set to block
+    // if block
+    // set to none
 }
 
-function toggleChangeCardPopup(){
+function toggleChangeCardPopup() {
     var changeCardPopup = document.getElementById("changeCardPopup");
-    
-    
-    if(changeCardPopup.style.display === "block"){
-        ChangeCardPopup.style.display = "none";
+
+
+    if (changeCardPopup.style.display === "block") {
+        changeCardPopup.style.display = "none";
     } else if (changeCardPopup.style.display === "none") {
         changeCardPopup.style.display = "block";
     }
     //check dispy
-    
+
     // if none
-        // set to block
-   // if block
-        // set to none
+    // set to block
+    // if block
+    // set to none
 }
 
-
-function sendFilenameToServer(incomingUrl, picturetype){
+/*
+function sendFilenameToServer(incomingUrl, picturetype) {
     var type = getCookie("Russesamfunnet");
-    
-    
-    
-    
-    if(picturetype === "profilepicture"){
-    alert("tesProfile2");
-    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+pictureToken+"&type="+type+"&pictureName="+incomingUrl;
-    alert(url);
-    var client = new HttpClient();
-    client.get(url, function (response) {
-        var responseAsJSON = JSON.parse(response);
-        alert(responseAsJSON);
-        
-    });
+    if (picturetype === "profilepicture") {
+        alert("tesProfile2");
+        var url = "http://158.38.101.146:8080/setProfilePicture?accessToken=" + pictureToken + "&type=" + type + "&pictureName=" + incomingUrl;
+        alert(url);
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            var responseAsJSON = JSON.parse(response);
+            alert(responseAsJSON);
+        });
     }
-    
     if (picturetype === "card") {
         alert("testcard");
-    var url = "http://158.38.101.146:8080/setRussCard?accessToken="+pictureToken+"&type="+type+"&pictureName="+incomingUrl;
-    alert(url);
-    var client = new HttpClient();
-    client.get(url, function (response) {
-        var responseAsJSON = JSON.parse(response);
-        alert(responseAsJSON);
-    });
+        var url = "http://158.38.101.146:8080/setRussCard?accessToken=" + pictureToken + "&type=" + type + "&pictureName=" + incomingUrl;
+        alert(url);
+        var client = new HttpClient();
+        client.get(url, function (response) {
+            var responseAsJSON = JSON.parse(response);
+            alert(responseAsJSON);
+        });
     }
-    
-    
-    
     alert("test3");
-       
-    }
+}
+*/
 
-function generateFilenameProfilePicture(){
-    alert("profilepicture");
+function generateFilenameProfilePicture() {
+    //console.log("Getting profile information!");
     var type = getCookie("Russesamfunnet");
-    var picturetype = "profile";
-    
-    filename = russId + "profil" + ".jpg";
-    document.getElementById('name').value=filename;
-    document.forms[0].submit();
-    
-    
-    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken="+pictureToken+"&type="+type+"&pictureName="+filename;
-    alert(url);
-    var client = new HttpClient();
-    client.get(url, function (response) {
-        var responseAsJSON = JSON.parse(response);
-        alert(responseAsJSON);
-        
-    });
-    
+    if (type == 'facebook') {
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            generateFilenameProfilePictureExecute(type, token);
+            //console.log("Facebook user");
+        }, 2000);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        //console.log("Other user");
+        generateFilenameProfilePictureExecute(type, accessToken);
+    }
 }
 
-function generateFilenameCardPicture(){
+function generateFilenameProfilePictureExecute(type, accessToken) {
+    document.getElementById("profilePictureImage").src = "";
+    //alert("profilepicture" + " " + type + " " + accessToken);
+    var picturetype = "profile";
+    var filename = getCookie("Russesamfunnet-id") + "profil" + ".jpg";
+    //document.getElementById('name').value = filename;
+    //document.forms[0].submit();
+    //console.log(document.forms);
+    //console.log("file:");
+    //console.log(document.getElementById("inputProfile").files[0]);
+
+    /*
+    */
+
+    var formData = new FormData();
+    formData.append("name", filename);
+    formData.append("file", document.getElementById("inputProfile").files[0]);
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://158.38.101.162:8080/upload");
+    request.send(formData);
+
+
+    /*
+    */
+    var url = "http://158.38.101.146:8080/setProfilePicture?accessToken=" + accessToken + "&type=" + type + "&pictureName=" + filename;
+    //alert(url);
+
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        //alert(responseAsJSON);
+        setTimeout(function () {
+            //document.getElementById("profilePictureImage").src = "http://158.38.101.162:8080/files/"+getCookie("Russesamfunnet-id")+"profil"+".jpg";
+            window.location.href = "userProfile.php";
+        }, 500);
+    });
+
+}
+
+function generateFilenameCardPicture() {
+    //console.log("Getting profile information!");
+    var type = getCookie("Russesamfunnet");
+    if (type == 'facebook') {
+        setTimeout(function () {
+            //window.location.href = "feed.php";
+            //console.log("in timeout: " + token);
+            generateFilenameCardPictureExecute(type, token);
+            //console.log("Facebook user");
+        }, 2000);
+    } else if (type == 'russesamfunnet') {
+        var accessToken = getCookie("Russesamfunnet-token");
+        //console.log("Other user");
+        generateFilenameCardPictureExecute(type, accessToken);
+    }
+}
+
+function generateFilenameCardPictureExecute(type, accessToken) {
+    document.getElementById("russCardImage").src = "";
+    //alert("cardpicture" + " " + type + " " + accessToken);
+    var picturetype = "card";
+    var filename = getCookie("Russesamfunnet-id") + "card" + ".jpg";
+    document.getElementById('cardname').value = filename;
+    //document.forms[1].submit();
+    //console.log(document.forms);
+
+    var formData = new FormData();
+    formData.append("name", filename);
+    formData.append("file", document.getElementById("inputCard").files[0]);
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://158.38.101.162:8080/upload");
+    request.send(formData);
+
+    var url = "http://158.38.101.146:8080/setRussCard?accessToken=" + accessToken + "&type=" + type + "&pictureName=" + filename;
+    //alert(url);
+
+    var client = new HttpClient();
+    client.get(url, function (response) {
+        var responseAsJSON = JSON.parse(response);
+        //alert(responseAsJSON);
+        setTimeout(function () {
+            //document.getElementById("russCardImage").src = "http://158.38.101.162:8080/files/"+getCookie("Russesamfunnet-id")+"card"+".jpg";
+            window.location.href = "userProfile.php";
+        }, 500);
+    });
+
+}
+
+
+
+/*
+function generateFilenameCardPictureExecute(type, accessToken) {
     alert("card");
     var picturetype = "card"
-    var type = getCookie("Russesamfunnet");
-    
+    //var type = getCookie("Russesamfunnet");
     filename = russId + "card" + ".jpg";
-    document.getElementById('cardname').value=filename;
+    document.getElementById('cardname').value = filename;
     document.forms[0].submit();
-    
-    
-    
-        alert("testcard");
-    var url = "http://158.38.101.146:8080/setRussCard?accessToken="+pictureToken+"&type="+type+"&pictureName="+filename;
+    //alert("testcard");
+    var url = "http://158.38.101.146:8080/setRussCard?accessToken=" + accessToken + "&type=" + type + "&pictureName=" + filename;
     alert(url);
-    var client = new HttpClient();
+    /*var client = new HttpClient();
     client.get(url, function (response) {
         var responseAsJSON = JSON.parse(response);
         alert(responseAsJSON);
-    });
-    
-    
-}
+    });*/
+//}

@@ -127,9 +127,9 @@ div#profilePicture{
 div#profilePicture img#profilePictureImage{
     display:block;
     margin: auto;
-    border: 5px solid rgb(0, 0, 0);
+    /*border: 5px solid rgb(0, 0, 0);*/
     /*border-radius: 50%;*/
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     box-shadow: none;
 }
 
@@ -148,10 +148,10 @@ div#russCard{
 div#russCard img#russCardImage{
     display:block;
     margin: auto;
-    border: 5px solid rgb(0, 0, 0);
+    /*border: 5px solid rgb(0, 0, 0);*/
     
     box-shadow: none;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
 }
 
 #russCard p{

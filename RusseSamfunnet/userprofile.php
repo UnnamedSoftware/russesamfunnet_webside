@@ -41,34 +41,34 @@ and open the template in the editor.
             </div>-->
             <div class="row imagesRow">
                 <div class="col-5 col-m-5">
-                    <div id="profilePicture">
+                    <div id="profilePicture" style="overflow: hidden;">
                         <!--<h3>Profilbilde</h3>-->
-                        <img src="images/profile3.png" height="300" style="height: 300px; text-align: center;"  id="profilePictureImage"/>
-                        <a href="#" onclick="toggleChangeProfilePopup(); return false;">Skift profilbilde</a>
+                        <img src="images/profile3.png" height="300" style="max-height:300px; height: 300px; text-align: center;"  id="profilePictureImage"/>
                     </div>
+                    <a href="#" onclick="toggleChangeProfilePopup(); return false;">Bytt profilbilde</a>
                     <div id="changeProfilePopup" style="display: none;">
-                        <form method="POST" enctype="multipart/form-data" action="http://158.38.101.162:8080/upload">
+                        <form method="POST" enctype="multipart/form-data" onsubmit="generateFilenameProfilePicture(); return false;">
                             <table>
-                                    <tr><td>File to upload:</td><td><input type="file" name="file" id="input" /></td></tr>
-                                    <tr><td><input value="test69.jpg" type="hidden" name="name" id="name" /></td></tr>
-                                    <tr><td></td><td><input type="submit" value="Upload" onclick="generateFilenameProfilePicture()" /></td></tr>
+                                    <tr><td></td><td><input type="file" name="file" id="inputProfile" /></td></tr>
+                                    <tr><td><input value="" type="hidden" name="name" id="name" /></td></tr>
+                                    <tr><td></td><td><input type="submit" value="Upload"/></td></tr>
                             </table>
                              
                     </form>
                     </div>
                 </div>
                 <div class="col-7 col-m-7">
-                    <div id="russCard">
+                    <div id="russCard" style="overflow: hidden;">
                         
-                        <img src="images/russekort.jpg" height="300" style="height: 300px; text-align: center;"  id="russCardImage"/>
-                        <a href="#" onclick="toggleChangeCardPopup(); return false;">Skift profilbilde</a>
+                        <img src="images/russekort.jpg" height="300" style="max-height:300px; height: 300px; text-align: center;"  id="russCardImage"/>
+                        <a href="#" onclick="toggleChangeCardPopup(); return false;">Bytt russekortbilde</a>
                     </div>
                     <div id="changeCardPopup" style="display: none;">
-                        <form method="POST" enctype="multipart/form-data" action="http://158.38.101.162:8080/upload">
+                        <form method="POST" enctype="multipart/form-data" onsubmit="generateFilenameCardPicture(); return false;"><!--action="http://158.38.101.162:8080/upload" -->
                             <table>
-                                    <tr><td>File to upload:</td><td><input type="file" name="file" id="input" /></td></tr>
-                                    <tr><td><input value="test69.jpg" type="hidden" name="name" id="cardname" /></td></tr>
-                                    <tr><td></td><td><input type="submit" value="Upload" onclick="generateFilenameCardPicture()" /></td></tr>
+                                    <tr><td></td><td><input type="file" name="file" id="inputCard" /></td></tr>
+                                    <tr><td><input value="" type="hidden" name="name" id="cardname" /></td></tr>
+                                    <tr><td></td><td><input type="submit" value="Upload"/></td></tr>
                             </table>
                              
                     </form>

@@ -183,9 +183,12 @@ function getFeedExecute(type, accessToken) {
         for (i = (responseAsJSON.length - 1); i > (responseAsJSON.length - (displayFirstMessages+1)); i--) {
             var feedId = responseAsJSON[i].feedId;
             var russId = responseAsJSON[i].russId.russId;
+            var profilePictureName = responseAsJSON[i].russId.profilePicture;
             var profilePicture = responseAsJSON[i].russId.profilePicture;
             if(profilePicture == null){
                 profilePicture = "images/profile3.png";
+            } else{
+                profilePicture = "http://158.38.101.162:8080/files/"+profilePictureName;
             }
             var message = responseAsJSON[i].message;
             var firstName = responseAsJSON[i].russId.firstName;
@@ -194,14 +197,20 @@ function getFeedExecute(type, accessToken) {
             /*
             Check if the userid matches!!! 
             */
-            theMessage.setAttribute("class", "col-7 col-m-7 messageContainer");
+            theMessage.setAttribute("class", "col-8 col-m-8 messageContainer");
             theMessage.setAttribute("id", "message" + feedId);
-
+//<img src="`+profilePicture+`"width=200 style="clip: rect(0px,160px,100px,50px); margin: auto;"/>
 
             if (cookieId == russId) {
                 theMessage.innerHTML = `
                 <div class="pictureContainer">
-                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                    <div class="image-cropper">
+                        <div class="rounded" style="background:url(`+profilePicture+`) center no-repeat; background-size:cover;">
+
+                        </div>
+                    </div>
+                    
+                    
                     <div class="headingContainer">
                         <p>`
                         +
@@ -223,7 +232,11 @@ function getFeedExecute(type, accessToken) {
             } else if (cookieId != russId) {
                 theMessage.innerHTML = `
                 <div class="pictureContainer">
-                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                <div class="image-cropper">
+                <div class="rounded" style="background:url(`+profilePicture+`) center no-repeat; background-size:cover;">
+
+                </div>
+            </div>
                     <div class="headingContainer">
                         <p>`
                         +
@@ -347,20 +360,27 @@ function showMore(){
         if (feedMessages[i] != undefined) {
             var feedId = feedMessages[i].feedId;
             var russId = feedMessages[i].russId.russId;
+            var profilePictureName = feedMessages[i].russId.profilePicture;
             var profilePicture = feedMessages[i].russId.profilePicture;
             if(profilePicture == null){
                 profilePicture = "images/profile3.png";
+            } else{
+                profilePicture = "http://158.38.101.162:8080/files/"+profilePictureName;
             }
             var message = feedMessages[i].message;
             var firstName = feedMessages[i].russId.firstName;
             var lastName = feedMessages[i].russId.lastName;
             var theMessage = document.createElement('div');
-            theMessage.setAttribute("class", "col-7 col-m-7 messageContainer");
+            theMessage.setAttribute("class", "col-8 col-m-8 messageContainer");
             theMessage.setAttribute("id", "message" + feedId);
             if (cookieId == russId) {
                 theMessage.innerHTML = `
                 <div class="pictureContainer">
-                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                <div class="image-cropper">
+                <div class="rounded" style="background:url(`+profilePicture+`) center no-repeat; background-size:cover;">
+
+                </div>
+            </div>
                     <div class="headingContainer">
                         <p>`
                         +
@@ -382,7 +402,11 @@ function showMore(){
             } else if (cookieId != russId) {
                 theMessage.innerHTML = `
                 <div class="pictureContainer">
-                    <img src="`+profilePicture+`" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+                <div class="image-cropper">
+                <div class="rounded" style="background:url(`+profilePicture+`) center no-repeat; background-size:cover;">
+
+                </div>
+            </div>
                     <div class="headingContainer">
                         <p>`
                         +

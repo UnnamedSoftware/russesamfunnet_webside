@@ -53,10 +53,17 @@ and open the template in the editor.
                     <a href="#" onclick="postNewMessageToFeed(); return false;"><img src="icons/confirm2.PNG" id="messageConfirmButton"/></a>
                 </div>
             </div>
-            <br style="clear: both; margin-bottom: 20px;"><!--
+            <br style="clear: both; margin-bottom: 20px;">
+            <!--
             <div class="col-7 col-m-7 messageContainer">
                 <div class="pictureContainer">
-                    <img src="images/profile3.png" height=100 width=100 style="height: 100px; border: 2px solid black; border-radius: 50%;"/>
+
+
+                    <div class="image-cropper">
+                        <div class="rounded">
+
+                        </div>
+                    </div>
                     <div class="headingContainer">
                         <p>Kristian</p> 
                     </div>
