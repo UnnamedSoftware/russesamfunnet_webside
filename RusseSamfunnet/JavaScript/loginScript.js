@@ -32,8 +32,8 @@ function getCookie(name) {
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        while (c.charAt(0)===' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
     }
     return null;
 }
@@ -81,25 +81,19 @@ function russesamfunnetInit(){
 }
 
 function loginRussesamfunnet(status){
-    // 'User not in db'
     if(status == 'User not in db'){
-        //console.log("NOT IN DB!");
         var emailError = document.getElementById('emailError');
         emailError.innerHTML = "Feil e-post";
         emailError.style.display = "inline-block";
 
     } else if(status == 'Incorrect password'){
-        //console.log("INCORRECT PASSWORD");
         var passwordError = document.getElementById('passwordError');
         passwordError.innerHTML = "Feil passord";
         passwordError.style.display = "inline-block";
     } else{
         var responseAsJSON = JSON.parse(status);
-        //console.log("response: " + responseAsJSON);
         var loginStatus = responseAsJSON.loginStatus;
         var expiresInDays = responseAsJSON.expiresInDays;
-        //console.log(loginStatus);
-        //alert("Check console plz");
         if(loginStatus == 'Login success'){
             setCookie("Russesamfunnet", "russesamfunnet", expiresInDays)
             setCookie("Russesamfunnet-token", responseAsJSON.accessToken, expiresInDays);
@@ -107,12 +101,6 @@ function loginRussesamfunnet(status){
             setTimeout(function () {
                 window.location.href = 'feed.php';
             }, 500);
-            /*if(status == "new"){
-                window.location.href = 'additionalInfo.php';
-            }
-            if(status == "true"){
-                window.location.href = 'feed.php';
-            }*/
         }
     }
 

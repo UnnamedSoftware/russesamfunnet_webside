@@ -65,22 +65,15 @@ function makeTableMuligeKnuter(type, accessToken) {
     var url = "http://158.38.101.146:8080/getKnotsList?accessToken=" + accessToken + "&type=" + type;
     var client = new HttpClient();
     client.get(url, function (response) {
-        //console.log(response);
         var responseAsJSON = JSON.parse(response);
-        //console.log(responseAsJSON);
-        //alert("check console")
         var tbl = $("<table/>").attr("id", "table");
         $("#div1").append(tbl);
         $("#table2").append("<tbody>");
-
         for (i = 0; i < responseAsJSON.length; i++) {
-            //console.log("KNUTER have been clicked!");
-
             var currentId = responseAsJSON[i]["knotId"];
             var tr = "<tr>";
             var td2 = "<td>" + responseAsJSON[i]["knotName"] + "</td>";
             var td3 = "<td>" + responseAsJSON[i]["knotDetails"] + "</td>";
-            /*var td4="<td>"+responseAsJSON[i]["witnessId1"]["firstName"]+ " " +obj[i]["witnessId1"]["lastName"]+ " og " +obj[i]["witnessId2"]["firstName"]+ " " +obj[i]["witnessId2"]["lastName"]+"</td>";*/
             var td4 = "<td>" + '<button type="button"' + "onclick='markKnotAsComplete(" + currentId + ")'" + ">⇑</button>" + "</td>\n\</tr>";
             if (responseAsJSON[i]["completed"] === false) {
                 $("#table2").append(tr + td2 + td3 + td4);

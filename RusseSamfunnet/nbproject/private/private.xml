@@ -3,11 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/picturehandling.js</file>
-            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/generateFilenameRusscard.js</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/register.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/index.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/loginScript.js</file>
             <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/userprofile.php</file>
-            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/userProfile.js</file>
-            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/generateFilenameProfile.js</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/changeProfilePicture.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/Scoreboard.js</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/requiredInfo.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/newKnots.js</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/JavaScript/newLeaderboard.js</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/feed.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/knots.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/admin.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/scoreboard.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/Templates/navigation.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/registration.php</file>
+            <file>file:/C:/xampp/htdocs/RussesamfunnetWebside/RusseSamfunnet/styleTesting.php</file>
         </group>
     </open-files>
 </project-private>

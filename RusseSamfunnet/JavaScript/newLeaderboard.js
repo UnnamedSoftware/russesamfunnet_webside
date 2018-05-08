@@ -70,7 +70,7 @@ function makeTableLeaderboard(type, accessToken){
         var tbl=$("<table/>").attr("id","table");
 $("#div1").append(tbl);
 $("#table").append("<tbody>"); 
-for(var i=0;i<responseAsJSON.length;i++)
+for(var i=0;i<10;i++)
 {
     var tr="<tr>";
     var td2="<td>"+responseAsJSON[i]["position"]+"</td>";
