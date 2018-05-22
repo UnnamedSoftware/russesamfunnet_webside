@@ -23,41 +23,38 @@ and open the template in the editor.
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/newLeaderboard.js"></script>
         
-        <link rel="stylesheet" type="text/css" href="CSS/main.css">
-        <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
+        <link rel="stylesheet" type="text/css" href="CSS/custombootstrap.css">
+        <link rel="stylesheet" type="text/css" href="CSS/scoreboard.css">
         
     </head>
     <body>
-        <div class="row">
+        <div id="wrap">
+            <!--<div class="row">-->
             <div class="col-12 col-m-12">
                 <?php include 'Templates/navigation.php';?>
             </div>
+            <!--</div>-->
+            <div class="row setHeight">
+                <div class="col-2 col-m-2">
+                </div>
+                <div class="col-7 col-m-9">
+                    <h4>Toppliste</h4>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Posisjon</th>
+                                <th scope="col">Navn</th>
+                                <th scope="col">Poeng</th>
+                            </tr>
+                        </thead>
+                    </table>  
+                </div>
+                <div class="col-3 col-m-12">
+                </div>
+            </div>
+            <div class="footer">
+                <p>Kontakt oss på e-post: Russesamfunnet@gmail.com</p>
+            </div> 
         </div>
-        <div class="row">
-    <div class="col-2 col-m-2"></div>
-    <div class="col-7 col-m-9">
-        <h4>Toppliste</h4>
-        <table id="table">
-          <thead>
-                <tr>
-                  <th scope="col">Posisjon</th>
-                  <th scope="col">Navn</th>
-                  <th scope="col">Poeng</th>
-                </tr>
-          </thead>
-      </table>
-                
-            
-        </div>
-    <div class="col-3 col-m-12"></div>
-    </div>
-    
-        <div class="row">
-            <div class="col-4"><p></p></div>
-            <div class="col-4 col-m-12"><?php include 'Templates/footer.php';?></div>
-            <div class="col-4"><p></p></div>
-    
-        </div>
-        
     </body>
 </html>

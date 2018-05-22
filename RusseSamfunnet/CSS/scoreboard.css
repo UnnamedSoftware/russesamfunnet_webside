@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+body{
+    /*background-image: url("images\bakgrunn.jpg");*/
+    /*background-image: url("https://imbo.vgc.no/users/vgno/images/48ba36c8641bfddf70a54076a8dcafff?t[0]=sharpen:preset=light&t[1]=crop:width=3831,height=2274,x=105,y=0&t[2]=maxSize:width=990&t[3]=resize:width=990&accessToken=7c201289bfbe4472b756e121f1342528aadc0cbb549bda8e82a41fa89df6e6b0");
+    */
+    background-image: url(images/square_bg.png);
+    background-repeat: repeat;
+/*background: #ff515100;*/
+    
+}
+
+#blurEffect{
+    background: rgba(0, 0, 0, 0.76);
+}
+
+#wrap {
+    margin: 0;
+    padding: 0;
+    min-height: 98vh;
+    width: 100%;
+    background: rgba(255, 255, 255, 0);
+}
+
+
+
+
+
+
+#table  {
+    background: white;
+    border-color: black;
+    border: 2px;
+    border-style: solid;
+    min-width: 100%;
+}
+
+#table2 {
+    background: white;
+    border-color: black;
+    border: 2px;
+    border-style: solid;
+    min-width: 100%;
+}
+
+td {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th  {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+  background: black;
+  color: white;
+}
+
+
+/*
+[class*="col-"] {
+    float: left;
+
+}*/
+
+[class*="col-m-2"] {
+    float: left;
+    border: 1px solid transparent;
+   
+}
+
+[class*="col-2"] {
+    float: left;
+    border: 1px solid transparent;
+   
+}
+
+[class*="col-m-9"] {
+    float: left;
+    border: 1px solid transparent;
+   
+}
+
+[class*="col-7"] {
+    float: left;
+    border: 1px solid transparent;
+   
+}
+
+
+
+
+.setHeight{
+    min-height: 99vh;
+    max-width: 99vw; 
+}
+
+
+
+
+
+
+
+.footer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    clear:both;
+    padding-top: 0;
+    /*border: 1px solid rgb(129, 129, 129);*/
+    background: rgb(177, 1, 1);
+    color: white;
+}
+

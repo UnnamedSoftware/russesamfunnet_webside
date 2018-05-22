@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Russesamfunnet</title>
+        <title>Russesamfunnet - Knuter</title>
         <link rel="stylesheet" type="text/css" href="CSS/normalize.css">
         
         
@@ -30,52 +30,46 @@ and open the template in the editor.
 
         <script src="JavaScript/mainScript.js"></script>
         <script src="JavaScript/newKnots.js"></script>
-        <link rel="stylesheet" type="text/css" href="CSS/main.css">
         <link rel="stylesheet" type="text/css" href="CSS\custombootstrap.css">
+        <link rel="stylesheet" type="text/css" href="CSS/knots.css">
         
     </head>
     <body>
-        <div class="row">
+        <div id="wrap">
             <div class="col-12 col-m-12">
                 <?php include 'Templates/navigation.php';?>
             </div>
+            <div class="row setHeight">
+                <div class="col-2 col-m-2">
+                </div>
+                <div class="col-8 col-m-9">
+                    <h4>Ferdige knuter</h4>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Knute</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Vitner</th>
+                                <th scope="col">Fjern</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <h4>Mulige knuter</h4>
+                    <table id="table2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Knute</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Legg til</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!--<div class="col-2 col-m-12"></div>-->
+            </div>
+            <div class="footer">
+                <p>Kontakt oss på e-post: Russesamfunnet@gmail.com</p>
+            </div>  
         </div>
-        <div class="row">
-    <div class="col-2 col-m-2"></div>
-    <div class="col-8 col-m-9">
-      <h4>Ferdige knuter</h4>
-      <table id="table" >
-          <thead>
-                <tr>
-                  <th scope="col">Knute</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Vitner</th>
-                  <th scope="col">Fjern</th>
-                </tr>
-          </thead>
-      </table>
-        <h4>Mulige knuter</h4>
-        <table id="table2">
-          <thead>
-                <tr>
-                  <th scope="col">Knute</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Legg til</th>
-                </tr>
-          </thead>
-        </table>
-        </div>
-    <div class="col-2 col-m-12"></div>
-        </div>
-        <div class="row">
-            <div class="col-4"><p></p></div>
-            <div class="col-4 col-m-12"><?php include 'Templates/footer.php';?></div>
-            <div class="col-4"><p></p></div>
-        </div>
-
-<script>
-
-</script>
-
     </body>
 </html>

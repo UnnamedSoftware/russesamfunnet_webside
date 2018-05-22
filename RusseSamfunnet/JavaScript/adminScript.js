@@ -582,17 +582,17 @@ function populateUserTable(responseAsJSON){
                 //cell7.innerHTML = "Confirm";
                 if(responseAsJSON[i].russStatus == 'false'){
                     cell7.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setConfirmed('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
-                    <img src="icons/confirm2.png"  style="height: 30px;"/>
+                    <img src="images/confirm2.png"  style="height: 30px;"/>
                     </a>`;
                 }else if(responseAsJSON[i].russStatus == 'confirmed' && (responseAsJSON[i].russRole == 'russ' || responseAsJSON[i].russRole == 'Russ')){
                     cell7.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: left;">
-                    <img src="icons/uparrow.png"  style="height: 30px;"/>
+                    <img src="images/uparrow.png"  style="height: 30px;"/>
                     </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
-                    <img src="icons/cancel.png"  style="height: 30px;"/>
+                    <img src="images/cancel.png"  style="height: 30px;"/>
                     </a>`;
                 }else if(responseAsJSON[i].russStatus == 'confirmed' && (responseAsJSON[i].russRole == 'admin' || responseAsJSON[i].russRole == 'Admin')){
                     cell7.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setRuss('`+responseAsJSON[i].russId+`','`+rowCounter+`'); return false;" style="width: 20px; float: left;">
-                    <img src="icons/downarrow.png"  style="height: 30px;"/>
+                    <img src="images/downarrow.png"  style="height: 30px;"/>
                     </a>`;
                 }else{
                     cell7.innerHTML = "";
@@ -639,9 +639,9 @@ function utførSetConfirmed(type, accessToken, russId, i) {
             x[5].innerHTML = "confirmed";
 
             x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('` + russId + `','` + i + `'); return false;" style="width: 20px; float: left;">
-                <img src="icons/uparrow.png"  style="height: 30px;"/>
+                <img src="images/uparrow.png"  style="height: 30px;"/>
                 </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+ russId + `','` + i + `'); return false;" style="width: 20px; float: right; margin-right: 7px;">
-                <img src="icons/cancel.png"  style="height: 30px;"/>
+                <img src="images/cancel.png"  style="height: 30px;"/>
                 </a>`;
         }
     });
@@ -680,7 +680,7 @@ function utførSetFalse(type, accessToken, russId, i){
             x[5].innerHTML = "false";
 
             x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setConfirmed('`+russId+`','`+i+`'); return false;" style="width: 20px; float: right; margin-right: 7px;">
-                <img src="icons/confirm2.png"  style="height: 30px;"/>
+                <img src="images/confirm2.png"  style="height: 30px;"/>
                 </a>`;
         }
     });
@@ -721,7 +721,7 @@ function utførSetAdmin(type, accessToken, russId, i){
         x[4].innerHTML = "admin";
 
         x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setRuss('`+russId+`','`+i+`'); return false;" style="width: 20px; float: left;">
-                <img src="icons/downarrow.png"  style="height: 30px;"/>
+                <img src="images/downarrow.png"  style="height: 30px;"/>
                 </a>`;
     });
 }
@@ -763,9 +763,9 @@ function utførSetRuss(type, accessToken, russId, i){
         x[4].innerHTML = "russ";
 
         x[6].innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="setAdmin('` + russId + `','` + i + `'); return false;" style="width: 20px; float: left;">
-                <img src="icons/uparrow.png"  style="height: 30px; padding-top: 0;"/>
+                <img src="images/uparrow.png"  style="height: 30px; padding-top: 0;"/>
                 </a><a href="#" action="admin.php?mode=brukere" onclick="setFalse('`+ russId + `','` + i + `'); return false;" style="width: 20px; float: right; margin-right: 7px;">
-                <img src="icons/cancel.png"  style="height: 30px; padding-top: 0;"/>
+                <img src="images/cancel.png"  style="height: 30px; padding-top: 0;"/>
                 </a>`;
     });
 }
@@ -1011,7 +1011,7 @@ function populateFeedTable(responseAsJSON){
                 cell2.innerHTML = responseAsJSON[i].russId.firstName + " " + responseAsJSON[i].russId.lastName;
                 cell3.innerHTML = responseAsJSON[i].message;
                 cell4.innerHTML = `<a href="#" action="admin.php?mode=brukere" onclick="deleteMessage('`+responseAsJSON[i].feedId+`','`+rowCounter+`'); return false;">
-                    <img src="icons/cancel.png"  style="height: 30px; padding-top: 0; padding-bottom: 3px; padding-left: 8px;"/>
+                    <img src="images/cancel.png"  style="height: 30px; padding-top: 0; padding-bottom: 3px; padding-left: 8px;"/>
                     </a>`;
                 rowCounter++;
             //}  

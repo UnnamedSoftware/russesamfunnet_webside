@@ -165,8 +165,10 @@ div#showNewKnotInfo{
     width: 90%;
     margin-left: 5%;
     padding: 12px 20px;
-    border: none;
-    border-bottom: 3px double red;
+    /*border: none;*/
+    margin-top: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(228, 228, 228);
 }
 
 
@@ -176,8 +178,10 @@ div#showNewKnotInfo{
     height: 100px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: none;
-    border-bottom: 3px double red;
+    /*border: none;*/
+    margin-top: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(228, 228, 228);
     /*
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -189,8 +193,10 @@ div#showNewKnotInfo{
     width: 90%;
     margin-left: 5%;
     padding: 12px 20px;
-    border: none;
-    border-bottom: 3px double red;
+    /*border: none;*/
+    margin-top: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(228, 228, 228);
 }
 
 #knuteBeskrivelseInfo{
@@ -199,8 +205,10 @@ div#showNewKnotInfo{
     height: 100px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: none;
-    border-bottom: 3px double red;
+    /*border: none;*/
+    margin-top: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(228, 228, 228);
     /*
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -225,7 +233,7 @@ div#landingLogo{
 }
 
 #framsideTekst{
-    width: 64%;
+    width: 40%;
     margin: auto;
     background: blue;
 }
@@ -464,8 +472,10 @@ div#errorReportForm{
     width: 90%;
     margin-left: 5%;
     padding: 12px 20px;
-    border: none;
-    border-bottom: 3px double red;
+    /*border: none;*/
+    margin-top: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(228, 228, 228);
 }
 
 #errorMessage{
@@ -474,8 +484,10 @@ div#errorReportForm{
     height: 100px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: none;
-    border-bottom: 3px double red;
+    /*border: none;*/
+    margin-top: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgb(228, 228, 228);
     /*
     border: 2px solid #ccc;
     border-radius: 4px;

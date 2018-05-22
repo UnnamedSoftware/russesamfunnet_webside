@@ -99,7 +99,7 @@
                                             <img src="logos/logo.png" />  
                                         </div>
                                         <div id="framsideTekst">
-                                            <p>Velkommen til Russesamfunnets adminside</p>
+                                            <p>Velkommen til adminsiden</p>
                                         </div>
                                         
                                     </div>
@@ -111,7 +111,7 @@
                                         <div id="nyKnute">
                                             <div style="width: 10%; margin: auto;">
                                                 <a href="#" action="admin.php?mode=knute" onclick="nyKnute();return false;">
-                                                    <img src="icons/plus.png" style="height: 85%; padding-top: 6px;"/>
+                                                    <img src="images/plus.png" style="height: 85%; padding-top: 6px;"/>
                                                 </a>
                                             </div>
                                         </div>
@@ -128,7 +128,7 @@
                                                 <div style="width: 100%; margin: auto;">
                                                     <a id="deleteKnotButton" href="#" action="admin.php?mode=knute">
                                                         <div style="width: 75%; float: right;">
-                                                            <div style="float: left; font-size: 150%; margin: 15px 25px 10px 0;">Slett knute </div><img src="icons/cancel.png" style="height: 85%; padding-top: 6px;"/>
+                                                            <div style="float: left; font-size: 150%; margin: 15px 25px 10px 0;">Slett knute </div><img src="images/cancel.png" style="height: 85%; padding-top: 6px;"/>
                                                         </div>
                                                     </a>
                                                 </div>
@@ -140,10 +140,10 @@
                                             <div id="knotButtons">
                                                 <div style="width: 50%; margin: auto;">
                                                     <a href="#" action="admin.php?mode=knute" onclick="commitChanges(); return false;"style="width: 61px; float: left;">
-                                                        <img src="icons/confirm2.png" style="height: 85%; padding-top: 11px;"/>
+                                                        <img src="images/confirm2.png" style="height: 85%; padding-top: 11px;"/>
                                                     </a>
                                                     <a href="#" action="admin.php?mode=knute" onclick="cancel(); return false;" style="width: 60px; float: right;">
-                                                        <img src="icons/cancel.png" style="height: 85%; padding-top: 11px;"/>
+                                                        <img src="images/cancel.png" style="height: 85%; padding-top: 11px;"/>
                                                     </a>
                                                 </div>
                                             </div>
@@ -170,10 +170,10 @@
                                             <div id="newKnotButtons">
                                                 <div style="width: 50%; margin: auto; background: black;">
                                                     <a href="#" action="admin.php?mode=knute" onclick="registrerKnute(); return false;" style="width: 61px; float: left;">
-                                                        <img src="icons/confirm2.png" style="height: 85%; padding-top: 11px;"/>
+                                                        <img src="images/confirm2.png" style="height: 85%; padding-top: 11px;"/>
                                                     </a>
                                                     <a href="#" action="admin.php?mode=knute" onclick="cancelNyKnute(); return false;" style="width: 60px; float: right;">
-                                                        <img src="icons/cancel.png"  style="height: 85%; padding-top: 11px;"/>
+                                                        <img src="images/cancel.png"  style="height: 85%; padding-top: 11px;"/>
                                                     </a>
                                                 </div>
                                             </div>
@@ -207,10 +207,10 @@
                                             </table>
                                         </div>
                                         <div id="brukerIkonForklaring">
-                                            <img src="icons/confirm2.png"  style="height: 20px; padding-top: 0;"/> Bekreft bruker 
-                                            <img src="icons/cancel.png"  style="height: 20px; padding-top: 0;"/> Ubekreft bruker 
-                                            <img src="icons/uparrow.png"  style="height: 20px; padding-top: 0;"/> Gi adminrettingheter 
-                                            <img src="icons/downarrow.png"  style="height: 20px; padding-top: 0;"/> Fjern adminrettigheter 
+                                            <img src="images/confirm2.png"  style="height: 20px; padding-top: 0;"/> Bekreft bruker 
+                                            <img src="images/cancel.png"  style="height: 20px; padding-top: 0;"/> Ubekreft bruker 
+                                            <img src="images/uparrow.png"  style="height: 20px; padding-top: 0;"/> Gi adminrettingheter 
+                                            <img src="images/downarrow.png"  style="height: 20px; padding-top: 0;"/> Fjern adminrettigheter 
                                         </div> 
                                     </div>
                                     
@@ -269,7 +269,7 @@
                                             </table>
                                         </div>
                                         <div id="feedIkonForklaring">
-                                            <img src="icons/cancel.png"  style="height: 20px; padding-top: 0;"/> Slett melding
+                                            <img src="images/cancel.png"  style="height: 20px; padding-top: 0;"/> Slett melding
                                         </div> 
                                     </div>
                                 </div>
@@ -301,7 +301,11 @@
                                 </div>
                                 <div id="kontaktOssDiv">
                                     <div class="col-sm-9 setHeight">
-                                        kontaktOssDiv   
+                                        <div style="display: inline-block; margin: auto; width: 100%;">
+                                            <p style="margin: auto; margin: 25px 0 0 15px;">
+                                                Kontakt oss på e-post: Russesamfunnet@gmail.com
+                                            </p>
+                                        </div>   
                                     </div>
                                 </div>
                             </div>
